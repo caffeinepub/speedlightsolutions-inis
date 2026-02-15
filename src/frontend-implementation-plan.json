@@ -1,0 +1,103 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Per-industry theming and resilient brand logo fallback",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Apply per-industry theme colors on industry content pages, using industry background for the top banner/hero area and industry primary (plus optional accent) for key highlights without affecting non-industry pages.",
+      "acceptanceCriteria": [
+        "Visiting each industry route in the router (/industries/corporate-enterprise, /industries/education, /industries/healthcare, /industries/manufacturing, /industries/government, /industries/hospitality, /industries/banking, /industries/training-centers, /industries/retail, /industries/live-events) shows a visually distinct theme that matches the provided hex values for that industry.",
+        "The banner/hero wrapper at the top of ContentPage uses the industry background color (not the generic bg-muted/30) for industry pages.",
+        "Industry primary color is visible in at least: page title accent styling and link/interactive highlight styling within the page content area.",
+        "For industries that specify an accent_color (Manufacturing and Banking), the accent color is used as an optional secondary highlight (e.g., subtle badge/underline/divider) without replacing the primary color usage.",
+        "Non-industry pages (solutions, about, contact, etc.) retain the existing global theme and are not recolored by industry theme logic."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ContentPage.tsx",
+          "operation": "modify",
+          "description": "Apply industry theming when the provided pageId matches an industry theme: set scoped CSS variables for primary/accent/background; use background_color for the top banner wrapper (replacing bg-muted/30 only for themed industry pages); add a primary-colored title accent (e.g., underline/left rule) and an optional subtle accent detail when accent_color is present, while preserving the clean corporate layout."
+        },
+        {
+          "path": "frontend/src/components/content/ContentRenderer.tsx",
+          "operation": "modify",
+          "description": "Enable theme-aware styling for content within an industry-themed scope (e.g., section headings/dividers and inline emphasis) so that primary color appears in key highlights on industry pages without changing default styling for non-industry pages."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a scoped industry theme utility/class (e.g., a wrapper class applied by ContentPage) that uses CSS variables to style links/interactive states and optional accent treatments within the industry page content area, ensuring non-industry pages remain unaffected."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create a centralized mapping from industry page IDs to theme tokens (primary, optional accent, background) and use it via ContentPage’s pageId with a safe default when missing.",
+      "acceptanceCriteria": [
+        "There is a single source of truth for industry theme values (hex codes) used by the UI.",
+        "Theme selection is based on the pageId already passed into ContentPage (no hardcoded per-route styling scattered across multiple components).",
+        "If a pageId is not in the mapping, the page renders with the existing default styling (no runtime errors)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/site/industryThemes.ts",
+          "operation": "create",
+          "description": "Add a single source-of-truth industry theme mapping keyed by existing industry page IDs (corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events) containing primary_color, optional accent_color, and background_color hex values, plus a helper to safely fetch a theme by pageId."
+        },
+        {
+          "path": "frontend/src/pages/ContentPage.tsx",
+          "operation": "modify",
+          "description": "Use the centralized industry theme helper to determine whether the current pageId is themed; if not found, render with existing default styles and avoid runtime errors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add a robust header/footer logo fallback so missing/unloadable logo images render a readable brand mark (text or placeholder) without breaking layout on desktop or mobile.",
+      "acceptanceCriteria": [
+        "If the logo image at BRAND.logo.path fails to load, the header and footer do not show a broken image icon and instead display a readable brand fallback (text-based or placeholder image) that preserves spacing/alignment.",
+        "The fallback works in both desktop header and mobile menu header area, and in the footer logo area.",
+        "All user-facing fallback text is in English and uses the existing brand constants (e.g., BRAND.name)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/brand/BrandLogo.tsx",
+          "operation": "create",
+          "description": "Create a reusable BrandLogo component that attempts to render BRAND.logo.path and, on load failure, swaps to an accessible, layout-preserving fallback using BRAND.name (text-based brand mark and/or local placeholder asset) suitable for header/footer sizes."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Replace direct <img> logo usage in both the desktop header and mobile sheet header area with the new BrandLogo component to prevent broken-image rendering and preserve spacing/alignment."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Replace direct <img> logo usage in the footer with the new BrandLogo component so the fallback behavior matches the header and preserves footer layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure a clean corporate placeholder wordmark logo asset exists at the configured logo path used by the app.",
+      "acceptanceCriteria": [
+        "A placeholder logo asset exists at the configured path used by the app (as defined in frontend/src/site/brand.ts).",
+        "The placeholder logo is legible at the current header/footer render size (className h-8 w-auto) and looks consistent with a clean corporate B2B design.",
+        "No backend changes are required to serve the logo; it is a static asset under frontend/public."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png",
+          "operation": "create",
+          "description": "Add the provided generated placeholder asset at the exact configured logo path so the application has a consistent corporate wordmark until a real logo is uploaded (use: frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png)."
+        },
+        {
+          "path": "frontend/src/site/brand.ts",
+          "operation": "modify",
+          "description": "Verify the configured BRAND.logo.path points to /assets/generated/logo-wordmark-updated.dim_600x160.png and ensure BRAND.name is the authoritative English fallback brand text used elsewhere."
+        }
+      ]
+    }
+  ]
+}

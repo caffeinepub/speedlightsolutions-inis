@@ -1,0 +1,88 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T10:46:58.475Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Implement the provided per-industry color schemes on all industry-specific pages so that each page uses its industry background color for the top hero/banner section and uses the industry primary color for key highlights (e.g., page title accent, section headings, links, icon accents) while maintaining a clean, modern corporate B2B look.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ContentPage.tsx",
+          "frontend/src/components/content/ContentRenderer.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ContentPage.tsx",
+          "frontend/src/components/content/ContentRenderer.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add a centralized, explicit mapping from industry page IDs to their theme tokens (primary_color, optional accent_color, background_color) and ensure the mapping keys align with existing industry page IDs used by routing and content (e.g., corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/site/industryThemes.ts",
+          "frontend/src/pages/ContentPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/site/industryThemes.ts",
+          "frontend/src/pages/ContentPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Handle the missing/unuploaded logo gracefully across the header and footer by adding a robust fallback when the configured logo image cannot be loaded (e.g., swap to a text-based brand mark using BRAND.name or a locally-generated placeholder logo asset) without breaking layout in desktop or mobile navigation.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/brand/BrandLogo.tsx",
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/brand/BrandLogo.tsx",
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Add (or regenerate) a clean corporate wordmark placeholder logo image matching the existing configured logo path so the site has a consistent logo until the real logo is uploaded.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png",
+          "frontend/src/site/brand.ts"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png",
+    "frontend/src/components/brand/BrandLogo.tsx",
+    "frontend/src/components/content/ContentRenderer.tsx",
+    "frontend/src/components/layout/SiteFooter.tsx",
+    "frontend/src/components/layout/SiteHeader.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/ContentPage.tsx",
+    "frontend/src/site/industryThemes.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

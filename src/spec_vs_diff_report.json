@@ -1,0 +1,47 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T10:46:58.473Z",
+  "summary": "Implemented centralized industry theme mapping and applied primary/background styling to ContentPage with CSS-variable driven link/section styling. Added BrandLogo component with onError text fallback and wired it into header/footer. However, accent_color is not actually used in styling, and the required placeholder logo asset under frontend/public is not shown in the diff. Also, global theme tokens in index.css were modified beyond industry-only theming needs.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "For industries that specify an accent_color (Manufacturing and Banking), the accent color is used as an optional secondary highlight (e.g., subtle badge/underline/divider) without replacing the primary color usage.",
+      "reason": "The diff sets the CSS variable --industry-accent in ContentPage when accent_color exists, but there is no CSS or component styling that references --industry-accent to create a visible secondary highlight.",
+      "evidence": [
+        "frontend/src/pages/ContentPage.tsx",
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Add (or regenerate) a clean corporate wordmark placeholder logo image matching the existing configured logo path under frontend/public.",
+      "reason": "No static asset addition under frontend/public is present in the diff summary; only a React component fallback to text is added.",
+      "evidence": [
+        "frontend/src/components/brand/BrandLogo.tsx",
+        "frontend-file-summaries.txt (mentions logo path in frontend/src/site/brand.ts but no public asset shown)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Global theme palette changes to root/dark CSS variables (background/foreground/primary/accent/etc.)",
+      "reason": "BuildRequest explicitly focuses on per-industry theming and warns not to change non-industry page themes beyond what’s necessary. The diff modifies global color tokens in index.css, which affects the entire site, not just industry pages.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/brand/BrandLogo.tsx",
+    "frontend/src/components/content/ContentRenderer.tsx",
+    "frontend/src/components/layout/SiteFooter.tsx",
+    "frontend/src/components/layout/SiteHeader.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/ContentPage.tsx",
+    "frontend/src/site/industryThemes.ts",
+    "project_state.json"
+  ]
+}

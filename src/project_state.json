@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "B2B corporate website with industry-specific pages that require per-industry color themes and a clean modern corporate design.",
+  "architectural_notes": [
+    "Industry pages should support theming: primary color for buttons/highlights/icons; optional accent color for secondary highlights; background color for page/hero background.",
+    "Logo is not uploaded yet; implement a temporary placeholder/text logo approach that can be swapped when the logo is provided."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Clean corporate wordmark logo on transparent background (logo-wordmark-updated.dim_600x160.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-the-provided-per-industry-color-schemes-on-all-industry-specific-pages-so-that-each-page-uses-its-industry-background-color-for-the-top-hero-banner-section-and-uses-the-industry-primary-color-for-key-highlights-e-g-page-title-accent-section-headings-links-icon-accents-while-maintaining-a-clean-modern-corporate-b2b-look",
+      "title": "Implement the provided per-industry color schemes on all industry-specific pages so that each page uses its industry background color for the top hero/banner section and uses the industry primary color for key highlights (e.g., page title accent, section headings, links, icon accents) while maintaining a clean, modern corporate B2B look.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-centralized-explicit-mapping-from-industry-page-ids-to-their-theme-tokens-primary-color-optional-accent-color-background-color-and-ensure-the-mapping-keys-align-with-existing-industry-page-ids-used-by-routing-and-content-e-g-corporate-enterprise-education-healthcare-manufacturing-government-hospitality-banking-training-centers-retail-live-events",
+      "title": "Add a centralized, explicit mapping from industry page IDs to their theme tokens (primary_color, optional accent_color, background_color) and ensure the mapping keys align with existing industry page IDs used by routing and content (e.g., corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-handle-the-missing-unuploaded-logo-gracefully-across-the-header-and-footer-by-adding-a-robust-fallback-when-the-configured-logo-image-cannot-be-loaded-e-g-swap-to-a-text-based-brand-mark-using-brand-name-or-a-locally-generated-placeholder-logo-asset-without-breaking-layout-in-desktop-or-mobile-navigation",
+      "title": "Handle the missing/unuploaded logo gracefully across the header and footer by adding a robust fallback when the configured logo image cannot be loaded (e.g., swap to a text-based brand mark using BRAND.name or a locally-generated placeholder logo asset) without breaking layout in desktop or mobile navigation.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-or-regenerate-a-clean-corporate-wordmark-placeholder-logo-image-matching-the-existing-configured-logo-path-so-the-site-has-a-consistent-logo-until-the-real-logo-is-uploaded",
+      "title": "Add (or regenerate) a clean corporate wordmark placeholder logo image matching the existing configured logo path so the site has a consistent logo until the real logo is uploaded.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Apply provided per-industry color schemes (primary/accent/background) to industry-specific pages with a clean modern B2B corporate design.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Handle missing logo asset (use placeholder or text-based logo styling until logo is uploaded).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Apply per-industry color themes and add a safe fallback for missing logo",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

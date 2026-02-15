@@ -1,0 +1,98 @@
+{
+  "kind": "build_request",
+  "title": "Apply per-industry color themes and add a safe fallback for missing logo",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement the provided per-industry color schemes on all industry-specific pages so that each page uses its industry background color for the top hero/banner section and uses the industry primary color for key highlights (e.g., page title accent, section headings, links, icon accents) while maintaining a clean, modern corporate B2B look.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Use the following color scheme for industry-specific pages.\nMaintain a clean modern B2B corporate design.\nPrimary color = buttons, highlights, icons.\nAccent color = optional secondary highlight.\nBackground color = page or hero background."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visiting each industry route in the router (/industries/corporate-enterprise, /industries/education, /industries/healthcare, /industries/manufacturing, /industries/government, /industries/hospitality, /industries/banking, /industries/training-centers, /industries/retail, /industries/live-events) shows a visually distinct theme that matches the provided hex values for that industry.",
+        "The banner/hero wrapper at the top of ContentPage uses the industry background color (not the generic bg-muted/30) for industry pages.",
+        "Industry primary color is visible in at least: page title accent styling and link/interactive highlight styling within the page content area.",
+        "For industries that specify an accent_color (Manufacturing and Banking), the accent color is used as an optional secondary highlight (e.g., subtle badge/underline/divider) without replacing the primary color usage.",
+        "Non-industry pages (solutions, about, contact, etc.) retain the existing global theme and are not recolored by industry theme logic."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add a centralized, explicit mapping from industry page IDs to their theme tokens (primary_color, optional accent_color, background_color) and ensure the mapping keys align with existing industry page IDs used by routing and content (e.g., corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Corporate & Enterprise Offices:\n  primary_color: #1E3A8A\n  background_color: #F1F5F9\n\nEducation & Digital Classrooms:\n  primary_color: #4F46E5\n  background_color: #EEF2FF\n\nHealthcare Facilities:\n  primary_color: #0D9488\n  background_color: #ECFEFF\n\nManufacturing & Industrial Facilities:\n  primary_color: #2B2B2B\n  accent_color: #F97316\n  background_color: #F5F5F5\n\nGovernment & Public Sector:\n  primary_color: #1E40AF\n  background_color: #EFF6FF\n\nHospitality & Convention Centers:\n  primary_color: #D97706\n  background_color: #FFFBEB\n\nRetail & Commercial Spaces:\n  primary_color: #EF4444\n  background_color: #FFF1F2\n\nBanking & Financial Institutions:\n  primary_color: #1D4ED8\n  accent_color: #16A34A\n  background_color: #F0F9FF\n\nTraining Centers & Skill Development Institutes:\n  primary_color: #22C55E\n  background_color: #F0FDF4\n\nLive & Corporate Events:\n  primary_color: #9333EA\n  background_color: #FAF5FF"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a single source of truth for industry theme values (hex codes) used by the UI.",
+        "Theme selection is based on the pageId already passed into ContentPage (no hardcoded per-route styling scattered across multiple components).",
+        "If a pageId is not in the mapping, the page renders with the existing default styling (no runtime errors)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Handle the missing/unuploaded logo gracefully across the header and footer by adding a robust fallback when the configured logo image cannot be loaded (e.g., swap to a text-based brand mark using BRAND.name or a locally-generated placeholder logo asset) without breaking layout in desktop or mobile navigation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "also take into account that logo isnt uploaded"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If the logo image at BRAND.logo.path fails to load, the header and footer do not show a broken image icon and instead display a readable brand fallback (text-based or placeholder image) that preserves spacing/alignment.",
+        "The fallback works in both desktop header and mobile menu header area, and in the footer logo area.",
+        "All user-facing fallback text is in English and uses the existing brand constants (e.g., BRAND.name)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add (or regenerate) a clean corporate wordmark placeholder logo image matching the existing configured logo path so the site has a consistent logo until the real logo is uploaded.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "also take into account that logo isnt uploaded"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A placeholder logo asset exists at the configured path used by the app (as defined in frontend/src/site/brand.ts).",
+        "The placeholder logo is legible at the current header/footer render size (className h-8 w-auto) and looks consistent with a clean corporate B2B design.",
+        "No backend changes are required to serve the logo; it is a static asset under frontend/public."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (read-only shadcn components).",
+    "Do not edit immutable paths listed in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Use English for any user-facing text.",
+    "Keep the overall look clean, modern, and corporate B2B; do not introduce playful or consumer-styled visuals."
+  ],
+  "nonGoals": [
+    "Do not change solution, about, contact, or homepage color themes beyond what is necessary to avoid being affected by industry-only theming.",
+    "Do not add new industries, routes, or content copy beyond applying the specified theming and logo fallback behavior.",
+    "Do not implement authentication or backend persistence changes (not requested)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Clean corporate wordmark logo on transparent background (logo-wordmark-updated.dim_600x160.png)"
+    ],
+    "edits": []
+  }
+}
