@@ -1,4 +1,6 @@
 import type { PageContent } from './contentTypes';
+import { solutionServicePages } from './solutionServicePages';
+import { getServicesForCategory } from './solutionServices';
 
 export const pageContents: Record<string, PageContent> = {
   // Our Solutions Landing
@@ -40,7 +42,7 @@ export const pageContents: Record<string, PageContent> = {
     ],
   },
 
-  // Solutions Subpages
+  // Solutions Subpages with service links
   'workplace-collaboration': {
     id: 'workplace-collaboration',
     title: 'Workplace Collaboration & Video Conferencing Technologies',
@@ -51,6 +53,19 @@ export const pageContents: Record<string, PageContent> = {
           {
             type: 'paragraph',
             text: 'Transform your meeting spaces with state-of-the-art video conferencing and collaboration technologies. Our solutions enable seamless communication across distributed teams, ensuring every participant can contribute effectively regardless of location.',
+          },
+        ],
+      },
+      {
+        id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('workplace-collaboration').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
           },
         ],
       },
@@ -106,6 +121,19 @@ export const pageContents: Record<string, PageContent> = {
         ],
       },
       {
+        id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('professional-sound').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
+          },
+        ],
+      },
+      {
         id: 'solutions',
         title: 'Sound Solutions',
         blocks: [
@@ -146,6 +174,19 @@ export const pageContents: Record<string, PageContent> = {
           {
             type: 'paragraph',
             text: 'Create stunning visual experiences with our comprehensive display and visualization solutions. We provide everything from single displays to massive video walls, ensuring your content makes maximum impact.',
+          },
+        ],
+      },
+      {
+        id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('display-visualization').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
           },
         ],
       },
@@ -202,6 +243,19 @@ export const pageContents: Record<string, PageContent> = {
       },
       {
         id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('networking-connectivity').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
+          },
+        ],
+      },
+      {
+        id: 'networking-services',
         title: 'Networking Services',
         blocks: [
           {
@@ -241,6 +295,19 @@ export const pageContents: Record<string, PageContent> = {
           {
             type: 'paragraph',
             text: 'Simplify complex technology environments with intelligent control systems that put power at your fingertips. Our automation and control solutions make sophisticated AV systems easy to operate for users of all technical levels.',
+          },
+        ],
+      },
+      {
+        id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('intelligent-systems').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
           },
         ],
       },
@@ -290,6 +357,19 @@ export const pageContents: Record<string, PageContent> = {
       },
       {
         id: 'services',
+        title: 'Our Services',
+        blocks: [
+          {
+            type: 'link-list',
+            links: getServicesForCategory('lifecycle-support').map(service => ({
+              label: service.title,
+              to: service.routePath,
+            })),
+          },
+        ],
+      },
+      {
+        id: 'support-services',
         title: 'Support Services',
         blocks: [
           {
@@ -544,7 +624,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Serve citizens better and improve government operations with secure, reliable AV and communication solutions. We understand the unique requirements of public sector organizations and deliver compliant, mission-critical systems.',
+            text: 'Serve citizens effectively with secure, reliable AV and communication systems designed for government facilities. Our solutions support public meetings, emergency operations, and inter-agency collaboration while meeting strict security requirements.',
           },
         ],
       },
@@ -556,23 +636,23 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Council chambers and legislative facilities',
-              'Emergency operations centers and command rooms',
-              'Public safety and 911 dispatch centers',
-              'Courtroom technology and evidence presentation',
-              'Citizen service centers and public information displays',
+              'Council chambers and public meeting spaces',
+              'Emergency operations centers',
+              'Courtroom AV and evidence presentation',
               'Secure video conferencing for classified environments',
+              'Public information displays and kiosks',
+              'Training facilities for first responders',
             ],
           },
         ],
       },
       {
-        id: 'security',
+        id: 'compliance',
         title: 'Security & Compliance',
         blocks: [
           {
             type: 'paragraph',
-            text: 'All solutions meet government security standards including FIPS compliance, TAA compliance for federal procurement, and support for classified and sensitive information handling.',
+            text: 'All government solutions meet applicable security standards including FIPS, TAA compliance, and cybersecurity requirements for federal, state, and local agencies.',
           },
         ],
       },
@@ -588,7 +668,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Create memorable guest experiences and maximize event revenue with flexible, high-performance AV solutions for hotels, resorts, and convention facilities. Our systems adapt to any event type and scale.',
+            text: 'Create memorable guest experiences with hospitality AV solutions that support events, meetings, and entertainment. Our systems provide the flexibility and reliability required for hotels, resorts, and convention centers.',
           },
         ],
       },
@@ -601,22 +681,22 @@ export const pageContents: Record<string, PageContent> = {
             ordered: false,
             items: [
               'Ballroom and meeting room AV systems',
-              'Portable and modular event technology',
-              'Digital signage and wayfinding displays',
-              'In-room entertainment and casting solutions',
-              'Outdoor venue sound and projection',
-              'Event management and control systems',
+              'Digital signage and wayfinding',
+              'In-room entertainment and IPTV',
+              'Outdoor AV for pool and patio areas',
+              'Restaurant and bar audio systems',
+              'Event production and technical services',
             ],
           },
         ],
       },
       {
-        id: 'advantages',
-        title: 'Competitive Advantages',
+        id: 'benefits',
+        title: 'Guest Benefits',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Increase event bookings with state-of-the-art technology, reduce setup time and labor costs, provide turnkey solutions for event planners, and differentiate your venue in a competitive market.',
+            text: 'Enhance guest satisfaction, increase event bookings, provide seamless technology experiences, and differentiate your property with state-of-the-art AV capabilities.',
           },
         ],
       },
@@ -632,7 +712,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Support secure, efficient operations and enhance customer experience with specialized AV and communication solutions for financial institutions. Our systems meet stringent security and compliance requirements.',
+            text: 'Support secure, professional communication in financial environments with AV solutions designed for banking and financial services. Our systems enable effective client meetings, training, and operations while maintaining the highest security standards.',
           },
         ],
       },
@@ -644,11 +724,11 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Executive briefing centers and board rooms',
-              'Trading floor communication and display systems',
-              'Branch digital signage and queue management',
-              'Video banking and remote teller solutions',
-              'Training facilities and learning centers',
+              'Executive boardrooms and client meeting rooms',
+              'Trading floor communication systems',
+              'Branch video banking and teller assist',
+              'Training centers and financial education',
+              'Digital signage for rates and promotions',
               'Secure video conferencing for sensitive discussions',
             ],
           },
@@ -656,11 +736,11 @@ export const pageContents: Record<string, PageContent> = {
       },
       {
         id: 'security',
-        title: 'Financial Security',
+        title: 'Security & Compliance',
         blocks: [
           {
             type: 'paragraph',
-            text: 'All solutions incorporate bank-grade security, encrypted communications, audit logging, and compliance with financial industry regulations including SOX, PCI-DSS, and regional banking standards.',
+            text: 'All banking solutions incorporate encryption, access controls, and audit logging to meet financial industry security requirements and regulatory compliance standards.',
           },
         ],
       },
@@ -676,7 +756,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Deliver effective training programs with technology that enhances learning outcomes and instructor effectiveness. Our solutions support diverse training methodologies from hands-on workshops to virtual instructor-led training.',
+            text: 'Enable effective learning and skill development with AV technology designed for training environments. Our solutions support instructor-led training, hands-on labs, and remote learning scenarios.',
           },
         ],
       },
@@ -689,22 +769,22 @@ export const pageContents: Record<string, PageContent> = {
             ordered: false,
             items: [
               'Interactive training rooms with collaboration tools',
-              'Simulation and virtual reality training systems',
-              'Video recording and playback for skills assessment',
-              'Remote training and webinar platforms',
-              'Computer lab and technical training facilities',
-              'Assessment and testing technology',
+              'Lecture capture and content recording',
+              'Simulation and virtual reality training',
+              'Remote training and webinar capabilities',
+              'Assessment and testing systems',
+              'Learning management system integration',
             ],
           },
         ],
       },
       {
-        id: 'benefits',
-        title: 'Training Benefits',
+        id: 'outcomes',
+        title: 'Training Outcomes',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Improve knowledge retention and skill development, support blended learning approaches, enable remote and distributed training delivery, reduce training costs and time-to-competency, and provide measurable learning analytics.',
+            text: 'Improve knowledge retention, support diverse learning styles, enable scalable training delivery, track learner progress, and reduce training costs through technology-enabled instruction.',
           },
         ],
       },
@@ -720,35 +800,35 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Enhance customer engagement and drive sales with dynamic digital experiences. Our retail technology solutions help you communicate with customers, showcase products, and create memorable brand experiences.',
+            text: 'Engage customers and drive sales with retail AV solutions that create immersive shopping experiences. Our digital signage, audio, and interactive display solutions help retailers communicate effectively and enhance the customer journey.',
           },
         ],
       },
       {
         id: 'solutions',
-        title: 'Retail Technology',
+        title: 'Retail Solutions',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Digital signage and video walls',
+              'Digital signage and promotional displays',
               'Interactive product displays and kiosks',
-              'In-store audio and background music systems',
-              'Window displays and outdoor advertising',
-              'Queue management and customer flow systems',
-              'Content management and scheduling platforms',
+              'In-store audio and background music',
+              'Video walls and experiential displays',
+              'Queue management and wayfinding',
+              'Window displays and outdoor signage',
             ],
           },
         ],
       },
       {
-        id: 'impact',
-        title: 'Business Impact',
+        id: 'benefits',
+        title: 'Retail Benefits',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Increase foot traffic and dwell time, promote products and special offers in real-time, enhance brand perception and customer experience, reduce perceived wait times, and gather customer analytics and insights.',
+            text: 'Increase customer engagement, promote products effectively, create memorable brand experiences, drive impulse purchases, and adapt messaging in real-time based on inventory and promotions.',
           },
         ],
       },
@@ -764,7 +844,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Create unforgettable event experiences with professional-grade AV production services and equipment. From intimate corporate gatherings to large-scale conferences and concerts, we deliver flawless execution.',
+            text: 'Deliver impactful live events with professional AV production services and equipment. From corporate conferences to product launches, our event solutions ensure your message reaches audiences with maximum impact.',
           },
         ],
       },
@@ -776,12 +856,12 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Full-service event production and management',
-              'Stage design and scenic elements',
-              'Professional lighting and special effects',
-              'Concert-grade sound reinforcement',
+              'Event production and technical direction',
               'LED video walls and projection mapping',
-              'Live streaming and hybrid event solutions',
+              'Professional audio and concert sound',
+              'Stage lighting and intelligent lighting',
+              'Live streaming and hybrid event production',
+              'Event recording and post-production',
             ],
           },
         ],
@@ -792,14 +872,14 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Our experienced production team handles every detail from initial concept through load-out, ensuring your event runs smoothly and achieves its objectives. We support product launches, conferences, galas, concerts, and more.',
+            text: 'Our experienced event production team handles everything from initial concept through load-out, ensuring flawless execution and memorable experiences for your attendees.',
           },
         ],
       },
     ],
   },
 
-  // About Us Landing
+  // About Us
   about: {
     id: 'about',
     title: 'About Us',
@@ -809,17 +889,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'We are a leading provider of audiovisual and technology solutions, dedicated to transforming how organizations communicate, collaborate, and connect. With decades of combined experience and a passion for innovation, we deliver solutions that make a real difference.',
-          },
-        ],
-      },
-      {
-        id: 'approach',
-        title: 'Our Approach',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We believe technology should be intuitive, reliable, and purposeful. Our consultative approach ensures we understand your unique needs and deliver solutions that align with your goals, budget, and timeline.',
+            text: 'Speedlight Infosolutions is a leading provider of audiovisual and technology solutions, dedicated to transforming how organizations communicate, collaborate, and operate. With deep expertise and a commitment to excellence, we deliver innovative solutions that empower our clients to achieve their goals.',
           },
         ],
       },
@@ -831,10 +901,10 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Our Organization - Discover our history, values, and team',
-              'Why Choose Us - Learn what sets us apart',
-              'Case Studies - See our solutions in action',
-              'Careers - Join our growing team',
+              'Our Organization',
+              'Why Choose Us',
+              'Case Studies',
+              'Careers',
             ],
           },
         ],
@@ -842,44 +912,32 @@ export const pageContents: Record<string, PageContent> = {
     ],
   },
 
-  // About Subpages
   'our-organization': {
     id: 'our-organization',
     title: 'Our Organization',
     sections: [
       {
-        id: 'history',
-        title: 'Our History',
+        id: 'overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Founded with a vision to simplify complex technology, we have grown from a small team of AV enthusiasts to a comprehensive solutions provider serving clients across multiple industries and geographies.',
-          },
-        ],
-      },
-      {
-        id: 'mission',
-        title: 'Mission & Vision',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Our mission is to empower organizations with technology solutions that enhance communication, collaboration, and productivity. We envision a world where technology seamlessly supports human connection and creativity.',
+            text: 'Founded with a vision to revolutionize workplace technology, Speedlight Infosolutions has grown into a trusted partner for organizations across India. Our team of certified professionals brings decades of combined experience in AV design, integration, and support.',
           },
         ],
       },
       {
         id: 'values',
-        title: 'Core Values',
+        title: 'Our Values',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Excellence: We deliver exceptional quality in everything we do',
-              'Innovation: We embrace new technologies and creative solutions',
-              'Integrity: We operate with honesty and transparency',
-              'Partnership: We build lasting relationships with clients and partners',
-              'Expertise: We invest in continuous learning and certification',
+              'Excellence in every project, from design to delivery',
+              'Innovation through continuous learning and technology adoption',
+              'Partnership with clients built on trust and transparency',
+              'Integrity in all business practices and relationships',
+              'Sustainability through energy-efficient and long-lasting solutions',
             ],
           },
         ],
@@ -890,7 +948,7 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Our team comprises certified engineers, experienced project managers, creative designers, and dedicated support professionals. We hold industry certifications from leading manufacturers and maintain partnerships with top technology brands.',
+            text: 'Our team includes CTS-certified designers, manufacturer-trained technicians, and experienced project managers who work collaboratively to deliver exceptional results. We invest in ongoing training to ensure our team stays at the forefront of AV technology.',
           },
         ],
       },
@@ -902,6 +960,15 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Why Choose Us',
     sections: [
       {
+        id: 'overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Choosing the right AV partner is critical to your success. Speedlight Infosolutions stands out through our comprehensive approach, technical expertise, and unwavering commitment to client satisfaction.',
+          },
+        ],
+      },
+      {
         id: 'differentiators',
         title: 'What Sets Us Apart',
         blocks: [
@@ -909,40 +976,23 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'End-to-End Solutions: From consultation through ongoing support',
-              'Vendor-Agnostic Approach: We recommend the best technology for your needs',
-              'Certified Expertise: Factory-trained and certified technicians',
-              'Proven Methodology: Structured project management and quality assurance',
-              'Responsive Support: 24/7 helpdesk and rapid response times',
-              'Long-Term Partnership: We grow with your organization',
+              'End-to-end solutions from consultation through ongoing support',
+              'Certified partnerships with leading technology manufacturers',
+              'Proven track record across diverse industries and applications',
+              'Responsive support with local presence and 24/7 availability',
+              'Scalable solutions that grow with your organization',
+              'Competitive pricing without compromising quality',
             ],
           },
         ],
       },
       {
-        id: 'process',
-        title: 'Our Process',
-        blocks: [
-          {
-            type: 'list',
-            ordered: true,
-            items: [
-              'Discovery: We listen to understand your needs and challenges',
-              'Design: We create tailored solutions with detailed documentation',
-              'Deployment: We execute with precision and minimal disruption',
-              'Training: We ensure your team can use the technology effectively',
-              'Support: We provide ongoing maintenance and optimization',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'commitment',
-        title: 'Our Commitment',
+        id: 'approach',
+        title: 'Our Approach',
         blocks: [
           {
             type: 'paragraph',
-            text: 'We stand behind every installation with comprehensive warranties, responsive support, and a commitment to your long-term success. Your satisfaction is our measure of success.',
+            text: 'We begin every engagement by understanding your unique requirements, challenges, and goals. Our consultative approach ensures we recommend solutions that deliver real business value, not just the latest technology.',
           },
         ],
       },
@@ -954,11 +1004,11 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Case Studies',
     sections: [
       {
-        id: 'intro',
+        id: 'overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Explore how we have helped organizations across diverse industries transform their communication and collaboration capabilities. These case studies showcase real-world challenges, innovative solutions, and measurable results.',
+            text: 'Explore how Speedlight Infosolutions has helped organizations across industries transform their communication and collaboration capabilities. Our case studies showcase real-world implementations and the measurable results achieved.',
           },
         ],
       },
@@ -968,33 +1018,17 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Global Financial Services Firm: Deployed 200+ Microsoft Teams Rooms across 15 countries, standardizing collaboration technology and reducing meeting setup time by 75%.',
-          },
-          {
-            type: 'paragraph',
-            text: 'Major University: Transformed 50 classrooms with interactive displays and lecture capture, enabling hybrid learning and improving student engagement scores by 40%.',
-          },
-          {
-            type: 'paragraph',
-            text: 'Healthcare System: Implemented telemedicine solutions across 30 clinics, expanding patient access to specialists and reducing no-show rates by 60%.',
-          },
-          {
-            type: 'paragraph',
-            text: 'Manufacturing Company: Installed production floor digital signage and mass notification systems, improving safety compliance and reducing incident response time by 50%.',
+            text: 'From Fortune 500 corporate headquarters to educational institutions and healthcare facilities, our portfolio demonstrates our ability to deliver complex AV solutions on time and within budget.',
           },
         ],
       },
       {
-        id: 'testimonials',
-        title: 'Client Testimonials',
+        id: 'contact',
+        title: 'Request Case Studies',
         blocks: [
           {
             type: 'paragraph',
-            text: '"The team delivered a complex global rollout on time and on budget. Their expertise and professionalism were exceptional." - IT Director, Fortune 500 Company',
-          },
-          {
-            type: 'paragraph',
-            text: '"Our new collaboration spaces have transformed how our teams work together. The technology just works, and support is always there when we need it." - VP Operations, Technology Firm',
+            text: 'Contact us to receive detailed case studies relevant to your industry and application. We\'re happy to provide references and arrange site visits to see our solutions in action.',
           },
         ],
       },
@@ -1006,11 +1040,11 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Careers',
     sections: [
       {
-        id: 'intro',
+        id: 'overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Join a team of passionate professionals dedicated to delivering exceptional technology solutions. We offer challenging projects, continuous learning opportunities, and a collaborative culture where your contributions make a real impact.',
+            text: 'Join a dynamic team of AV professionals passionate about technology and client success. Speedlight Infosolutions offers rewarding career opportunities for talented individuals who want to make an impact in the AV industry.',
           },
         ],
       },
@@ -1022,12 +1056,12 @@ export const pageContents: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'AV Systems Engineers and Designers',
+              'AV System Designers and Engineers',
+              'Installation Technicians and Programmers',
               'Project Managers and Coordinators',
-              'Installation Technicians and Field Engineers',
-              'Technical Support Specialists',
               'Sales and Business Development Professionals',
-              'Software Developers and Programmers',
+              'Technical Support Specialists',
+              'Service and Maintenance Technicians',
             ],
           },
         ],
@@ -1037,33 +1071,15 @@ export const pageContents: Record<string, PageContent> = {
         title: 'Why Work With Us',
         blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Competitive compensation and benefits packages',
-              'Professional development and certification programs',
-              'Exposure to cutting-edge technology and diverse projects',
-              'Collaborative and supportive team environment',
-              'Work-life balance and flexible arrangements',
-              'Career growth and advancement opportunities',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'apply',
-        title: 'How to Apply',
-        blocks: [
-          {
             type: 'paragraph',
-            text: 'We are always looking for talented individuals to join our team. Send your resume and cover letter to careers@speedlightsolutions.in. We review all applications and will contact qualified candidates for interviews.',
+            text: 'We offer competitive compensation, comprehensive benefits, ongoing training and certification opportunities, and a collaborative work environment where your contributions are valued and recognized.',
           },
         ],
       },
     ],
   },
 
-  // Contact Page
+  // Contact Us
   contact: {
     id: 'contact',
     title: 'Contact Us',
@@ -1073,55 +1089,33 @@ export const pageContents: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ready to transform your communication and collaboration capabilities? We would love to hear from you. Contact us to discuss your project, request a consultation, or learn more about our solutions.',
+            text: 'Ready to transform your communication and collaboration capabilities? Contact Speedlight Infosolutions today to discuss your requirements and discover how our solutions can help you achieve your goals.',
           },
         ],
       },
       {
-        id: 'methods',
-        title: 'Get in Touch',
+        id: 'contact-info',
+        title: 'Get In Touch',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Email: info@speedlightsolutions.in',
-          },
-          {
-            type: 'paragraph',
-            text: 'Phone: +91 (555) 123-4567',
-          },
-          {
-            type: 'paragraph',
-            text: 'Business Hours: Monday - Friday, 9:00 AM - 6:00 PM IST',
-          },
-        ],
-      },
-      {
-        id: 'inquiry',
-        title: 'What to Expect',
-        blocks: [
-          {
-            type: 'list',
-            ordered: true,
-            items: [
-              'Initial Consultation: We discuss your needs and objectives',
-              'Site Assessment: We evaluate your space and requirements',
-              'Proposal: We present a detailed solution and investment',
-              'Project Kickoff: We begin implementation with clear milestones',
-              'Ongoing Support: We provide training and continuous support',
-            ],
+            text: 'Our team is ready to answer your questions, provide consultations, and develop customized solutions for your organization. Reach out via phone, email, or the contact form below.',
           },
         ],
       },
       {
         id: 'locations',
-        title: 'Service Areas',
+        title: 'Our Locations',
         blocks: [
           {
             type: 'paragraph',
-            text: 'We serve clients across India and internationally. Our team is equipped to handle projects of any size and complexity, from single-room installations to multi-site deployments.',
+            text: 'With offices and service coverage across India, we provide local support backed by national resources. Contact us to connect with your nearest Speedlight Infosolutions office.',
           },
         ],
       },
     ],
   },
+
+  // Merge in all service pages
+  ...solutionServicePages,
 };

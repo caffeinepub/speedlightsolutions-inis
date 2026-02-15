@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Apply distinct per-industry color themes to industry pages and ensure the site has a robust, non-breaking logo fallback (including a placeholder wordmark asset) when the real logo is missing.
+**Goal:** Make the “Our Solutions” header dropdown reflect the currently active solution category while the user scrolls the /solutions page.
 
 **Planned changes:**
-- Add a single centralized mapping of industry `pageId` to theme tokens (primary color, optional accent color, background color) using the provided hex values, with a safe default when no mapping exists.
-- Update industry-specific pages so the top hero/banner uses the industry background color, and key UI highlights (e.g., title accent, headings, links/icon accents) use the industry primary color; use the optional accent color only as a secondary highlight where provided.
-- Ensure non-industry pages keep the existing global styling and are not affected by the industry theme logic.
-- Implement a resilient header/footer logo fallback so failed logo image loads display a readable brand fallback (using `BRAND.name` or a placeholder) without layout breakage on desktop or mobile.
-- Add/regenerate a clean corporate placeholder wordmark logo asset at the configured logo path under `frontend/public`.
+- Update the /solutions landing page to include 6 clearly separated, scrollable sections (one per existing solution category), each rendering a list/grid of its associated solution services as links sourced from the existing solutionServices registry.
+- Add stable DOM anchors/ids for each category section on /solutions so the active category can be detected during scrolling.
+- Implement scroll-sync on /solutions so the SiteHeader “Our Solutions” dropdown highlights the active category and shows that category’s service links while scrolling, without changing existing routes and without affecting other pages.
 
-**User-visible outcome:** Each industry page has its own distinct, clean corporate color theme (hero background + primary highlights), while the header/footer always show a consistent brand mark even when the logo file is missing or fails to load.
+**User-visible outcome:** On /solutions, as a user scrolls through the six solution category sections, the “Our Solutions” dropdown updates/highlights the matching category and shows its relevant service links; elsewhere on the site the dropdown behaves normally.

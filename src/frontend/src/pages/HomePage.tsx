@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router';
 import HeroSection from '../components/sections/HeroSection';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Presentation, Volume2, Monitor, Network, Settings, Headphones } from 'lucide-react';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { BRAND } from '../site/brand';
+import BrandButton from '../components/brand/BrandButton';
 
 export default function HomePage() {
   usePageTitle(`${BRAND.name} - Audiovisual & Technology Solutions`);
@@ -66,18 +66,18 @@ export default function HomePage() {
           {solutions.map((solution, idx) => {
             const Icon = solution.icon;
             return (
-              <Card key={idx} className="border-border/40 hover:border-accent/50 transition-all hover:shadow-soft">
+              <Card key={idx} className="border-border/40 hover:border-primary/50 transition-all hover:shadow-soft">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-accent" />
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle className="text-xl">{solution.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base mb-4">{solution.description}</CardDescription>
-                  <Button asChild variant="link" className="px-0 h-auto">
-                    <Link to={solution.link as any}>Learn More →</Link>
-                  </Button>
+                  <Link to={solution.link as any} className="text-link hover:text-link-hover transition-colors text-sm font-medium">
+                    Learn More →
+                  </Link>
                 </CardContent>
               </Card>
             );
@@ -112,23 +112,23 @@ export default function HomePage() {
               <Link
                 key={idx}
                 to={industry.link as any}
-                className="p-4 bg-card border border-border/40 rounded-lg text-center hover:border-accent/50 hover:shadow-soft transition-all"
+                className="p-4 bg-card border border-border/40 rounded-lg text-center hover:border-primary/50 hover:shadow-soft transition-all"
               >
                 <span className="text-sm font-medium">{industry.label}</span>
               </Link>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Button asChild variant="outline" size="lg">
+            <BrandButton asChild brandVariant="secondary" size="lg">
               <Link to="/industries">View All Industries</Link>
-            </Button>
+            </BrandButton>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="container py-16 md:py-24">
-        <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-8 md:p-12 text-center">
+        <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Ready to Transform Your Space?
           </h2>
@@ -136,12 +136,12 @@ export default function HomePage() {
             Let's discuss how our audiovisual solutions can enhance your communication and collaboration capabilities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg">
+            <BrandButton asChild size="lg" brandVariant="primary">
               <Link to="/contact">Contact Us Today</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
+            </BrandButton>
+            <BrandButton asChild size="lg" brandVariant="secondary">
               <Link to="/about">Learn About Us</Link>
-            </Button>
+            </BrandButton>
           </div>
         </div>
       </section>

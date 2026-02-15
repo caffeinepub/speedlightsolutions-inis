@@ -36,31 +36,21 @@ export default function SiteFooter() {
                 <li>
                   <Link
                     to={solutionsSection.path as any}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
                   >
                     Overview
                   </Link>
                 </li>
-                {solutionsSection.children && solutionsSection.children.slice(0, 4).map((child) => (
+                {solutionsSection.children?.slice(0, 4).map((child) => (
                   <li key={child.id}>
                     <Link
                       to={child.path as any}
-                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                      className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
                     >
                       {child.label}
                     </Link>
                   </li>
                 ))}
-                {solutionsSection.children && solutionsSection.children.length > 4 && (
-                  <li>
-                    <Link
-                      to={solutionsSection.path as any}
-                      className="text-sm text-accent hover:text-accent/80 transition-colors font-medium"
-                    >
-                      View all →
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
           )}
@@ -73,31 +63,21 @@ export default function SiteFooter() {
                 <li>
                   <Link
                     to={industriesSection.path as any}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
                   >
                     Overview
                   </Link>
                 </li>
-                {industriesSection.children && industriesSection.children.slice(0, 4).map((child) => (
+                {industriesSection.children?.slice(0, 4).map((child) => (
                   <li key={child.id}>
                     <Link
                       to={child.path as any}
-                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                      className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
                     >
                       {child.label}
                     </Link>
                   </li>
                 ))}
-                {industriesSection.children && industriesSection.children.length > 4 && (
-                  <li>
-                    <Link
-                      to={industriesSection.path as any}
-                      className="text-sm text-accent hover:text-accent/80 transition-colors font-medium"
-                    >
-                      View all →
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
           )}
@@ -107,57 +87,48 @@ export default function SiteFooter() {
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               {aboutSection && (
-                <>
-                  <li>
-                    <Link
-                      to={aboutSection.path as any}
-                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
-                    >
-                      {aboutSection.label}
-                    </Link>
-                  </li>
-                  {aboutSection.children && aboutSection.children.map((child) => (
-                    <li key={child.id}>
-                      <Link
-                        to={child.path as any}
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    </li>
-                  ))}
-                </>
+                <li>
+                  <Link
+                    to={aboutSection.path as any}
+                    className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
+                  >
+                    {aboutSection.label}
+                  </Link>
+                </li>
               )}
+              {aboutSection?.children?.map((child) => (
+                <li key={child.id}>
+                  <Link
+                    to={child.path as any}
+                    className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
+                  >
+                    {child.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link
                   to="/contact"
-                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                  className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
                 >
                   Contact Us
                 </Link>
               </li>
             </ul>
-            <div className="mt-6">
-              <h3 className="font-semibold mb-2 text-sm">Contact</h3>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>{BRAND.contact.email}</li>
-                <li>{BRAND.contact.phone}</li>
-              </ul>
-            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-border/40 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             © {currentYear} {BRAND.name}. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Built with <Heart className="h-3 w-3 text-accent fill-accent" /> using{' '}
+            Built with <Heart className="h-3 w-3 text-destructive fill-destructive" /> using{' '}
             <a
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:underline"
+              className="text-link hover:text-link-hover transition-colors"
             >
               caffeine.ai
             </a>

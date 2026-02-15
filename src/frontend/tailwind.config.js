@@ -23,7 +23,8 @@ export default {
                 foreground: 'oklch(var(--foreground))',
                 primary: {
                     DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
-                    foreground: 'oklch(var(--primary-foreground))'
+                    foreground: 'oklch(var(--primary-foreground))',
+                    hover: 'oklch(var(--primary-hover))'
                 },
                 secondary: {
                     DEFAULT: 'oklch(var(--secondary) / <alpha-value>)',
@@ -48,6 +49,15 @@ export default {
                 card: {
                     DEFAULT: 'oklch(var(--card))',
                     foreground: 'oklch(var(--card-foreground))'
+                },
+                success: 'oklch(var(--success) / <alpha-value>)',
+                warning: 'oklch(var(--warning) / <alpha-value>)',
+                info: 'oklch(var(--info) / <alpha-value>)',
+                'gray-green': 'oklch(var(--gray-green) / <alpha-value>)',
+                bronze: 'oklch(var(--bronze) / <alpha-value>)',
+                link: {
+                    DEFAULT: 'oklch(var(--link))',
+                    hover: 'oklch(var(--link-hover))'
                 },
                 chart: {
                     1: 'oklch(var(--chart-1))',

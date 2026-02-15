@@ -3,6 +3,8 @@ import SiteLayout from '../components/layout/SiteLayout';
 import HomePage from '../pages/HomePage';
 import ContentPage from '../pages/ContentPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import SolutionsLandingPage from '../pages/SolutionsLandingPage';
+import { solutionServices } from '../content/solutionServices';
 
 const rootRoute = createRootRoute({
   component: SiteLayout,
@@ -14,13 +16,14 @@ const indexRoute = createRoute({
   component: HomePage,
 });
 
-// Our Solutions
+// Solutions Landing - now uses dedicated landing page
 const solutionsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/solutions',
-  component: () => <ContentPage pageId="solutions" />,
+  component: SolutionsLandingPage,
 });
 
+// Solutions Category Pages
 const workplaceCollaborationRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/solutions/workplace-collaboration',
@@ -57,13 +60,23 @@ const lifecycleSupportRoute = createRoute({
   component: () => <ContentPage pageId="lifecycle-support" />,
 });
 
-// Industries We Serve
+// Solution Service Routes (dynamically created)
+const serviceRoutes = solutionServices.map(service =>
+  createRoute({
+    getParentRoute: () => rootRoute,
+    path: service.routePath,
+    component: () => <ContentPage pageId={service.pageId} />,
+  })
+);
+
+// Industries Landing
 const industriesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/industries',
   component: () => <ContentPage pageId="industries" />,
 });
 
+// Industry Pages
 const corporateEnterpriseRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/industries/corporate-enterprise',
@@ -124,13 +137,14 @@ const liveEventsRoute = createRoute({
   component: () => <ContentPage pageId="live-events" />,
 });
 
-// About Us
+// About Landing
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
   component: () => <ContentPage pageId="about" />,
 });
 
+// About Pages
 const ourOrganizationRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about/our-organization',
@@ -162,6 +176,7 @@ const contactRoute = createRoute({
   component: () => <ContentPage pageId="contact" />,
 });
 
+// 404 Not Found
 const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '*',
@@ -177,6 +192,7 @@ const routeTree = rootRoute.addChildren([
   networkingConnectivityRoute,
   intelligentSystemsRoute,
   lifecycleSupportRoute,
+  ...serviceRoutes,
   industriesRoute,
   corporateEnterpriseRoute,
   educationRoute,

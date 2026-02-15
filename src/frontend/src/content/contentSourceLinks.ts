@@ -8,7 +8,7 @@
  * from these documents and added to the pages.ts content registry.
  */
 
-export const contentSourceLinks = {
+export const contentSourceLinks: Record<string, string> = {
   home: 'https://docs.google.com/document/d/1X1EW6aMVU96N561e67KS-TiT0INt2xyQcCGnahy9nT8/edit?usp=drive_link',
   contact: 'https://docs.google.com/document/d/1sStidfjoepzi__JzsJN70fsYFZfQJK3an122KIegZvQ/edit?usp=drive_link',
   
@@ -20,6 +20,38 @@ export const contentSourceLinks = {
   'networking-connectivity': 'https://docs.google.com/document/d/1cLIp1qZsBdr-iq5GfGGNbAVBPN3JA3Dv9GVjKVeO_js/edit?usp=drive_link',
   'intelligent-systems': 'https://docs.google.com/document/d/1XWu0JO5TH8TmW3Nnly8SHKTWmO7wdEAHPCLWLfBawNI/edit?usp=drive_link',
   'lifecycle-support': 'https://docs.google.com/document/d/1vuo0QLgy9bT6KR13PuJHnYMBifQkltnyL6tdc7suHy0/edit?usp=drive_link',
+  
+  // Solution Services - TODO: Add specific Google Drive URLs when available
+  'microsoft-teams-rooms': '', // TODO: Add Google Drive URL
+  'zoom-rooms': '', // TODO: Add Google Drive URL
+  'huddle-room-solutions': '', // TODO: Add Google Drive URL
+  'interactive-whiteboards': '', // TODO: Add Google Drive URL
+  'wireless-presentation': '', // TODO: Add Google Drive URL
+  'conference-audio': '', // TODO: Add Google Drive URL
+  'auditorium-sound': '', // TODO: Add Google Drive URL
+  'wireless-microphones': '', // TODO: Add Google Drive URL
+  'dsp-audio-processing': '', // TODO: Add Google Drive URL
+  'public-address-systems': '', // TODO: Add Google Drive URL
+  'led-video-walls': '', // TODO: Add Google Drive URL
+  'interactive-displays': '', // TODO: Add Google Drive URL
+  'digital-signage': '', // TODO: Add Google Drive URL
+  'projection-systems': '', // TODO: Add Google Drive URL
+  'control-room-displays': '', // TODO: Add Google Drive URL
+  'structured-cabling': '', // TODO: Add Google Drive URL
+  'av-over-ip': '', // TODO: Add Google Drive URL
+  'network-switches': '', // TODO: Add Google Drive URL
+  'wireless-infrastructure': '', // TODO: Add Google Drive URL
+  'video-distribution': '', // TODO: Add Google Drive URL
+  'crestron-control': '', // TODO: Add Google Drive URL
+  'extron-control': '', // TODO: Add Google Drive URL
+  'room-automation': '', // TODO: Add Google Drive URL
+  'room-scheduling': '', // TODO: Add Google Drive URL
+  'mobile-control': '', // TODO: Add Google Drive URL
+  'system-design': '', // TODO: Add Google Drive URL
+  'installation-commissioning': '', // TODO: Add Google Drive URL
+  'user-training': '', // TODO: Add Google Drive URL
+  'maintenance-support': '', // TODO: Add Google Drive URL
+  'remote-monitoring': '', // TODO: Add Google Drive URL
   
   // Industries We Serve
   industries: 'https://docs.google.com/document/d/1bXsU1B0ELC7ZjpIyo9gXmooKJjEwBy48WXB03mDaBYA/edit?usp=drive_link',
@@ -46,7 +78,7 @@ export const contentSourceLinks = {
  * Helper function to get the source link for a given page ID
  */
 export function getContentSourceLink(pageId: string): string | undefined {
-  return contentSourceLinks[pageId as keyof typeof contentSourceLinks];
+  return contentSourceLinks[pageId];
 }
 
 /**

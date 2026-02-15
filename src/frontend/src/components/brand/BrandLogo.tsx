@@ -24,6 +24,11 @@ export default function BrandLogo({ className = 'h-8 w-auto' }: BrandLogoProps) 
       src={BRAND.logo.path}
       alt={BRAND.logo.alt}
       className={className}
+      style={{ 
+        objectFit: 'contain',
+        maxWidth: '100%',
+        maxHeight: '100%'
+      }}
       onError={() => setImageError(true)}
     />
   );

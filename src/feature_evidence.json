@@ -2,12 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-implement-the-provided-per-industry-color-schemes-on-all-industry-specific-pages-so-that-each-page-uses-its-industry-background-color-for-the-top-hero-banner-section-and-uses-the-industry-primary-color-for-key-highlights-e-g-page-title-accent-section-headings-links-icon-accents-while-maintaining-a-clean-modern-corporate-b2b-look",
-      "featureTitle": "Implement the provided per-industry color schemes on all industry-specific pages so that each page uses its industry background color for the top hero/banner section and uses the industry primary color for key highlights (e.g., page title accent, section headings, links, icon accents) while maintaining a clean, modern corporate B2B look.",
+      "featureId": "feature-update-the-solutions-landing-page-content-so-that-it-contains-6-scrollable-clearly-separated-sections-one-per-solution-category-and-each-category-section-renders-a-list-grid-of-its-respective-solution-services-as-links",
+      "featureTitle": "Update the /solutions landing page content so that it contains 6 scrollable, clearly separated sections (one per solution category), and each category section renders a list/grid of its respective solution services as links.",
       "files": [
-        "frontend/src/components/content/ContentRenderer.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/ContentPage.tsx"
+        "frontend/src/pages/SolutionsLandingPage.tsx",
+        "frontend/src/router/router.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -22,11 +21,13 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-centralized-explicit-mapping-from-industry-page-ids-to-their-theme-tokens-primary-color-optional-accent-color-background-color-and-ensure-the-mapping-keys-align-with-existing-industry-page-ids-used-by-routing-and-content-e-g-corporate-enterprise-education-healthcare-manufacturing-government-hospitality-banking-training-centers-retail-live-events",
-      "featureTitle": "Add a centralized, explicit mapping from industry page IDs to their theme tokens (primary_color, optional accent_color, background_color) and ensure the mapping keys align with existing industry page IDs used by routing and content (e.g., corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events).",
+      "featureId": "feature-implement-scroll-sync-behavior-so-that-when-a-user-scrolls-within-solutions-and-a-specific-solution-category-section-becomes-active-in-viewport-the-siteheader-our-solutions-dropdown-updates-to-show-highlight-the-respective-solutions-for-that-active-category",
+      "featureTitle": "Implement scroll-sync behavior so that when a user scrolls within /solutions and a specific solution category section becomes active (in viewport), the SiteHeader 'Our Solutions' dropdown updates to show/highlight the respective solutions for that active category.",
       "files": [
-        "frontend/src/pages/ContentPage.tsx",
-        "frontend/src/site/industryThemes.ts"
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/components/layout/SiteLayout.tsx",
+        "frontend/src/pages/SolutionsLandingPage.tsx",
+        "frontend/src/solutions/solutionsScrollSyncContext.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -37,42 +38,6 @@
       ],
       "testIds": [
         "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-handle-the-missing-unuploaded-logo-gracefully-across-the-header-and-footer-by-adding-a-robust-fallback-when-the-configured-logo-image-cannot-be-loaded-e-g-swap-to-a-text-based-brand-mark-using-brand-name-or-a-locally-generated-placeholder-logo-asset-without-breaking-layout-in-desktop-or-mobile-navigation",
-      "featureTitle": "Handle the missing/unuploaded logo gracefully across the header and footer by adding a robust fallback when the configured logo image cannot be loaded (e.g., swap to a text-based brand mark using BRAND.name or a locally-generated placeholder logo asset) without breaking layout in desktop or mobile navigation.",
-      "files": [
-        "frontend/src/components/brand/BrandLogo.tsx",
-        "frontend/src/components/layout/SiteFooter.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-or-regenerate-a-clean-corporate-wordmark-placeholder-logo-image-matching-the-existing-configured-logo-path-so-the-site-has-a-consistent-logo-until-the-real-logo-is-uploaded",
-      "featureTitle": "Add (or regenerate) a clean corporate wordmark placeholder logo image matching the existing configured logo path so the site has a consistent logo until the real logo is uploaded.",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
       ],
       "confidence": "high"
     }

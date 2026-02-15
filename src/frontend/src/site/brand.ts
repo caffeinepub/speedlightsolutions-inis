@@ -7,8 +7,8 @@ export const BRAND = {
   name: 'Speedlight Solutions',
   domain: 'speedlightsolutions.in',
   logo: {
-    path: '/assets/generated/logo-wordmark-updated.dim_600x160.png',
-    alt: 'Speedlight Infosolutions',
+    path: '/assets/generated/speedlight-logo.dim_600x160.png',
+    alt: 'Speedlight Solutions Logo',
   },
   contact: {
     email: 'info@speedlightsolutions.in',

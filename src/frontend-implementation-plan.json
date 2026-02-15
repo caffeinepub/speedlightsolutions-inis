@@ -1,101 +1,58 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Per-industry theming and resilient brand logo fallback",
+  "title": "Scroll-synced Solutions landing sections and header dropdown state",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Apply per-industry theme colors on industry content pages, using industry background for the top banner/hero area and industry primary (plus optional accent) for key highlights without affecting non-industry pages.",
+      "summary": "Render /solutions as 6 distinct, scrollable category sections with anchored IDs and per-category service link grids sourced from solutionServices.",
       "acceptanceCriteria": [
-        "Visiting each industry route in the router (/industries/corporate-enterprise, /industries/education, /industries/healthcare, /industries/manufacturing, /industries/government, /industries/hospitality, /industries/banking, /industries/training-centers, /industries/retail, /industries/live-events) shows a visually distinct theme that matches the provided hex values for that industry.",
-        "The banner/hero wrapper at the top of ContentPage uses the industry background color (not the generic bg-muted/30) for industry pages.",
-        "Industry primary color is visible in at least: page title accent styling and link/interactive highlight styling within the page content area.",
-        "For industries that specify an accent_color (Manufacturing and Banking), the accent color is used as an optional secondary highlight (e.g., subtle badge/underline/divider) without replacing the primary color usage.",
-        "Non-industry pages (solutions, about, contact, etc.) retain the existing global theme and are not recolored by industry theme logic."
+        "Visiting /solutions shows 6 distinct category sections matching the existing 6 solution categories in the navigation.",
+        "Each category section includes a link-list (or equivalent grid) of the services for that category, using the existing solutionServices registry as the source of truth.",
+        "Each category section has a stable DOM anchor/id so it can be observed/highlighted while scrolling."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/ContentPage.tsx",
-          "operation": "modify",
-          "description": "Apply industry theming when the provided pageId matches an industry theme: set scoped CSS variables for primary/accent/background; use background_color for the top banner wrapper (replacing bg-muted/30 only for themed industry pages); add a primary-colored title accent (e.g., underline/left rule) and an optional subtle accent detail when accent_color is present, while preserving the clean corporate layout."
+          "path": "frontend/src/pages/SolutionsLandingPage.tsx",
+          "operation": "create",
+          "description": "Create a dedicated /solutions landing page that renders 6 clearly separated sections (one per existing navigation solution category). Each section must have a stable DOM id (use the category pageId) and render a grid/list of links for that category using the existing solutionServices registry (e.g., getServicesForCategory) as the source of truth. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/content/ContentRenderer.tsx",
+          "path": "frontend/src/router/router.tsx",
           "operation": "modify",
-          "description": "Enable theme-aware styling for content within an industry-themed scope (e.g., section headings/dividers and inline emphasis) so that primary color appears in key highlights on industry pages without changing default styling for non-industry pages."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Add a scoped industry theme utility/class (e.g., a wrapper class applied by ContentPage) that uses CSS variables to style links/interactive states and optional accent treatments within the industry page content area, ensuring non-industry pages remain unaffected."
+          "description": "Wire /solutions route to render the new SolutionsLandingPage instead of the generic ContentPage so the landing page uses the required 6 anchored sections while preserving existing service page routes/URLs."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Create a centralized mapping from industry page IDs to theme tokens (primary, optional accent, background) and use it via ContentPage’s pageId with a safe default when missing.",
+      "summary": "Add scroll-sync state so the SiteHeader 'Our Solutions' dropdown highlights the active category and shows that category’s services while scrolling on /solutions only.",
       "acceptanceCriteria": [
-        "There is a single source of truth for industry theme values (hex codes) used by the UI.",
-        "Theme selection is based on the pageId already passed into ContentPage (no hardcoded per-route styling scattered across multiple components).",
-        "If a pageId is not in the mapping, the page renders with the existing default styling (no runtime errors)."
+        "On /solutions, as the user scrolls through the 6 category sections, the header 'Our Solutions' dropdown visibly reflects the currently active category (e.g., highlighted category item).",
+        "On /solutions, the dropdown also shows the service links for the currently active category (using the same routes already defined for service pages).",
+        "On pages other than /solutions, the 'Our Solutions' dropdown remains in its normal/default state (no scroll-sync required).",
+        "The implementation does not require any backend changes and does not break existing navigation links/routes."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/site/industryThemes.ts",
+          "path": "frontend/src/solutions/solutionsScrollSyncContext.tsx",
           "operation": "create",
-          "description": "Add a single source-of-truth industry theme mapping keyed by existing industry page IDs (corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, live-events) containing primary_color, optional accent_color, and background_color hex values, plus a helper to safely fetch a theme by pageId."
+          "description": "Create a small React context/provider to store the active solution category pageId for scroll-sync on /solutions, plus helper hooks for reading/updating it. Ensure it can be reset when leaving /solutions. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/pages/ContentPage.tsx",
+          "path": "frontend/src/components/layout/SiteLayout.tsx",
           "operation": "modify",
-          "description": "Use the centralized industry theme helper to determine whether the current pageId is themed; if not found, render with existing default styles and avoid runtime errors."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add a robust header/footer logo fallback so missing/unloadable logo images render a readable brand mark (text or placeholder) without breaking layout on desktop or mobile.",
-      "acceptanceCriteria": [
-        "If the logo image at BRAND.logo.path fails to load, the header and footer do not show a broken image icon and instead display a readable brand fallback (text-based or placeholder image) that preserves spacing/alignment.",
-        "The fallback works in both desktop header and mobile menu header area, and in the footer logo area.",
-        "All user-facing fallback text is in English and uses the existing brand constants (e.g., BRAND.name)."
-      ],
-      "file_operations": [
+          "description": "Wrap the app layout with the Solutions scroll-sync provider so both the /solutions page and SiteHeader can share active-category state. Include logic (based on current route) to clear/disable the active category state when not on /solutions. Verify the component's usage instructions before implementing."
+        },
         {
-          "path": "frontend/src/components/brand/BrandLogo.tsx",
-          "operation": "create",
-          "description": "Create a reusable BrandLogo component that attempts to render BRAND.logo.path and, on load failure, swaps to an accessible, layout-preserving fallback using BRAND.name (text-based brand mark and/or local placeholder asset) suitable for header/footer sizes."
+          "path": "frontend/src/pages/SolutionsLandingPage.tsx",
+          "operation": "modify",
+          "description": "Implement IntersectionObserver-based scroll tracking across the 6 category section anchors to update the shared active-category state as sections enter the viewport (choose stable activation thresholds/root margins to avoid flicker). Only run this logic on /solutions. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Replace direct <img> logo usage in both the desktop header and mobile sheet header area with the new BrandLogo component to prevent broken-image rendering and preserve spacing/alignment."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Replace direct <img> logo usage in the footer with the new BrandLogo component so the fallback behavior matches the header and preserves footer layout."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Ensure a clean corporate placeholder wordmark logo asset exists at the configured logo path used by the app.",
-      "acceptanceCriteria": [
-        "A placeholder logo asset exists at the configured path used by the app (as defined in frontend/src/site/brand.ts).",
-        "The placeholder logo is legible at the current header/footer render size (className h-8 w-auto) and looks consistent with a clean corporate B2B design.",
-        "No backend changes are required to serve the logo; it is a static asset under frontend/public."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png",
-          "operation": "create",
-          "description": "Add the provided generated placeholder asset at the exact configured logo path so the application has a consistent corporate wordmark until a real logo is uploaded (use: frontend/public/assets/generated/logo-wordmark-updated.dim_600x160.png)."
-        },
-        {
-          "path": "frontend/src/site/brand.ts",
-          "operation": "modify",
-          "description": "Verify the configured BRAND.logo.path points to /assets/generated/logo-wordmark-updated.dim_600x160.png and ensure BRAND.name is the authoritative English fallback brand text used elsewhere."
+          "description": "Update the 'Our Solutions' dropdown behavior: when on /solutions and an active category is present from scroll-sync state, visually highlight the active category item and render the service links for that active category (sourced from the same solutionServices registry/routes). When not on /solutions (or no active category), keep the dropdown in its current/default state and do not apply scroll-sync. Verify the component's usage instructions before implementing."
         }
       ]
     }

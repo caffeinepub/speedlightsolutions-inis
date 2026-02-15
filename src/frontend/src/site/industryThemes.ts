@@ -11,46 +11,44 @@ export interface IndustryTheme {
 
 export const industryThemes: Record<string, IndustryTheme> = {
   'corporate-enterprise': {
-    primary_color: '#1E3A8A',
-    background_color: '#F1F5F9',
+    primary_color: '#1F8DB5',
+    background_color: '#F5F7FA',
   },
   education: {
-    primary_color: '#4F46E5',
-    background_color: '#EEF2FF',
+    primary_color: '#5C7594',
+    background_color: '#F5F7FA',
   },
   healthcare: {
-    primary_color: '#0D9488',
-    background_color: '#ECFEFF',
+    primary_color: '#1B9A59',
+    background_color: '#F5F7FA',
   },
   manufacturing: {
-    primary_color: '#2B2B2B',
-    accent_color: '#F97316',
-    background_color: '#F5F5F5',
+    primary_color: '#4F6154',
+    background_color: '#F5F7FA',
   },
   government: {
-    primary_color: '#1E40AF',
-    background_color: '#EFF6FF',
+    primary_color: '#5C7594',
+    background_color: '#F5F7FA',
   },
   hospitality: {
-    primary_color: '#D97706',
-    background_color: '#FFFBEB',
-  },
-  banking: {
-    primary_color: '#1D4ED8',
-    accent_color: '#16A34A',
-    background_color: '#F0F9FF',
-  },
-  'training-centers': {
-    primary_color: '#22C55E',
-    background_color: '#F0FDF4',
+    primary_color: '#D0843C',
+    background_color: '#F5F7FA',
   },
   retail: {
-    primary_color: '#EF4444',
-    background_color: '#FFF1F2',
+    primary_color: '#1F8DB5',
+    background_color: '#F5F7FA',
+  },
+  banking: {
+    primary_color: '#5C7594',
+    background_color: '#F5F7FA',
+  },
+  'training-centers': {
+    primary_color: '#1B9A59',
+    background_color: '#F5F7FA',
   },
   'live-events': {
-    primary_color: '#9333EA',
-    background_color: '#FAF5FF',
+    primary_color: '#1F8DB5',
+    background_color: '#F5F7FA',
   },
 };
 

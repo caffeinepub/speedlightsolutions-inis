@@ -1,22 +1,26 @@
 import { useState } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { Menu, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { navigationConfig, type NavigationItem } from '../../site/navigation';
+import { getServicesForCategory } from '../../content/solutionServices';
+import { useSolutionsScrollSync } from '../../solutions/solutionsScrollSyncContext';
 import BrandLogo from '../brand/BrandLogo';
+import BrandButton from '../brand/BrandButton';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const { activeCategoryId } = useSolutionsScrollSync();
 
   const isActive = (path: string) => {
     if (path === '/') {
@@ -28,14 +32,93 @@ export default function SiteHeader() {
   const NavLink = ({ item }: { item: NavigationItem }) => {
     const active = isActive(item.path);
     
-    // If item has children, render dropdown menu
+    // Special handling for "Our Solutions" dropdown with scroll-sync
+    if (item.id === 'solutions' && item.children && item.children.length > 0) {
+      const isOnSolutionsPage = currentPath === '/solutions';
+      const activeCategory = isOnSolutionsPage && activeCategoryId 
+        ? item.children.find(child => child.id === activeCategoryId)
+        : null;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button
+              className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
+                active ? 'text-link' : 'text-foreground/80'
+              }`}
+            >
+              {item.label}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-72">
+            <ScrollArea className="max-h-[480px]">
+              {isOnSolutionsPage && activeCategory ? (
+                // Show active category and its services when on /solutions
+                <>
+                  <div className="px-2 py-2">
+                    <Link
+                      to={activeCategory.path as any}
+                      className="block px-2 py-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                    >
+                      {activeCategory.label}
+                    </Link>
+                  </div>
+                  <DropdownMenuSeparator />
+                  {getServicesForCategory(activeCategory.id).map((service) => (
+                    <DropdownMenuItem key={service.pageId} asChild>
+                      <Link
+                        to={service.routePath as any}
+                        className="cursor-pointer text-sm pl-6"
+                      >
+                        {service.title}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <div className="px-2 py-1">
+                    <p className="text-xs text-muted-foreground px-2">Other Categories:</p>
+                  </div>
+                  {item.children
+                    .filter(child => child.id !== activeCategoryId)
+                    .map((child) => (
+                      <DropdownMenuItem key={child.id} asChild>
+                        <Link
+                          to={child.path as any}
+                          className="cursor-pointer text-sm"
+                        >
+                          {child.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                </>
+              ) : (
+                // Default view: show all categories
+                item.children.map((child) => (
+                  <DropdownMenuItem key={child.id} asChild>
+                    <Link
+                      to={child.path as any}
+                      className="cursor-pointer"
+                    >
+                      {child.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))
+              )}
+            </ScrollArea>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    }
+    
+    // If item has children (but not solutions), render dropdown menu
     if (item.children && item.children.length > 0) {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
-              className={`text-sm font-medium transition-colors hover:text-accent flex items-center gap-1 ${
-                active ? 'text-accent' : 'text-foreground/80'
+              className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
+                active ? 'text-link' : 'text-foreground/80'
               }`}
             >
               {item.label}
@@ -63,8 +146,8 @@ export default function SiteHeader() {
     return (
       <Link
         to={item.path as any}
-        className={`text-sm font-medium transition-colors hover:text-accent ${
-          active ? 'text-accent' : 'text-foreground/80'
+        className={`text-sm font-medium transition-colors hover:text-link-hover ${
+          active ? 'text-link' : 'text-foreground/80'
         }`}
       >
         {item.label}
@@ -78,8 +161,8 @@ export default function SiteHeader() {
       <Link
         to={item.path as any}
         onClick={() => setMobileMenuOpen(false)}
-        className={`block px-3 py-2 text-base font-medium transition-colors hover:bg-accent/10 rounded-md ${
-          active ? 'text-accent bg-accent/5' : 'text-foreground/80'
+        className={`block px-3 py-2 text-base font-medium transition-colors hover:bg-primary/10 rounded-md ${
+          active ? 'text-link bg-primary/5' : 'text-foreground/80'
         }`}
       >
         {item.label}
@@ -102,18 +185,18 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button asChild variant="default" size="sm">
+          <BrandButton asChild brandVariant="primary" size="sm">
             <Link to={"/contact" as any}>Get Started</Link>
-          </Button>
+          </BrandButton>
         </div>
 
         {/* Mobile Menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
+            <button className="p-2 hover:bg-muted rounded-md transition-colors">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
-            </Button>
+            </button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <ScrollArea className="h-full pb-8">
@@ -136,11 +219,11 @@ export default function SiteHeader() {
                   ))}
                 </nav>
                 <div className="pt-4">
-                  <Button asChild className="w-full">
+                  <BrandButton asChild brandVariant="primary" className="w-full">
                     <Link to={"/contact" as any} onClick={() => setMobileMenuOpen(false)}>
                       Get Started
                     </Link>
-                  </Button>
+                  </BrandButton>
                 </div>
               </div>
             </ScrollArea>
