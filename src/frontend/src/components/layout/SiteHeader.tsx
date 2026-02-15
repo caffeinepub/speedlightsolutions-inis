@@ -34,11 +34,51 @@ export default function SiteHeader() {
     setOpenDropdownId(itemId);
   };
 
+  const handleCloseDropdown = () => {
+    setOpenDropdownId(null);
+  };
+
   const NavLink = ({ item }: { item: NavigationItem }) => {
     const active = isActive(item.path);
     const isOpen = openDropdownId === item.id;
     const triggerRef = useRef<HTMLButtonElement>(null);
     const panelRef = useRef<HTMLDivElement>(null);
+    
+    // Use hover region hook to track when pointer leaves both trigger and panel
+    const { setTriggerElement, setPanelElement } = useDropdownHoverRegion(
+      isOpen,
+      handleCloseDropdown
+    );
+
+    // Update refs when elements mount/unmount
+    useEffect(() => {
+      if (isOpen) {
+        setTriggerElement(triggerRef.current);
+        // Find the portal-rendered panel wrapper
+        // Radix renders dropdown content in a portal with data-radix-popper-content-wrapper
+        const findPanelWrapper = () => {
+          if (panelRef.current) {
+            // Walk up to find the portal wrapper
+            let element = panelRef.current.parentElement;
+            while (element) {
+              if (element.hasAttribute('data-radix-popper-content-wrapper')) {
+                setPanelElement(element);
+                return;
+              }
+              element = element.parentElement;
+            }
+            // Fallback to the content element itself
+            setPanelElement(panelRef.current);
+          }
+        };
+        // Small delay to ensure portal is rendered
+        const timeoutId = setTimeout(findPanelWrapper, 0);
+        return () => clearTimeout(timeoutId);
+      } else {
+        setTriggerElement(null);
+        setPanelElement(null);
+      }
+    }, [isOpen, setTriggerElement, setPanelElement]);
     
     // Special handling for "Our Solutions" dropdown with hover-based service preview
     if (item.id === 'solutions' && item.children && item.children.length > 0) {
@@ -150,76 +190,6 @@ export default function SiteHeader() {
     );
   };
 
-  // Global pointer tracking for hover region detection
-  useEffect(() => {
-    let rafId: number | null = null;
-    let lastX = -1;
-    let lastY = -1;
-
-    const checkHoverRegion = () => {
-      if (!openDropdownId || lastX === -1 || lastY === -1) {
-        rafId = requestAnimationFrame(checkHoverRegion);
-        return;
-      }
-
-      // Find all dropdown trigger and content elements
-      const triggers = document.querySelectorAll('[data-dropdown-trigger]');
-      const contents = document.querySelectorAll('[data-radix-popper-content-wrapper]');
-
-      let inRegion = false;
-
-      // Check if pointer is over any trigger
-      triggers.forEach((trigger) => {
-        const rect = trigger.getBoundingClientRect();
-        if (
-          lastX >= rect.left &&
-          lastX <= rect.right &&
-          lastY >= rect.top &&
-          lastY <= rect.bottom
-        ) {
-          inRegion = true;
-        }
-      });
-
-      // Check if pointer is over any dropdown content
-      if (!inRegion) {
-        contents.forEach((content) => {
-          const rect = content.getBoundingClientRect();
-          if (
-            lastX >= rect.left &&
-            lastX <= rect.right &&
-            lastY >= rect.top &&
-            lastY <= rect.bottom
-          ) {
-            inRegion = true;
-          }
-        });
-      }
-
-      // Close dropdown if pointer is outside both regions
-      if (!inRegion) {
-        setOpenDropdownId(null);
-      }
-
-      rafId = requestAnimationFrame(checkHoverRegion);
-    };
-
-    const handlePointerMove = (e: MouseEvent) => {
-      lastX = e.clientX;
-      lastY = e.clientY;
-    };
-
-    window.addEventListener('mousemove', handlePointerMove, { passive: true });
-    rafId = requestAnimationFrame(checkHoverRegion);
-
-    return () => {
-      window.removeEventListener('mousemove', handlePointerMove);
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId);
-      }
-    };
-  }, [openDropdownId]);
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -230,7 +200,7 @@ export default function SiteHeader() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navigationConfig.map((item) => (
-            <div key={item.id} data-dropdown-trigger={item.children ? 'true' : undefined}>
+            <div key={item.id}>
               <NavLink item={item} />
             </div>
           ))}

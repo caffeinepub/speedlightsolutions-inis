@@ -1,49 +1,48 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Header dropdown hover behavior: immediate close, portal-safe hover region, no flicker",
+  "title": "Desktop header dropdown hover regions (no flicker, single-open auto-switch)",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Implement reliable hover-based open/close for header dropdowns using combined hover-region detection across trigger and portal-rendered panel, preventing flicker and enabling auto-switch on hover.",
+      "summary": "Make each desktop header dropdown open on hover and remain open while the pointer is within either its trigger area or its portal-rendered dropdown panel, closing only once fully outside both regions without flicker.",
       "acceptanceCriteria": [
-        "Hovering a top-level header item that has children opens its dropdown without requiring a click.",
-        "When the pointer leaves the combined hover region (trigger + dropdown panel), the dropdown closes immediately (no intentional delay).",
-        "Moving the pointer from the trigger to the dropdown panel does not cause the dropdown to close or flicker.",
-        "Moving the pointer from one top-level header item to another automatically closes the previously open dropdown and opens the newly hovered item’s dropdown.",
-        "The behavior applies consistently to the \"Our Solutions\" mega menu dropdown and other dropdowns (e.g., About Us, Industries We Serve)."
+        "On desktop, hovering a header menu item that has children opens its dropdown without requiring a click.",
+        "Moving the pointer from the header item into its dropdown panel does not close the dropdown (no flicker).",
+        "The dropdown remains open while the pointer is anywhere inside the dropdown panel, including scrollable areas.",
+        "The dropdown closes when (and only when) the pointer is outside both the header item area and the dropdown panel area."
       ],
       "file_operations": [
         {
           "path": "frontend/src/hooks/useDropdownHoverRegion.ts",
-          "operation": "create",
-          "description": "Add a reusable hook to manage a dropdown's open state using robust pointer-based hover-region detection across separate DOM subtrees (trigger + portal panel). The hook should expose refs/setters for the trigger and panel elements and close immediately when the pointer is outside both. Verify the component's usage instructions before implementing."
+          "operation": "modify",
+          "description": "Refactor the hover-region hook to robustly track a single active hover region composed of (a) the trigger element and (b) the dropdown panel region, even when the panel is rendered via a portal. Replace interval/polling and window globals with a deterministic pointer tracking approach (e.g., pointer position stored in refs + requestAnimationFrame while open), and expose an API to set/clear the active trigger and active panel (including supporting the Radix popper wrapper element when applicable)."
         },
         {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Update desktop header dropdown interactions to be hover-driven (no click required) while remaining stable with portal-rendered content. Use the new hover-region hook to coordinate trigger + DropdownMenuContent hover state (including the SolutionsMegaMenu panel) so moving between trigger and panel does not flicker, and leaving both closes immediately. Ensure hovering a different top-level item switches the open dropdown. Use the existing shadcn-ui DropdownMenu/DropdownMenuContent components (portal behavior) and verify the component's usage instructions before implementing."
+          "description": "Update desktop navigation dropdown behavior to use the shared hover-region hook instead of the current global querySelector/RAF loop, ensuring the open dropdown stays open while pointer is over its trigger or inside its dropdown content (including portal wrapper). Wire trigger/panel refs into the hook for the currently open dropdown and close only when the hook determines pointer is outside both regions. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Remove timeout-based closing logic and enforce a single-open-dropdown state with stable transitions during rapid pointer movement.",
+      "summary": "Ensure only one desktop header dropdown is open at a time, switching immediately and reliably when hovering between different top-level items (no delayed close/timeouts, no stuck states).",
       "acceptanceCriteria": [
-        "The header dropdown system does not rely on a close delay to prevent flicker; instead, it uses robust hover-region detection so closing is immediate when outside both trigger and panel.",
-        "Rapidly moving the pointer across multiple top-level items does not leave multiple dropdowns open, and does not cause visible flashing/flicker of the dropdown panel.",
-        "No regressions to navigation link routing: clicking dropdown items still navigates to the correct route."
+        "When a dropdown is open and the user hovers another header item, the old dropdown closes and the new dropdown opens immediately.",
+        "Rapid pointer movement across multiple header items does not leave multiple dropdowns open and does not cause flicker or “stuck open” states.",
+        "Dropdown open/close behavior is hover-driven only (no click required to open)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Remove the timeout-based close behavior and any related refs/state. Ensure the header maintains a single authoritative openDropdownId and that state transitions are deterministic during rapid hover changes (e.g., immediately switch openDropdownId on new trigger hover; close only when pointer is outside both the active trigger and active portal panel). Maintain existing Link routing for dropdown items. Verify the component's usage instructions before implementing."
+          "description": "Centralize desktop dropdown open state so openDropdownId is the single source of truth; on pointer enter of a different trigger, immediately set openDropdownId to the new item id (closing the previous implicitly), and ensure the hover-region tracking updates to the newly active trigger/panel without delayed transitions. Ensure any DropdownMenu onOpenChange handlers do not reintroduce click-driven or delayed behavior. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/hooks/useDropdownHoverRegion.ts",
           "operation": "modify",
-          "description": "Refine the hover-region hook behavior to support rapid transitions: if the active dropdown changes, update tracked trigger/panel elements immediately and avoid transient close/reopen flashing. Keep close behavior immediate when outside both regions. Verify the component's usage instructions before implementing."
+          "description": "Ensure the hook supports instantaneous switching by allowing the active trigger/panel pair to be replaced without transient close/reopen flicker (e.g., update active elements synchronously and only request-close when pointer is outside the currently active pair)."
         }
       ]
     }

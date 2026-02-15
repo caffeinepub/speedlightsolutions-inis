@@ -1,40 +1,31 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T18:54:40.995Z",
-  "summary": "Diff adds a new hover-region hook intended to track pointer position across a trigger and portal-rendered dropdown panel, and updates `SiteHeader` to use a single `openDropdownId` with hover-to-open behavior. However, the provided `SiteHeader.tsx` snippet shows opening on `onMouseEnter` only, and does not show any implemented close-on-leave logic tied to the combined trigger+panel hover region; the new hook is imported but not shown as used. The hook itself relies on polling via `setInterval` and global window variables for pointer tracking.",
+  "generatedAt": "2026-02-15T19:59:45.552Z",
+  "summary": "Implemented a new hover-region tracking hook and updated SiteHeader to use a single controlled openDropdownId with hover-to-open behavior (at least for the shown “solutions” dropdown), including logic to keep the dropdown open while the pointer is over the trigger or the portal-rendered panel. However, due to truncation, it’s not fully verifiable that *all* top-level items with children were updated to the same behavior. Also, some repository metadata/summary files were changed in ways not requested.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Close the dropdown immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (combined hover region), with no flicker when moving between trigger and portal-rendered panel.",
-      "reason": "In the visible `SiteHeader.tsx` changes, dropdowns are opened on `onMouseEnter`, but no corresponding combined-region leave detection (trigger+panel) is shown. Although `useDropdownHoverRegion` is added and imported, the snippet does not show it being wired up to `triggerRef`/`panelRef` and used to drive `openDropdownId` closure when leaving both regions.",
+      "requirement": "Apply hover-open + keep-open-until-pointer-leaves-trigger-and-panel behavior to each top-level desktop header menu item that has children (not just a single special-cased item).",
+      "reason": "The diff excerpt shows the new hover behavior and hover-region hook wired for a special-cased \"Our Solutions\" item (item.id === 'solutions'), but the remainder of SiteHeader.tsx is truncated, so there is no clear evidence that every other top-level item with children uses the same controlled open state + hover-region handling.",
       "evidence": [
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/hooks/useDropdownHoverRegion.ts"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "requirement": "Remove/replace timeout-based close behavior and ensure stable transitions (no flicker) during rapid pointer movement; only one dropdown open at a time; routing unchanged.",
-      "reason": "Only the 'one dropdown open at a time' aspect is clearly evidenced via `openDropdownId`. The diff snippet does not show the prior timeout-based close behavior being removed/replaced in the header, nor does it show the new robust close logic being applied. Also, there is no diff evidence confirming navigation item click routing is unchanged.",
-      "evidence": [
-        "frontend/src/components/layout/SiteHeader.tsx"
+        "frontend/src/components/layout/SiteHeader.tsx (truncated)"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Global pointer position stored on `window.__lastPointerX/__lastPointerY` and periodic polling (`setInterval` every 50ms) to determine whether the pointer is within the trigger/panel region.",
-      "reason": "The BuildRequest asks for robust hover-region detection with immediate close and no delay; it does not request global window state or interval-based polling. This may be an implementation approach, but it is additional behavior not explicitly requested and could be considered a departure from 'no timeout-based close behavior'.",
+      "description": "Added/updated repository metadata to track new feature requests (AR-1/AR-2/AR-3) in project_state.json.",
+      "reason": "BuildRequest only asks for frontend interaction changes; it does not request adding/updating project tracking metadata.",
       "evidence": [
-        "frontend/src/hooks/useDropdownHoverRegion.ts"
+        "project_state.json"
       ]
     },
     {
-      "description": "Update to `frontend-file-summaries.txt` describing unrelated large-scale navigation/content/router changes (reordered nav items, new pages, brand color system, etc.).",
-      "reason": "The BuildRequest explicitly scopes changes to existing header/dropdown behavior and lists non-goals like changing navigation items/labels/order and adding broader navigation changes. While this may be only a documentation/summary change, it describes work outside the requested scope.",
+      "description": "Updated frontend-file-summaries.txt to claim a wide set of unrelated frontend changes (navigation reorder, new content types/pages/routes, styling tokens, etc.).",
+      "reason": "These changes are outside the BuildRequest scope/non-goals (no IA/content changes, no new navigation items). While this file is only a summary document, its newly added claims are not requested and could be misleading.",
       "evidence": [
-        "frontend-file-summaries.txt"
+        "frontend-file-summaries.txt (truncated)"
       ]
     }
   ],

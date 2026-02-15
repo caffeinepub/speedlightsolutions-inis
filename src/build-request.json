@@ -1,57 +1,58 @@
 {
   "kind": "build_request",
-  "title": "Refine header dropdown hover behavior (instant close, auto-switch, no flicker)",
+  "title": "Refine desktop header dropdown hover behavior (no flicker, auto-switch)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
+      "text": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-6"
         ],
         "quotes": [
-          "In the header navigation, when I hover over a menu item, its dropdown menu should appear.\n\nThe dropdown should disappear immediately when the mouse pointer moves outside the dropdown area and the main menu item area.\n\nIf I move the mouse to another header menu item, the previous dropdown should automatically disappear, and the new dropdown should appear.\n\nThe dropdown behavior should be smooth and should not flicker.\n\nUse hover-based behavior (no click required)."
+          "In the header navigation, when I hover over a menu item, its dropdown menu should appear.",
+          "The dropdown menu should remain visible as long as the mouse pointer is either on the main header menu item or anywhere inside its dropdown menu.",
+          "The dropdown should disappear only when the mouse pointer moves completely outside both the respective header item and its dropdown area.",
+          "The behavior should be smooth and should not flicker. It should work on hover (not click)."
         ]
       },
       "acceptanceCriteria": [
-        "Hovering a top-level header item that has children opens its dropdown without requiring a click.",
-        "When the pointer leaves the combined hover region (trigger + dropdown panel), the dropdown closes immediately (no intentional delay).",
-        "Moving the pointer from the trigger to the dropdown panel does not cause the dropdown to close or flicker.",
-        "Moving the pointer from one top-level header item to another automatically closes the previously open dropdown and opens the newly hovered item’s dropdown.",
-        "The behavior applies consistently to the \"Our Solutions\" mega menu dropdown and other dropdowns (e.g., About Us, Industries We Serve)."
+        "On desktop, hovering a header menu item that has children opens its dropdown without requiring a click.",
+        "Moving the pointer from the header item into its dropdown panel does not close the dropdown (no flicker).",
+        "The dropdown remains open while the pointer is anywhere inside the dropdown panel, including scrollable areas.",
+        "The dropdown closes when (and only when) the pointer is outside both the header item area and the dropdown panel area."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
+      "text": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-6"
         ],
         "quotes": [
-          "The dropdown should disappear immediately when the mouse pointer moves outside the dropdown area and the main menu item area.",
-          "The dropdown behavior should be smooth and should not flicker.",
-          "If I move the mouse to another header menu item, the previous dropdown should automatically disappear, and the new dropdown should appear."
+          "If I move the mouse to another header menu item, the previous dropdown should automatically close, and the new dropdown should appear."
         ]
       },
       "acceptanceCriteria": [
-        "The header dropdown system does not rely on a close delay to prevent flicker; instead, it uses robust hover-region detection so closing is immediate when outside both trigger and panel.",
-        "Rapidly moving the pointer across multiple top-level items does not leave multiple dropdowns open, and does not cause visible flashing/flicker of the dropdown panel.",
-        "No regressions to navigation link routing: clicking dropdown items still navigates to the correct route."
+        "When a dropdown is open and the user hovers another header item, the old dropdown closes and the new dropdown opens immediately.",
+        "Rapid pointer movement across multiple header items does not leave multiple dropdowns open and does not cause flicker or “stuck open” states.",
+        "Dropdown open/close behavior is hover-driven only (no click required to open)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (these are read-only UI component sources).",
-    "Keep changes scoped to the existing header/dropdown behavior; do not introduce click-to-open as a requirement for normal operation."
+    "Do not require click interactions for desktop dropdown open/close; behavior must be hover-driven.",
+    "Do not edit files under frontend/src/components/ui (shadcn components are read-only and must be composed, not modified).",
+    "Keep the backend unchanged; this request is purely a frontend interaction change."
   ],
   "nonGoals": [
-    "Implementing new navigation items, changing navigation labels, or reordering the menu.",
-    "Adding backend support or storing navigation state on the backend.",
-    "Adding third-party menu libraries or non-hover interaction paradigms (e.g., click-only dropdowns)."
+    "Changing mobile navigation behavior (Sheet-based mobile menu) beyond any necessary regression fixes.",
+    "Adding new navigation items or changing navigation IA/content.",
+    "Adding backend state or persistence for menu behavior."
   ],
   "imageRequirements": {
     "required": [],
@@ -60,9 +61,7 @@
   "userProfileUpdate": {
     "goalsToAdd": [],
     "goalsToRemove": [],
-    "preferencesToAdd": [
-      "Use English for any user-facing text in the build request."
-    ],
+    "preferencesToAdd": [],
     "preferencesToRemove": [],
     "miscToAdd": [],
     "miscToRemove": [],

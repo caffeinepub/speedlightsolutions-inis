@@ -1,47 +1,55 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
+
+interface PointerPosition {
+  x: number;
+  y: number;
+}
 
 /**
  * Custom hook to manage dropdown hover state across trigger and portal-rendered content.
- * Tracks pointer position and closes dropdown immediately when pointer leaves both regions.
+ * Tracks pointer position and determines if pointer is within the combined region of
+ * trigger element and dropdown panel (even when panel is rendered via portal).
  */
-export function useDropdownHoverRegion() {
-  const [isOpen, setIsOpen] = useState(false);
+export function useDropdownHoverRegion(
+  isOpen: boolean,
+  onShouldClose: () => void
+) {
   const triggerRef = useRef<HTMLElement | null>(null);
   const panelRef = useRef<HTMLElement | null>(null);
-  const checkIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const pointerPosRef = useRef<PointerPosition>({ x: -1, y: -1 });
+  const rafIdRef = useRef<number | null>(null);
 
   const isPointerInRegion = useCallback(() => {
     const trigger = triggerRef.current;
     const panel = panelRef.current;
-    
-    if (!trigger) return false;
+    const { x, y } = pointerPosRef.current;
 
-    // Get current pointer position from last known mousemove
-    const pointerX = (window as any).__lastPointerX ?? -1;
-    const pointerY = (window as any).__lastPointerY ?? -1;
-
-    if (pointerX === -1 || pointerY === -1) return false;
+    if (x === -1 || y === -1) return false;
 
     // Check if pointer is over trigger
-    const triggerRect = trigger.getBoundingClientRect();
-    const inTrigger = 
-      pointerX >= triggerRect.left &&
-      pointerX <= triggerRect.right &&
-      pointerY >= triggerRect.top &&
-      pointerY <= triggerRect.bottom;
+    if (trigger) {
+      const triggerRect = trigger.getBoundingClientRect();
+      if (
+        x >= triggerRect.left &&
+        x <= triggerRect.right &&
+        y >= triggerRect.top &&
+        y <= triggerRect.bottom
+      ) {
+        return true;
+      }
+    }
 
-    if (inTrigger) return true;
-
-    // Check if pointer is over panel (if it exists)
+    // Check if pointer is over panel (portal-rendered dropdown content)
     if (panel) {
       const panelRect = panel.getBoundingClientRect();
-      const inPanel = 
-        pointerX >= panelRect.left &&
-        pointerX <= panelRect.right &&
-        pointerY >= panelRect.top &&
-        pointerY <= panelRect.bottom;
-      
-      if (inPanel) return true;
+      if (
+        x >= panelRect.left &&
+        x <= panelRect.right &&
+        y >= panelRect.top &&
+        y <= panelRect.bottom
+      ) {
+        return true;
+      }
     }
 
     return false;
@@ -50,8 +58,7 @@ export function useDropdownHoverRegion() {
   // Track global pointer position
   useEffect(() => {
     const handlePointerMove = (e: MouseEvent) => {
-      (window as any).__lastPointerX = e.clientX;
-      (window as any).__lastPointerY = e.clientY;
+      pointerPosRef.current = { x: e.clientX, y: e.clientY };
     };
 
     window.addEventListener('mousemove', handlePointerMove, { passive: true });
@@ -60,28 +67,33 @@ export function useDropdownHoverRegion() {
     };
   }, []);
 
-  // Monitor hover region when open
+  // Monitor hover region when open using RAF for smooth checking
   useEffect(() => {
-    if (isOpen) {
-      checkIntervalRef.current = setInterval(() => {
-        if (!isPointerInRegion()) {
-          setIsOpen(false);
-        }
-      }, 50); // Check every 50ms for immediate response
-    } else {
-      if (checkIntervalRef.current) {
-        clearInterval(checkIntervalRef.current);
-        checkIntervalRef.current = null;
+    if (!isOpen) {
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
       }
+      return;
     }
 
+    const checkRegion = () => {
+      if (!isPointerInRegion()) {
+        onShouldClose();
+        return;
+      }
+      rafIdRef.current = requestAnimationFrame(checkRegion);
+    };
+
+    rafIdRef.current = requestAnimationFrame(checkRegion);
+
     return () => {
-      if (checkIntervalRef.current) {
-        clearInterval(checkIntervalRef.current);
-        checkIntervalRef.current = null;
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
       }
     };
-  }, [isOpen, isPointerInRegion]);
+  }, [isOpen, isPointerInRegion, onShouldClose]);
 
   const setTriggerElement = useCallback((element: HTMLElement | null) => {
     triggerRef.current = element;
@@ -91,18 +103,7 @@ export function useDropdownHoverRegion() {
     panelRef.current = element;
   }, []);
 
-  const open = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  const close = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
   return {
-    isOpen,
-    open,
-    close,
     setTriggerElement,
     setPanelElement,
   };

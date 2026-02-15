@@ -1,22 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Implement header navigation hover-based dropdown menus with smooth, non-flickering behavior and automatic switching between menu items.",
+  "summary": "New project",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-desktop-header-navigation-dropdown-interaction-so-dropdowns-open-on-hover-and-close-immediately-when-the-pointer-leaves-both-the-top-level-menu-item-area-and-the-dropdown-panel-area-no-click-required-the-hover-logic-must-work-reliably-even-though-the-dropdown-panel-is-rendered-outside-the-trigger-s-dom-subtree-portal-and-must-avoid-flicker-when-moving-the-pointer-between-the-trigger-and-the-dropdown-panel",
-      "title": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
+      "id": "feature-update-the-desktop-header-navigation-so-each-top-level-menu-item-with-children-opens-its-dropdown-on-hover-and-keeps-the-dropdown-visible-while-the-pointer-is-either-over-the-corresponding-header-item-trigger-area-or-anywhere-inside-that-dropdown-panel-including-when-the-panel-is-rendered-via-a-portal-the-dropdown-must-close-only-when-the-pointer-is-fully-outside-both-the-trigger-area-and-the-dropdown-panel-area-with-smooth-behavior-and-no-flicker",
+      "title": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-remove-replace-the-current-timeout-based-close-behavior-in-the-header-dropdown-implementation-and-ensure-only-one-dropdown-can-be-open-at-a-time-with-stable-state-transitions-during-rapid-pointer-movement-across-header-items",
-      "title": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
+      "id": "feature-ensure-only-one-desktop-header-dropdown-can-be-open-at-a-time-when-the-pointer-enters-a-different-top-level-header-item-the-previously-open-dropdown-closes-and-the-newly-hovered-item-s-dropdown-opens-immediately-and-reliably-no-timeouts-or-delayed-close-behavior-that-causes-unstable-transitions",
+      "title": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
       "reqIds": [
         "REQ-2"
       ],
@@ -26,12 +26,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Header nav hover dropdowns: show on hover, hide immediately when leaving menu+dropdown area, auto-switch on hovering other items, smooth/no flicker, no click required",
+      "summary": "Implement smooth hover-based header dropdown behavior: show dropdown on menu-item hover, keep open while pointer is on item or dropdown, close only when leaving both, and switch dropdowns when hovering another item (no flicker, no click)",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Refine header dropdown hover behavior (instant close, auto-switch, no flicker)",
+  "projectName": "Refine desktop header dropdown hover behavior (no flicker, auto-switch)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

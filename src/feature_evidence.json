@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-desktop-header-navigation-dropdown-interaction-so-dropdowns-open-on-hover-and-close-immediately-when-the-pointer-leaves-both-the-top-level-menu-item-area-and-the-dropdown-panel-area-no-click-required-the-hover-logic-must-work-reliably-even-though-the-dropdown-panel-is-rendered-outside-the-trigger-s-dom-subtree-portal-and-must-avoid-flicker-when-moving-the-pointer-between-the-trigger-and-the-dropdown-panel",
-      "featureTitle": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
+      "featureId": "feature-update-the-desktop-header-navigation-so-each-top-level-menu-item-with-children-opens-its-dropdown-on-hover-and-keeps-the-dropdown-visible-while-the-pointer-is-either-over-the-corresponding-header-item-trigger-area-or-anywhere-inside-that-dropdown-panel-including-when-the-panel-is-rendered-via-a-portal-the-dropdown-must-close-only-when-the-pointer-is-fully-outside-both-the-trigger-area-and-the-dropdown-panel-area-with-smooth-behavior-and-no-flicker",
+      "featureTitle": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
       "files": [
         "frontend/src/components/layout/SiteHeader.tsx",
         "frontend/src/hooks/useDropdownHoverRegion.ts"
@@ -21,8 +21,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-remove-replace-the-current-timeout-based-close-behavior-in-the-header-dropdown-implementation-and-ensure-only-one-dropdown-can-be-open-at-a-time-with-stable-state-transitions-during-rapid-pointer-movement-across-header-items",
-      "featureTitle": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
+      "featureId": "feature-ensure-only-one-desktop-header-dropdown-can-be-open-at-a-time-when-the-pointer-enters-a-different-top-level-header-item-the-previously-open-dropdown-closes-and-the-newly-hovered-item-s-dropdown-opens-immediately-and-reliably-no-timeouts-or-delayed-close-behavior-that-causes-unstable-transitions",
+      "featureTitle": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
       "files": [
         "frontend/src/components/layout/SiteHeader.tsx",
         "frontend/src/hooks/useDropdownHoverRegion.ts"
