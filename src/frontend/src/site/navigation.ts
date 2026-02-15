@@ -12,6 +12,38 @@ export const navigationConfig: NavigationItem[] = [
     path: '/',
   },
   {
+    id: 'about',
+    label: 'About Us',
+    path: '/about',
+    children: [
+      {
+        id: 'our-organization',
+        label: 'Our Organization',
+        path: '/about/our-organization',
+      },
+      {
+        id: 'why-choose-us',
+        label: 'Why Choose Us',
+        path: '/about/why-choose-us',
+      },
+      {
+        id: 'case-studies',
+        label: 'Case Studies',
+        path: '/about/case-studies',
+      },
+      {
+        id: 'careers',
+        label: 'Careers',
+        path: '/about/careers',
+      },
+      {
+        id: 'custom-domain',
+        label: 'Custom Domain',
+        path: '/custom-domain',
+      },
+    ],
+  },
+  {
     id: 'solutions',
     label: 'Our Solutions',
     path: '/solutions',
@@ -102,33 +134,6 @@ export const navigationConfig: NavigationItem[] = [
         id: 'live-events',
         label: 'Live Events & Corporate Events',
         path: '/industries/live-events',
-      },
-    ],
-  },
-  {
-    id: 'about',
-    label: 'About Us',
-    path: '/about',
-    children: [
-      {
-        id: 'our-organization',
-        label: 'Our Organization',
-        path: '/about/our-organization',
-      },
-      {
-        id: 'why-choose-us',
-        label: 'Why Choose Us',
-        path: '/about/why-choose-us',
-      },
-      {
-        id: 'case-studies',
-        label: 'Case Studies',
-        path: '/about/case-studies',
-      },
-      {
-        id: 'careers',
-        label: 'Careers',
-        path: '/about/careers',
       },
     ],
   },

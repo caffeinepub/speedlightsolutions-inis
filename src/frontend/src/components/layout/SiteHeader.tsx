@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { Menu, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -7,17 +7,18 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { navigationConfig, type NavigationItem } from '../../site/navigation';
-import { getServicesForCategory } from '../../content/solutionServices';
 import { useSolutionsScrollSync } from '../../solutions/solutionsScrollSyncContext';
+import { useDropdownHoverRegion } from '../../hooks/useDropdownHoverRegion';
 import BrandLogo from '../brand/BrandLogo';
 import BrandButton from '../brand/BrandButton';
+import SolutionsMegaMenu from './SolutionsMegaMenu';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
   const { activeCategoryId } = useSolutionsScrollSync();
@@ -29,72 +30,83 @@ export default function SiteHeader() {
     return currentPath.startsWith(path);
   };
 
+  const handleMouseEnterItem = (itemId: string) => {
+    setOpenDropdownId(itemId);
+  };
+
   const NavLink = ({ item }: { item: NavigationItem }) => {
     const active = isActive(item.path);
+    const isOpen = openDropdownId === item.id;
+    const triggerRef = useRef<HTMLButtonElement>(null);
+    const panelRef = useRef<HTMLDivElement>(null);
     
-    // Special handling for "Our Solutions" dropdown with scroll-sync
+    // Special handling for "Our Solutions" dropdown with hover-based service preview
     if (item.id === 'solutions' && item.children && item.children.length > 0) {
-      const isOnSolutionsPage = currentPath === '/solutions';
-      const activeCategory = isOnSolutionsPage && activeCategoryId 
-        ? item.children.find(child => child.id === activeCategoryId)
-        : null;
-
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
-                active ? 'text-link' : 'text-foreground/80'
-              }`}
+        <div
+          onMouseEnter={() => handleMouseEnterItem(item.id)}
+        >
+          <DropdownMenu open={isOpen} onOpenChange={(open) => {
+            if (!open) {
+              setOpenDropdownId(null);
+            }
+          }}>
+            <DropdownMenuTrigger asChild>
+              <button
+                ref={triggerRef}
+                className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
+                  active ? 'text-link' : 'text-foreground/80'
+                }`}
+              >
+                {item.label}
+                <ChevronDown className="h-3 w-3" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent 
+              ref={panelRef}
+              align="start" 
+              className="w-[600px] p-4"
             >
-              {item.label}
-              <ChevronDown className="h-3 w-3" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-72">
-            <ScrollArea className="max-h-[480px]">
-              {isOnSolutionsPage && activeCategory ? (
-                // Show active category and its services when on /solutions
-                <>
-                  <div className="px-2 py-2">
-                    <Link
-                      to={activeCategory.path as any}
-                      className="block px-2 py-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-                    >
-                      {activeCategory.label}
-                    </Link>
-                  </div>
-                  <DropdownMenuSeparator />
-                  {getServicesForCategory(activeCategory.id).map((service) => (
-                    <DropdownMenuItem key={service.pageId} asChild>
-                      <Link
-                        to={service.routePath as any}
-                        className="cursor-pointer text-sm pl-6"
-                      >
-                        {service.title}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator />
-                  <div className="px-2 py-1">
-                    <p className="text-xs text-muted-foreground px-2">Other Categories:</p>
-                  </div>
-                  {item.children
-                    .filter(child => child.id !== activeCategoryId)
-                    .map((child) => (
-                      <DropdownMenuItem key={child.id} asChild>
-                        <Link
-                          to={child.path as any}
-                          className="cursor-pointer text-sm"
-                        >
-                          {child.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                </>
-              ) : (
-                // Default view: show all categories
-                item.children.map((child) => (
+              <SolutionsMegaMenu
+                categories={item.children}
+                currentPath={currentPath}
+                activeCategoryId={activeCategoryId}
+              />
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      );
+    }
+    
+    // If item has children (but not solutions), render dropdown menu
+    if (item.children && item.children.length > 0) {
+      return (
+        <div
+          onMouseEnter={() => handleMouseEnterItem(item.id)}
+        >
+          <DropdownMenu open={isOpen} onOpenChange={(open) => {
+            if (!open) {
+              setOpenDropdownId(null);
+            }
+          }}>
+            <DropdownMenuTrigger asChild>
+              <button
+                ref={triggerRef}
+                className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
+                  active ? 'text-link' : 'text-foreground/80'
+                }`}
+              >
+                {item.label}
+                <ChevronDown className="h-3 w-3" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent 
+              ref={panelRef}
+              align="start" 
+              className="w-64"
+            >
+              <ScrollArea className="max-h-[420px]">
+                {item.children.map((child) => (
                   <DropdownMenuItem key={child.id} asChild>
                     <Link
                       to={child.path as any}
@@ -103,43 +115,11 @@ export default function SiteHeader() {
                       {child.label}
                     </Link>
                   </DropdownMenuItem>
-                ))
-              )}
-            </ScrollArea>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    }
-    
-    // If item has children (but not solutions), render dropdown menu
-    if (item.children && item.children.length > 0) {
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              className={`text-sm font-medium transition-colors hover:text-link-hover flex items-center gap-1 ${
-                active ? 'text-link' : 'text-foreground/80'
-              }`}
-            >
-              {item.label}
-              <ChevronDown className="h-3 w-3" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-64">
-            <ScrollArea className="max-h-[420px]">
-              {item.children.map((child) => (
-                <DropdownMenuItem key={child.id} asChild>
-                  <Link
-                    to={child.path as any}
-                    className="cursor-pointer"
-                  >
-                    {child.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </ScrollArea>
-          </DropdownMenuContent>
-        </DropdownMenu>
+                ))}
+              </ScrollArea>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       );
     }
 
@@ -170,6 +150,76 @@ export default function SiteHeader() {
     );
   };
 
+  // Global pointer tracking for hover region detection
+  useEffect(() => {
+    let rafId: number | null = null;
+    let lastX = -1;
+    let lastY = -1;
+
+    const checkHoverRegion = () => {
+      if (!openDropdownId || lastX === -1 || lastY === -1) {
+        rafId = requestAnimationFrame(checkHoverRegion);
+        return;
+      }
+
+      // Find all dropdown trigger and content elements
+      const triggers = document.querySelectorAll('[data-dropdown-trigger]');
+      const contents = document.querySelectorAll('[data-radix-popper-content-wrapper]');
+
+      let inRegion = false;
+
+      // Check if pointer is over any trigger
+      triggers.forEach((trigger) => {
+        const rect = trigger.getBoundingClientRect();
+        if (
+          lastX >= rect.left &&
+          lastX <= rect.right &&
+          lastY >= rect.top &&
+          lastY <= rect.bottom
+        ) {
+          inRegion = true;
+        }
+      });
+
+      // Check if pointer is over any dropdown content
+      if (!inRegion) {
+        contents.forEach((content) => {
+          const rect = content.getBoundingClientRect();
+          if (
+            lastX >= rect.left &&
+            lastX <= rect.right &&
+            lastY >= rect.top &&
+            lastY <= rect.bottom
+          ) {
+            inRegion = true;
+          }
+        });
+      }
+
+      // Close dropdown if pointer is outside both regions
+      if (!inRegion) {
+        setOpenDropdownId(null);
+      }
+
+      rafId = requestAnimationFrame(checkHoverRegion);
+    };
+
+    const handlePointerMove = (e: MouseEvent) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+    };
+
+    window.addEventListener('mousemove', handlePointerMove, { passive: true });
+    rafId = requestAnimationFrame(checkHoverRegion);
+
+    return () => {
+      window.removeEventListener('mousemove', handlePointerMove);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [openDropdownId]);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -180,7 +230,9 @@ export default function SiteHeader() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navigationConfig.map((item) => (
-            <NavLink key={item.id} item={item} />
+            <div key={item.id} data-dropdown-trigger={item.children ? 'true' : undefined}>
+              <NavLink item={item} />
+            </div>
           ))}
         </nav>
 

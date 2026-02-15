@@ -1,22 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Implement header navigation hover-based dropdown menus with smooth, non-flickering behavior and automatic switching between menu items.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-solutions-landing-page-content-so-that-it-contains-6-scrollable-clearly-separated-sections-one-per-solution-category-and-each-category-section-renders-a-list-grid-of-its-respective-solution-services-as-links",
-      "title": "Update the /solutions landing page content so that it contains 6 scrollable, clearly separated sections (one per solution category), and each category section renders a list/grid of its respective solution services as links.",
+      "id": "feature-update-the-desktop-header-navigation-dropdown-interaction-so-dropdowns-open-on-hover-and-close-immediately-when-the-pointer-leaves-both-the-top-level-menu-item-area-and-the-dropdown-panel-area-no-click-required-the-hover-logic-must-work-reliably-even-though-the-dropdown-panel-is-rendered-outside-the-trigger-s-dom-subtree-portal-and-must-avoid-flicker-when-moving-the-pointer-between-the-trigger-and-the-dropdown-panel",
+      "title": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-scroll-sync-behavior-so-that-when-a-user-scrolls-within-solutions-and-a-specific-solution-category-section-becomes-active-in-viewport-the-siteheader-our-solutions-dropdown-updates-to-show-highlight-the-respective-solutions-for-that-active-category",
-      "title": "Implement scroll-sync behavior so that when a user scrolls within /solutions and a specific solution category section becomes active (in viewport), the SiteHeader 'Our Solutions' dropdown updates to show/highlight the respective solutions for that active category.",
+      "id": "feature-remove-replace-the-current-timeout-based-close-behavior-in-the-header-dropdown-implementation-and-ensure-only-one-dropdown-can-be-open-at-a-time-with-stable-state-transitions-during-rapid-pointer-movement-across-header-items",
+      "title": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
       "reqIds": [
         "REQ-2"
       ],
@@ -26,12 +26,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Sync the 'Our Solutions' dropdown so that as the user scrolls to a specific solution category section, the dropdown shows/highlights the respective solutions for that category",
+      "summary": "Header nav hover dropdowns: show on hover, hide immediately when leaving menu+dropdown area, auto-switch on hovering other items, smooth/no flicker, no click required",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Sync 'Our Solutions' dropdown with active solution category while scrolling",
+  "projectName": "Refine header dropdown hover behavior (instant close, auto-switch, no flicker)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

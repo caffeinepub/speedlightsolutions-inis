@@ -1,26 +1,48 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T12:50:16.470Z",
-  "summary": "The diff implements a new /solutions landing page with per-category anchored sections sourced from navigation + solutionServices, and adds scroll-sync state via context so the SiteHeader “Our Solutions” dropdown reflects the active category while scrolling on /solutions and resets when navigating away.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-15T18:54:40.995Z",
+  "summary": "Diff adds a new hover-region hook intended to track pointer position across a trigger and portal-rendered dropdown panel, and updates `SiteHeader` to use a single `openDropdownId` with hover-to-open behavior. However, the provided `SiteHeader.tsx` snippet shows opening on `onMouseEnter` only, and does not show any implemented close-on-leave logic tied to the combined trigger+panel hover region; the new hook is imported but not shown as used. The hook itself relies on polling via `setInterval` and global window variables for pointer tracking.",
+  "missing_requirements": [
     {
-      "description": "Added a dedicated hero/banner section to the /solutions landing page (background image via resolvePageBanner, gradient hero styling) beyond the stated scroll-sync and section/list requirements.",
-      "reason": "BuildRequest did not ask for a hero/banner redesign; only required 6 scrollable sections and header scroll-sync behavior.",
+      "id": "REQ-1",
+      "requirement": "Close the dropdown immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (combined hover region), with no flicker when moving between trigger and portal-rendered panel.",
+      "reason": "In the visible `SiteHeader.tsx` changes, dropdowns are opened on `onMouseEnter`, but no corresponding combined-region leave detection (trigger+panel) is shown. Although `useDropdownHoverRegion` is added and imported, the snippet does not show it being wired up to `triggerRef`/`panelRef` and used to drive `openDropdownId` closure when leaving both regions.",
       "evidence": [
-        "frontend/src/pages/SolutionsLandingPage.tsx"
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/hooks/useDropdownHoverRegion.ts"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Remove/replace timeout-based close behavior and ensure stable transitions (no flicker) during rapid pointer movement; only one dropdown open at a time; routing unchanged.",
+      "reason": "Only the 'one dropdown open at a time' aspect is clearly evidenced via `openDropdownId`. The diff snippet does not show the prior timeout-based close behavior being removed/replaced in the header, nor does it show the new robust close logic being applied. Also, there is no diff evidence confirming navigation item click routing is unchanged.",
+      "evidence": [
+        "frontend/src/components/layout/SiteHeader.tsx"
       ]
     }
   ],
-  "confidence": 0.74,
+  "hallucinated_features": [
+    {
+      "description": "Global pointer position stored on `window.__lastPointerX/__lastPointerY` and periodic polling (`setInterval` every 50ms) to determine whether the pointer is within the trigger/panel region.",
+      "reason": "The BuildRequest asks for robust hover-region detection with immediate close and no delay; it does not request global window state or interval-based polling. This may be an implementation approach, but it is additional behavior not explicitly requested and could be considered a departure from 'no timeout-based close behavior'.",
+      "evidence": [
+        "frontend/src/hooks/useDropdownHoverRegion.ts"
+      ]
+    },
+    {
+      "description": "Update to `frontend-file-summaries.txt` describing unrelated large-scale navigation/content/router changes (reordered nav items, new pages, brand color system, etc.).",
+      "reason": "The BuildRequest explicitly scopes changes to existing header/dropdown behavior and lists non-goals like changing navigation items/labels/order and adding broader navigation changes. While this may be only a documentation/summary change, it describes work outside the requested scope.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/components/layout/SiteLayout.tsx",
-    "frontend/src/pages/SolutionsLandingPage.tsx",
-    "frontend/src/router/router.tsx",
-    "frontend/src/solutions/solutionsScrollSyncContext.tsx",
+    "frontend/src/hooks/useDropdownHoverRegion.ts",
     "project_state.json"
   ]
 }

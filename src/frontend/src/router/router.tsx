@@ -1,9 +1,10 @@
-import { createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { createRouter, createRoute, createRootRoute, createHashHistory } from '@tanstack/react-router';
 import SiteLayout from '../components/layout/SiteLayout';
 import HomePage from '../pages/HomePage';
 import ContentPage from '../pages/ContentPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SolutionsLandingPage from '../pages/SolutionsLandingPage';
+import CustomDomainPage from '../pages/CustomDomainPage';
 import { solutionServices } from '../content/solutionServices';
 
 const rootRoute = createRootRoute({
@@ -169,6 +170,13 @@ const careersRoute = createRoute({
   component: () => <ContentPage pageId="careers" />,
 });
 
+// Custom Domain
+const customDomainRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/custom-domain',
+  component: CustomDomainPage,
+});
+
 // Contact
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -209,11 +217,18 @@ const routeTree = rootRoute.addChildren([
   whyChooseUsRoute,
   caseStudiesRoute,
   careersRoute,
+  customDomainRoute,
   contactRoute,
   notFoundRoute,
 ]);
 
-export const router = createRouter({ routeTree });
+// Use hash history for IC asset canister compatibility
+const hashHistory = createHashHistory();
+
+export const router = createRouter({ 
+  routeTree,
+  history: hashHistory,
+});
 
 declare module '@tanstack/react-router' {
   interface Register {

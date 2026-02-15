@@ -1,57 +1,24 @@
-import { useEffect, useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { navigationConfig } from '../site/navigation';
 import { getServicesForCategory } from '../content/solutionServices';
 import { useSolutionsScrollSync } from '../solutions/solutionsScrollSyncContext';
+import { useSolutionsActiveCategoryInView } from '../hooks/useSolutionsActiveCategoryInView';
 import { resolvePageBanner } from '../site/pageBannerResolver';
 
 export default function SolutionsLandingPage() {
   const { setActiveCategoryId } = useSolutionsScrollSync();
-  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
 
   // Get the 6 solution categories from navigation
   const solutionsNav = navigationConfig.find(item => item.id === 'solutions');
   const categories = solutionsNav?.children || [];
+  const categoryIds = categories.map(cat => cat.id);
 
-  useEffect(() => {
-    // Set up IntersectionObserver to track which section is in view
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px', // Activate when section is in upper 40% of viewport
-      threshold: 0,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Find the first intersecting section
-      const intersecting = entries.find(entry => entry.isIntersecting);
-      if (intersecting) {
-        const categoryId = intersecting.target.getAttribute('data-category-id');
-        if (categoryId) {
-          setActiveCategoryId(categoryId);
-        }
-      }
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    // Observe all category sections
-    sectionRefs.current.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [setActiveCategoryId]);
-
-  const setSectionRef = (categoryId: string) => (el: HTMLElement | null) => {
-    if (el) {
-      sectionRefs.current.set(categoryId, el);
-    } else {
-      sectionRefs.current.delete(categoryId);
-    }
-  };
+  // Use the improved scroll-sync hook with most-visible detection and hysteresis
+  const { setSectionRef } = useSolutionsActiveCategoryInView(
+    categoryIds,
+    setActiveCategoryId
+  );
 
   const solutionsBanner = resolvePageBanner('solutions');
 

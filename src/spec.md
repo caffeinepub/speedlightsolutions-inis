@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Make the “Our Solutions” header dropdown reflect the currently active solution category while the user scrolls the /solutions page.
+**Goal:** Refine desktop header dropdown hover behavior so menus open on hover, close immediately when the pointer leaves the combined trigger + dropdown area (even with portal-rendered panels), and switch smoothly between items without flicker.
 
 **Planned changes:**
-- Update the /solutions landing page to include 6 clearly separated, scrollable sections (one per existing solution category), each rendering a list/grid of its associated solution services as links sourced from the existing solutionServices registry.
-- Add stable DOM anchors/ids for each category section on /solutions so the active category can be detected during scrolling.
-- Implement scroll-sync on /solutions so the SiteHeader “Our Solutions” dropdown highlights the active category and shows that category’s service links while scrolling, without changing existing routes and without affecting other pages.
+- Update header dropdown hover handling to treat the top-level trigger area and the portal-rendered dropdown panel as a single combined hover region.
+- Remove/replace the current timeout-based close logic and implement immediate close when the pointer is outside both trigger and panel.
+- Ensure only one dropdown is open at a time and that hovering a different top-level item automatically closes the previous dropdown and opens the new one.
+- Preserve existing navigation behavior so clicking dropdown links still routes correctly.
 
-**User-visible outcome:** On /solutions, as a user scrolls through the six solution category sections, the “Our Solutions” dropdown updates/highlights the matching category and shows its relevant service links; elsewhere on the site the dropdown behaves normally.
+**User-visible outcome:** On desktop, hovering header items opens their dropdowns, moving between header items seamlessly switches dropdowns, and menus close instantly when the pointer leaves both the header item and dropdown—without flicker or needing clicks.

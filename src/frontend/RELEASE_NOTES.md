@@ -2,9 +2,9 @@
 
 ## Release Information
 
-**Release Date**: [YYYY-MM-DD]  
-**Version**: v1.0.0 - Initial Mainnet Deployment  
-**Environment**: Internet Computer Mainnet
+**Release Date:** [YYYY-MM-DD]  
+**Version:** v1.0.0 - Initial Mainnet Deployment  
+**Environment:** Internet Computer Mainnet
 
 ---
 
@@ -12,13 +12,15 @@
 
 ### Canister IDs
 
-- **Frontend Asset Canister**: `[INSERT_FRONTEND_CANISTER_ID]`
-- **Backend Canister**: N/A _(no backend functionality required for this deployment)_
+- **Frontend Asset Canister:** `[INSERT_FRONTEND_CANISTER_ID]`
+- **Backend Canister:** N/A _(no backend functionality required for this deployment)_
 
 ### Live URLs
 
-- **Primary URL**: `https://[FRONTEND_CANISTER_ID].ic0.app`
-- **Custom Domain**: _(not configured for initial deployment)_
+- **Primary URL:** `https://[FRONTEND_CANISTER_ID].ic0.app`
+- **Custom Domain:** See the [Custom Domain Setup Guide](https://[FRONTEND_CANISTER_ID].ic0.app/#/custom-domain) for instructions on connecting your own domain
+
+**Note:** All routes use hash-based routing (e.g., `/#/solutions`) for Internet Computer asset canister compatibility.
 
 ---
 
@@ -28,25 +30,27 @@ This release deploys the complete Speedlight Solutions corporate website to Inte
 
 ### Features Included
 
-- **Complete Site Navigation**: Home, Solutions (6 subpages), Industries (10 subpages), About (4 subpages), and Contact
-- **Responsive Design**: Mobile-first layout with desktop, tablet, and mobile optimizations
-- **Brand Identity**: Speedlight logo (`/assets/generated/speedlight-logo.dim_600x160.png`) integrated across header, mobile menu, and footer
-- **Page Theming**: Industry-specific accent colors and solution page themes
-- **Static Assets**: All hero banners, favicon (`/assets/generated/favicon.dim_64x64.png`), and generated images
-- **Dark/Light Mode**: Theme toggle with system preference detection
-- **SEO Optimization**: Dynamic page titles and meta descriptions
+- **Complete Site Navigation:** Home, Solutions (6 categories + 30 service pages), Industries (10 subpages), About (4 subpages), Contact, and Custom Domain setup guide
+- **Responsive Design:** Mobile-first layout with desktop, tablet, and mobile optimizations
+- **Brand Identity:** Speedlight logo (`/assets/generated/speedlight-logo.dim_600x160.png`) integrated across header, mobile menu, and footer
+- **Page Theming:** Industry-specific accent colors and solution page themes
+- **Static Assets:** All hero banners, favicon (`/assets/generated/favicon.dim_64x64.png`), and generated images
+- **Dark/Light Mode:** Theme toggle with system preference detection
+- **SEO Optimization:** Dynamic page titles and meta descriptions
+- **Custom Domain Guide:** In-app documentation at `/#/custom-domain` with step-by-step DNS configuration instructions
+- **Hash-Based Routing:** SPA-compatible routing for IC asset canister hosting
 
 ### Content Pages
 
-**Solutions**:
-- Professional Sound Systems
-- Display & Visualization
-- Intelligent Building Systems
-- Networking & Connectivity
-- Workplace Collaboration
-- Lifecycle Support & Maintenance
+**Solutions (6 Categories + 30 Services):**
+- Workplace Collaboration (5 services)
+- Professional Sound Systems (5 services)
+- Display & Visualization (5 services)
+- Networking & Connectivity (5 services)
+- Intelligent Building Systems (5 services)
+- Lifecycle Support & Maintenance (5 services)
 
-**Industries**:
+**Industries (10 Sectors):**
 - Corporate Enterprise
 - Education
 - Healthcare
@@ -58,174 +62,196 @@ This release deploys the complete Speedlight Solutions corporate website to Inte
 - Training Centers
 - Live Events & Entertainment
 
-**About**:
+**About (4 Pages):**
 - Our Organization
 - Why Choose Us
 - Case Studies
 - Careers
 
+**Help & Support:**
+- Custom Domain Setup Guide
+- Contact Us
+
+---
+
+## Technical Improvements
+
+### Deployment Fixes
+
+- **Added `frontend/src/config.ts`:** Core configuration utilities for backend connection and environment loading
+- **Hash-Based Routing:** Switched from browser history to hash history for IC asset canister compatibility (prevents 404s on deep links)
+- **Error Boundary:** Added top-level error handling with user-friendly fallback UI
+- **Robust Initialization:** Safe config loading with fallbacks to prevent blank screens
+
+### Configuration
+
+- **Environment Loading:** Reads from `/env.json` with fallback to environment variables
+- **Agent Configuration:** Automatic host detection (local vs. mainnet)
+- **Root Key Fetching:** Automatic in development mode for local replica testing
+
 ---
 
 ## Smoke Test Checklist
 
-Use this checklist to verify the deployment is successful:
+### Routes Verification
 
-### ✅ Route Verification
+- [ ] Home page loads (`/#/`)
+- [ ] Solutions landing page loads (`/#/solutions`)
+- [ ] All 6 solution category pages load
+- [ ] All 30 solution service pages load
+- [ ] Industries landing page loads (`/#/industries`)
+- [ ] All 10 industry pages load
+- [ ] About landing page loads (`/#/about`)
+- [ ] All 4 about pages load
+- [ ] Custom Domain page loads (`/#/custom-domain`)
+- [ ] Contact page loads (`/#/contact`)
+- [ ] 404 page displays for invalid routes (`/#/invalid-route`)
 
-#### Core Routes
-- [ ] **Home Page** (`/`) - Loads successfully with hero section
-- [ ] **Solutions Landing** (`/solutions`) - Loads with solution cards
-- [ ] **Industries Landing** (`/industries`) - Loads with industry links
-- [ ] **About Landing** (`/about`) - Loads with about content
-- [ ] **Contact Page** (`/contact`) - Loads with contact information
+### Static Assets
 
-#### Solution Subpages
-- [ ] `/solutions/professional-sound`
-- [ ] `/solutions/display-visualization`
-- [ ] `/solutions/intelligent-systems`
-- [ ] `/solutions/networking-connectivity`
-- [ ] `/solutions/workplace-collaboration`
-- [ ] `/solutions/lifecycle-support`
+- [ ] Logo displays in header: `/assets/generated/speedlight-logo.dim_600x160.png`
+- [ ] Logo displays in mobile menu
+- [ ] Logo displays in footer
+- [ ] Favicon appears in browser tab: `/assets/generated/favicon.dim_64x64.png`
+- [ ] Hero banners load on all content pages
 
-#### Industry Subpages
-- [ ] `/industries/corporate-enterprise`
-- [ ] `/industries/education`
-- [ ] `/industries/healthcare`
-- [ ] `/industries/manufacturing`
-- [ ] `/industries/government`
-- [ ] `/industries/hospitality`
-- [ ] `/industries/retail`
-- [ ] `/industries/banking`
-- [ ] `/industries/training-centers`
-- [ ] `/industries/live-events`
+### Navigation
 
-#### About Subpages
-- [ ] `/about/our-organization`
-- [ ] `/about/why-choose-us`
-- [ ] `/about/case-studies`
-- [ ] `/about/careers`
+- [ ] Desktop header navigation works
+- [ ] "Our Solutions" mega menu displays on hover
+- [ ] Mobile menu opens and closes
+- [ ] All footer links work
+- [ ] Custom Domain link appears in footer "Company" section
+- [ ] Theme toggle switches between light/dark mode
+- [ ] Hash-based URLs work correctly (no 404s on refresh)
 
-#### Error Handling
-- [ ] **404 Not Found** (e.g., `/does-not-exist`) - Shows NotFoundPage component
+### Custom Domain Page
 
-### ✅ Static Asset Verification
+- [ ] Page displays current deployment hostname
+- [ ] Copy button works for hostname
+- [ ] DNS configuration instructions are clear
+- [ ] Troubleshooting section is visible
+- [ ] External links to DNS tools work
+- [ ] Caffeine attribution link includes proper UTM parameters
 
-- [ ] **Favicon** - Displays in browser tab
-  - URL: `https://[CANISTER_ID].ic0.app/assets/generated/favicon.dim_64x64.png`
-  - Status: HTTP 200
-- [ ] **Brand Logo** - Displays in header (not fallback text)
-  - URL: `https://[CANISTER_ID].ic0.app/assets/generated/speedlight-logo.dim_600x160.png`
-  - Status: HTTP 200
-  - Aspect ratio: Contained (no stretching/distortion)
-- [ ] **Logo in Mobile Menu** - Displays correctly when mobile menu is opened
-- [ ] **Logo in Footer** - Displays correctly at bottom of page
-- [ ] **Page Banners** - All hero images load correctly on content pages
+### Responsive Design
 
-### ✅ Functionality Tests
+- [ ] Mobile viewport (375px) renders correctly
+- [ ] Tablet viewport (768px) renders correctly
+- [ ] Desktop viewport (1440px+) renders correctly
 
-- [ ] Navigation menu works (desktop)
-- [ ] Mobile menu opens and closes correctly
-- [ ] All navigation links work (no dead routes)
-- [ ] Theme toggle (light/dark mode) works
-- [ ] Footer links are functional
-- [ ] Caffeine attribution link works with UTM parameters
+### Error Handling
 
-### ✅ Browser Console
-
-- [ ] No JavaScript errors in console on initial load
-- [ ] No errors during navigation between routes
-- [ ] No 404 errors for assets in Network tab
-- [ ] No CORS or security warnings
-
-### ✅ Responsive Design
-
-- [ ] Desktop view (1920px) - Layout correct, logo displays properly
-- [ ] Tablet view (768px) - Layout adapts, mobile menu works
-- [ ] Mobile view (375px) - Touch interactions work, logo fits header
-
-### ✅ Cache-Busting Verification
-
-- [ ] Hard refresh (Ctrl+Shift+R / Cmd+Shift+R) shows latest version
-- [ ] Incognito/private window loads current build
-- [ ] Asset hashes in Network tab match build output
+- [ ] No console errors on initial load
+- [ ] Error boundary displays if initialization fails
+- [ ] Reload button works in error fallback UI
 
 ---
 
-## Known Issues
+## Deployment Summary
 
-_No known issues at time of initial deployment._
+**Current Status:** Ready for mainnet deployment with all deployment blockers resolved
+
+**Assets Verified:**
+- ✅ Logo asset present and rendering correctly
+- ✅ Favicon present and displaying in browser tab
+- ✅ All hero banners present in `/assets/generated/`
+- ✅ Custom Domain page created and wired into navigation
+
+**Routes Verified:**
+- ✅ All 50+ routes registered in router
+- ✅ Hash-based routing implemented for IC compatibility
+- ✅ Custom Domain route (`/#/custom-domain`) added
+- ✅ 404 fallback route configured
+
+**Configuration Verified:**
+- ✅ `frontend/src/config.ts` created with environment loading
+- ✅ Actor initialization handles anonymous and authenticated states
+- ✅ Error boundary prevents blank screens on initialization failure
+
+**Documentation Updated:**
+- ✅ DEPLOYMENT.md includes complete deployment checklist
+- ✅ DEPLOYMENT.md includes Custom Domain section with DNS configuration
+- ✅ RELEASE_NOTES.md references Custom Domain guide with correct hash-based URL
+- ✅ In-app Custom Domain page provides step-by-step instructions
 
 ---
 
-## Rollback Plan
+## Known Limitations
+
+- **No Backend:** This deployment is frontend-only; no backend canister is deployed (backend actor is initialized but not used)
+- **Hash-Based URLs:** All routes use hash routing (e.g., `/#/solutions`) for IC asset canister compatibility
+- **Custom Domain:** Requires manual DNS configuration by the user (see `/#/custom-domain` for instructions)
+- **HTTPS Certificates:** Automatic issuance may take up to 24 hours after DNS propagation
+
+---
+
+## Rollback Procedures
 
 If critical issues are discovered:
 
-1. **Document the Issue**: Capture error messages, screenshots, and affected routes
-2. **Notify Team**: Alert stakeholders immediately via email/Slack
-3. **Execute Rollback**: Reinstall previous canister version if available
+1. **Identify previous canister version:**
    ```bash
-   dfx canister install frontend --mode reinstall --network ic --wasm [previous-wasm]
+   dfx canister --network ic info frontend
    ```
-4. **Root Cause Analysis**: Investigate and fix the issue in development environment
-5. **Redeploy**: Test thoroughly and redeploy fixed version
+
+2. **Reinstall previous version if needed:**
+   ```bash
+   dfx canister --network ic stop frontend
+   dfx canister --network ic install frontend --mode reinstall --wasm [previous_wasm]
+   dfx canister --network ic start frontend
+   ```
+
+3. **Debug locally before redeploying:**
+   ```bash
+   npm run start
+   # Or test production build
+   npm run build && npx serve -s dist
+   ```
 
 ---
 
-## Deployment Team
+## Post-Deployment Actions
 
-- **Deployed By**: [Name]
-- **Reviewed By**: [Name]
-- **Approved By**: [Name]
+### Immediate (Within 1 Hour)
 
----
+- [ ] Verify all routes load correctly (test at least 10 routes)
+- [ ] Test navigation on mobile and desktop
+- [ ] Confirm static assets load (logo, favicon, banners)
+- [ ] Check browser console for errors
+- [ ] Test Custom Domain page functionality
+- [ ] Verify hash-based routing works (refresh on deep links)
 
-## Additional Notes
+### Short-Term (Within 24 Hours)
 
-### Asset Validation
+- [ ] Monitor analytics for traffic patterns
+- [ ] Verify external links work correctly
+- [ ] Test theme toggle on different devices
+- [ ] Verify Custom Domain instructions are accurate
+- [ ] Check canister cycles balance
 
-- All static assets verified present in build output before deployment
-- Logo asset path confirmed: `/assets/generated/speedlight-logo.dim_600x160.png`
-- Favicon path confirmed: `/assets/generated/favicon.dim_64x64.png`
-- All page banner images present in `/assets/generated/` directory
+### Long-Term (Within 1 Week)
 
-### Build Configuration
-
-- React + TypeScript frontend
-- Vite build system
-- TanStack Router for routing
-- Tailwind CSS for styling
-- shadcn/ui component library
-
-### Performance Considerations
-
-- Asset canister serves static files efficiently
-- Images optimized and dimensioned appropriately
-- No external dependencies or API calls (static site)
+- [ ] Gather user feedback on Custom Domain setup process
+- [ ] Monitor DNS-related support requests
+- [ ] Update documentation based on user questions
+- [ ] Consider adding more troubleshooting scenarios
+- [ ] Set up cycle monitoring alerts
 
 ---
 
-## Next Steps
+## Support & Documentation
 
-- [ ] Monitor canister cycles consumption (first 24 hours)
-- [ ] Set up uptime monitoring service
-- [ ] Gather user feedback on site performance
-- [ ] Plan content updates and feature enhancements
-- [ ] Configure custom domain (if desired)
-- [ ] Set up analytics tracking (if desired)
+- **Custom Domain Setup:** Visit `/#/custom-domain` on the live site for detailed instructions
+- **Deployment Guide:** See `frontend/DEPLOYMENT.md` for technical deployment steps
+- **IC Documentation:** https://internetcomputer.org/docs
+- **Guided Setup Service:** [CaffBrew.com](https://caffbrew.com) for expert custom domain assistance
 
 ---
 
-## Support & Contact
-
-For issues or questions regarding this deployment:
-
-- **Email**: info@speedlightsolutions.in
-- **Website**: speedlightsolutions.in
-- **Documentation**: See `DEPLOYMENT.md` for detailed deployment procedures
-
----
-
-**Template Version**: 1.1  
-**Last Updated**: February 15, 2026  
-**Deployment Type**: Initial Mainnet Go-Live
+**Deployed By:** [Your Name]  
+**Deployment Date:** [YYYY-MM-DD HH:MM UTC]  
+**Git Commit:** [commit_hash]  
+**Build Version:** v1.0.0  
+**Frontend Canister ID:** [FRONTEND_CANISTER_ID]  
+**Live URL:** `https://[FRONTEND_CANISTER_ID].ic0.app`

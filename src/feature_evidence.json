@@ -2,11 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-solutions-landing-page-content-so-that-it-contains-6-scrollable-clearly-separated-sections-one-per-solution-category-and-each-category-section-renders-a-list-grid-of-its-respective-solution-services-as-links",
-      "featureTitle": "Update the /solutions landing page content so that it contains 6 scrollable, clearly separated sections (one per solution category), and each category section renders a list/grid of its respective solution services as links.",
+      "featureId": "feature-update-the-desktop-header-navigation-dropdown-interaction-so-dropdowns-open-on-hover-and-close-immediately-when-the-pointer-leaves-both-the-top-level-menu-item-area-and-the-dropdown-panel-area-no-click-required-the-hover-logic-must-work-reliably-even-though-the-dropdown-panel-is-rendered-outside-the-trigger-s-dom-subtree-portal-and-must-avoid-flicker-when-moving-the-pointer-between-the-trigger-and-the-dropdown-panel",
+      "featureTitle": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
       "files": [
-        "frontend/src/pages/SolutionsLandingPage.tsx",
-        "frontend/src/router/router.tsx"
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/hooks/useDropdownHoverRegion.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -21,13 +21,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-scroll-sync-behavior-so-that-when-a-user-scrolls-within-solutions-and-a-specific-solution-category-section-becomes-active-in-viewport-the-siteheader-our-solutions-dropdown-updates-to-show-highlight-the-respective-solutions-for-that-active-category",
-      "featureTitle": "Implement scroll-sync behavior so that when a user scrolls within /solutions and a specific solution category section becomes active (in viewport), the SiteHeader 'Our Solutions' dropdown updates to show/highlight the respective solutions for that active category.",
+      "featureId": "feature-remove-replace-the-current-timeout-based-close-behavior-in-the-header-dropdown-implementation-and-ensure-only-one-dropdown-can-be-open-at-a-time-with-stable-state-transitions-during-rapid-pointer-movement-across-header-items",
+      "featureTitle": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
       "files": [
         "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/components/layout/SiteLayout.tsx",
-        "frontend/src/pages/SolutionsLandingPage.tsx",
-        "frontend/src/solutions/solutionsScrollSyncContext.tsx"
+        "frontend/src/hooks/useDropdownHoverRegion.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",

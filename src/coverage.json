@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T12:50:16.472Z",
+  "generatedAt": "2026-02-15T18:54:40.997Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,32 +12,28 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the /solutions landing page content so that it contains 6 scrollable, clearly separated sections (one per solution category), and each category section renders a list/grid of its respective solution services as links.",
+        "summary": "Update the desktop header navigation dropdown interaction so dropdowns open on hover and close immediately when the pointer leaves BOTH the top-level menu item area and the dropdown panel area (no click required). The hover logic must work reliably even though the dropdown panel is rendered outside the trigger’s DOM subtree (portal), and must avoid flicker when moving the pointer between the trigger and the dropdown panel.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/SolutionsLandingPage.tsx",
-          "frontend/src/router/router.tsx"
+          "frontend/src/hooks/useDropdownHoverRegion.ts",
+          "frontend/src/components/layout/SiteHeader.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/SolutionsLandingPage.tsx",
-          "frontend/src/router/router.tsx"
+          "frontend/src/hooks/useDropdownHoverRegion.ts",
+          "frontend/src/components/layout/SiteHeader.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Implement scroll-sync behavior so that when a user scrolls within /solutions and a specific solution category section becomes active (in viewport), the SiteHeader 'Our Solutions' dropdown updates to show/highlight the respective solutions for that active category.",
+        "summary": "Remove/replace the current timeout-based close behavior in the header dropdown implementation and ensure only one dropdown can be open at a time, with stable state transitions during rapid pointer movement across header items.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/solutions/solutionsScrollSyncContext.tsx",
-          "frontend/src/components/layout/SiteLayout.tsx",
-          "frontend/src/pages/SolutionsLandingPage.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/hooks/useDropdownHoverRegion.ts"
         ],
         "matchedFiles": [
-          "frontend/src/solutions/solutionsScrollSyncContext.tsx",
-          "frontend/src/components/layout/SiteLayout.tsx",
-          "frontend/src/pages/SolutionsLandingPage.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/hooks/useDropdownHoverRegion.ts"
         ]
       }
     ]
@@ -48,10 +44,7 @@
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/components/layout/SiteLayout.tsx",
-    "frontend/src/pages/SolutionsLandingPage.tsx",
-    "frontend/src/router/router.tsx",
-    "frontend/src/solutions/solutionsScrollSyncContext.tsx",
+    "frontend/src/hooks/useDropdownHoverRegion.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

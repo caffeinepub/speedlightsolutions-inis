@@ -1,58 +1,49 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Scroll-synced Solutions landing sections and header dropdown state",
+  "title": "Header dropdown hover behavior: immediate close, portal-safe hover region, no flicker",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Render /solutions as 6 distinct, scrollable category sections with anchored IDs and per-category service link grids sourced from solutionServices.",
+      "summary": "Implement reliable hover-based open/close for header dropdowns using combined hover-region detection across trigger and portal-rendered panel, preventing flicker and enabling auto-switch on hover.",
       "acceptanceCriteria": [
-        "Visiting /solutions shows 6 distinct category sections matching the existing 6 solution categories in the navigation.",
-        "Each category section includes a link-list (or equivalent grid) of the services for that category, using the existing solutionServices registry as the source of truth.",
-        "Each category section has a stable DOM anchor/id so it can be observed/highlighted while scrolling."
+        "Hovering a top-level header item that has children opens its dropdown without requiring a click.",
+        "When the pointer leaves the combined hover region (trigger + dropdown panel), the dropdown closes immediately (no intentional delay).",
+        "Moving the pointer from the trigger to the dropdown panel does not cause the dropdown to close or flicker.",
+        "Moving the pointer from one top-level header item to another automatically closes the previously open dropdown and opens the newly hovered item’s dropdown.",
+        "The behavior applies consistently to the \"Our Solutions\" mega menu dropdown and other dropdowns (e.g., About Us, Industries We Serve)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/SolutionsLandingPage.tsx",
+          "path": "frontend/src/hooks/useDropdownHoverRegion.ts",
           "operation": "create",
-          "description": "Create a dedicated /solutions landing page that renders 6 clearly separated sections (one per existing navigation solution category). Each section must have a stable DOM id (use the category pageId) and render a grid/list of links for that category using the existing solutionServices registry (e.g., getServicesForCategory) as the source of truth. Verify the component's usage instructions before implementing."
+          "description": "Add a reusable hook to manage a dropdown's open state using robust pointer-based hover-region detection across separate DOM subtrees (trigger + portal panel). The hook should expose refs/setters for the trigger and panel elements and close immediately when the pointer is outside both. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/router/router.tsx",
+          "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Wire /solutions route to render the new SolutionsLandingPage instead of the generic ContentPage so the landing page uses the required 6 anchored sections while preserving existing service page routes/URLs."
+          "description": "Update desktop header dropdown interactions to be hover-driven (no click required) while remaining stable with portal-rendered content. Use the new hover-region hook to coordinate trigger + DropdownMenuContent hover state (including the SolutionsMegaMenu panel) so moving between trigger and panel does not flicker, and leaving both closes immediately. Ensure hovering a different top-level item switches the open dropdown. Use the existing shadcn-ui DropdownMenu/DropdownMenuContent components (portal behavior) and verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add scroll-sync state so the SiteHeader 'Our Solutions' dropdown highlights the active category and shows that category’s services while scrolling on /solutions only.",
+      "summary": "Remove timeout-based closing logic and enforce a single-open-dropdown state with stable transitions during rapid pointer movement.",
       "acceptanceCriteria": [
-        "On /solutions, as the user scrolls through the 6 category sections, the header 'Our Solutions' dropdown visibly reflects the currently active category (e.g., highlighted category item).",
-        "On /solutions, the dropdown also shows the service links for the currently active category (using the same routes already defined for service pages).",
-        "On pages other than /solutions, the 'Our Solutions' dropdown remains in its normal/default state (no scroll-sync required).",
-        "The implementation does not require any backend changes and does not break existing navigation links/routes."
+        "The header dropdown system does not rely on a close delay to prevent flicker; instead, it uses robust hover-region detection so closing is immediate when outside both trigger and panel.",
+        "Rapidly moving the pointer across multiple top-level items does not leave multiple dropdowns open, and does not cause visible flashing/flicker of the dropdown panel.",
+        "No regressions to navigation link routing: clicking dropdown items still navigates to the correct route."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/solutions/solutionsScrollSyncContext.tsx",
-          "operation": "create",
-          "description": "Create a small React context/provider to store the active solution category pageId for scroll-sync on /solutions, plus helper hooks for reading/updating it. Ensure it can be reset when leaving /solutions. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteLayout.tsx",
-          "operation": "modify",
-          "description": "Wrap the app layout with the Solutions scroll-sync provider so both the /solutions page and SiteHeader can share active-category state. Include logic (based on current route) to clear/disable the active category state when not on /solutions. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/SolutionsLandingPage.tsx",
-          "operation": "modify",
-          "description": "Implement IntersectionObserver-based scroll tracking across the 6 category section anchors to update the shared active-category state as sections enter the viewport (choose stable activation thresholds/root margins to avoid flicker). Only run this logic on /solutions. Verify the component's usage instructions before implementing."
-        },
-        {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Update the 'Our Solutions' dropdown behavior: when on /solutions and an active category is present from scroll-sync state, visually highlight the active category item and render the service links for that active category (sourced from the same solutionServices registry/routes). When not on /solutions (or no active category), keep the dropdown in its current/default state and do not apply scroll-sync. Verify the component's usage instructions before implementing."
+          "description": "Remove the timeout-based close behavior and any related refs/state. Ensure the header maintains a single authoritative openDropdownId and that state transitions are deterministic during rapid hover changes (e.g., immediately switch openDropdownId on new trigger hover; close only when pointer is outside both the active trigger and active portal panel). Maintain existing Link routing for dropdown items. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useDropdownHoverRegion.ts",
+          "operation": "modify",
+          "description": "Refine the hover-region hook behavior to support rapid transitions: if the active dropdown changes, update tracked trigger/panel elements immediately and avoid transient close/reopen flashing. Keep close behavior immediate when outside both regions. Verify the component's usage instructions before implementing."
         }
       ]
     }

@@ -13,7 +13,7 @@ export function SolutionsScrollSyncProvider({ children }: { children: ReactNode 
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 
-  // Reset active category when leaving /solutions
+  // Reset active category when leaving /solutions page
   useEffect(() => {
     if (currentPath !== '/solutions') {
       setActiveCategoryId(null);
