@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-top-level-header-navigation-order-so-the-menu-item-labeled-about-us-appears-immediately-after-the-menu-item-labeled-industries-we-serve-and-before-contact-us-in-both-the-desktop-header-navigation-and-the-mobile-menu",
-      "featureTitle": "Update the top-level header navigation order so the menu item labeled \"About Us\" appears immediately after the menu item labeled \"Industries We Serve\" (and before \"Contact Us\") in both the desktop header navigation and the mobile menu.",
+      "featureId": "feature-update-the-header-navigation-dropdown-labeled-industries-we-serve-to-include-exactly-these-10-items-and-keep-each-item-linking-to-its-corresponding-industry-page-route-1-corporate-enterprise-offices-industries-corporate-enterprise-2-education-digital-classrooms-industries-education-3-healthcare-facilities-industries-healthcare-4-manufacturing-industrial-facilities-industries-manufacturing-5-government-public-sector-industries-government-6-hospitality-convention-centers-industries-hospitality-7-banking-financial-institution-industries-banking-8-training-centers-skill-development-institutes-industries-training-centers-9-retail-commercial-spaces-industries-retail-10-live-events-corporate-events-industries-live-events-ensure-the-dropdown-label-text-matches-the-list-above-exactly-including-singular-plural-wording-and-that-both-desktop-dropdown-and-mobile-navigation-render-the-same-labels",
+      "featureTitle": "Update the header navigation dropdown labeled “Industries We Serve” to include exactly these 10 items (and keep each item linking to its corresponding industry page route):\n1) Corporate & Enterprise Offices → /industries/corporate-enterprise\n2) Education & Digital Classrooms → /industries/education\n3) Healthcare Facilities → /industries/healthcare\n4) Manufacturing & Industrial Facilities → /industries/manufacturing\n5) Government & Public Sector → /industries/government\n6) Hospitality & Convention Centers → /industries/hospitality\n7) Banking & Financial Institution → /industries/banking\n8) Training Centers & Skill Development Institutes → /industries/training-centers\n9) Retail & Commercial Spaces → /industries/retail\n10) Live Events & Corporate Events → /industries/live-events\n\nEnsure the dropdown label text matches the list above exactly (including singular/plural wording), and that both desktop dropdown and mobile navigation render the same labels.",
       "files": [
         "frontend/src/site/navigation.ts"
       ],
@@ -15,7 +15,25 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-content-for-each-of-the-10-industry-pages-in-the-content-registry-frontend-src-content-pages-ts-so-each-page-renders-the-user-provided-copy-for-that-industry-using-the-existing-contentpage-contentrenderer-block-types-for-each-industry-pageid-below-set-content-title-to-exactly-the-industry-item-name-matching-the-dropdown-label-and-render-these-content-parts-in-this-order-headline-as-prominent-text-near-the-top-of-the-page-content-subhead-call-to-action-text-request-a-consultation-get-a-project-proposal-render-as-two-links-to-the-existing-contact-route-preserving-the-visible-text-overview-paragraphs-core-services-each-service-as-a-distinct-sub-heading-plus-supporting-bullet-points-include-the-benefit-line-for-each-service-as-an-emphasis-bold-style-block-our-delivery-approach-bulleted-list-typical-deployment-locations-bulleted-list-why-clients-choose-speedlight-why-institutions-choose-speedlight-etc-bulleted-list-use-the-exact-section-title-from-the-user-s-copy-for-that-industry-next-steps-include-the-closing-sentence-the-two-cta-links-to-contact-preserving-visible-text-industry-pages-to-update-pageid-title-corporate-enterprise-corporate-enterprise-offices-education-education-digital-classrooms-healthcare-healthcare-facilities-manufacturing-manufacturing-industrial-facilities-government-government-public-sector-hospitality-hospitality-convention-centers-banking-banking-financial-institution-training-centers-training-centers-skill-development-institutes-retail-retail-commercial-spaces-live-events-live-events-corporate-events-use-the-exact-english-text-provided-by-the-user-for-each-industry-s-headline-subhead-overview-core-services-delivery-approach-typical-deployment-locations-why-choose-section-and-next-steps",
+      "featureTitle": "Replace the content for each of the 10 industry pages in the content registry (frontend/src/content/pages.ts) so each page renders the user-provided copy for that industry, using the existing ContentPage + ContentRenderer block types.\n\nFor each industry pageId below, set content.title to exactly the industry item name (matching the dropdown label), and render these content parts in this order:\n- Headline (as prominent text near the top of the page content)\n- Subhead\n- Call to action text: “Request a consultation · Get a project proposal” (render as two links to the existing /contact route, preserving the visible text)\n- Overview (paragraphs)\n- Core Services (each service as a distinct sub-heading plus supporting bullet points; include the “Benefit:” line for each service as an emphasis/bold-style block)\n- Our Delivery Approach (bulleted list)\n- Typical Deployment Locations (bulleted list)\n- Why Clients Choose Speedlight / Why Institutions Choose Speedlight / etc. (bulleted list; use the exact section title from the user’s copy for that industry)\n- Next Steps (include the closing sentence + the two CTA links to /contact, preserving visible text)\n\nIndustry pages to update (pageId → title):\n- corporate-enterprise → “Corporate & Enterprise Offices”\n- education → “Education & Digital Classrooms”\n- healthcare → “Healthcare Facilities”\n- manufacturing → “Manufacturing & Industrial Facilities”\n- government → “Government & Public Sector”\n- hospitality → “Hospitality & Convention Centers”\n- banking → “Banking & Financial Institution”\n- training-centers → “Training Centers & Skill Development Institutes”\n- retail → “Retail & Commercial Spaces”\n- live-events → “Live Events & Corporate Events”\n\nUse the exact English text provided by the user for each industry’s Headline, Subhead, Overview, Core Services, Delivery Approach, Typical Deployment Locations, Why Choose section, and Next Steps.",
+      "files": [
+        "frontend/src/content/pages.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }

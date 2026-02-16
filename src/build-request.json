@@ -1,34 +1,66 @@
 {
   "kind": "build_request",
-  "title": "Reorder header navigation: move 'About Us' after 'Industries We Serve'",
+  "title": "Update “Industries We Serve” dropdown items and populate each industry page with provided content",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-3",
-      "text": "Update the top-level header navigation order so the menu item labeled \"About Us\" appears immediately after the menu item labeled \"Industries We Serve\" (and before \"Contact Us\") in both the desktop header navigation and the mobile menu.",
+      "id": "REQ-1",
+      "text": "Update the header navigation dropdown labeled “Industries We Serve” to include exactly these 10 items (and keep each item linking to its corresponding industry page route):\n1) Corporate & Enterprise Offices → /industries/corporate-enterprise\n2) Education & Digital Classrooms → /industries/education\n3) Healthcare Facilities → /industries/healthcare\n4) Manufacturing & Industrial Facilities → /industries/manufacturing\n5) Government & Public Sector → /industries/government\n6) Hospitality & Convention Centers → /industries/hospitality\n7) Banking & Financial Institution → /industries/banking\n8) Training Centers & Skill Development Institutes → /industries/training-centers\n9) Retail & Commercial Spaces → /industries/retail\n10) Live Events & Corporate Events → /industries/live-events\n\nEnsure the dropdown label text matches the list above exactly (including singular/plural wording), and that both desktop dropdown and mobile navigation render the same labels.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "the header menu item  'about us ' should appear after 'industries we serve '"
+          "now for the drop down list of header item \"industries we serve\" have following items: ... these items are anchor  to the pages of same name as item name"
         ]
       },
       "acceptanceCriteria": [
-        "In the desktop header, the top-level menu order is: Home, Our Solutions, Industries We Serve, About Us, Contact Us.",
-        "In the mobile menu, the top-level menu order matches the desktop header order.",
-        "Only the ordering changes; labels, paths, dropdown children, and hover/dropdown behavior remain unchanged."
+        "In the site header, the “Industries We Serve” dropdown shows exactly 10 entries in the exact order and wording provided by the user.",
+        "Each dropdown item navigates to the correct existing industry route under /industries/...",
+        "On mobile navigation, the same 10 labels appear and navigate correctly.",
+        "No other navigation labels are unintentionally changed."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Replace the content for each of the 10 industry pages in the content registry (frontend/src/content/pages.ts) so each page renders the user-provided copy for that industry, using the existing ContentPage + ContentRenderer block types.\n\nFor each industry pageId below, set content.title to exactly the industry item name (matching the dropdown label), and render these content parts in this order:\n- Headline (as prominent text near the top of the page content)\n- Subhead\n- Call to action text: “Request a consultation · Get a project proposal” (render as two links to the existing /contact route, preserving the visible text)\n- Overview (paragraphs)\n- Core Services (each service as a distinct sub-heading plus supporting bullet points; include the “Benefit:” line for each service as an emphasis/bold-style block)\n- Our Delivery Approach (bulleted list)\n- Typical Deployment Locations (bulleted list)\n- Why Clients Choose Speedlight / Why Institutions Choose Speedlight / etc. (bulleted list; use the exact section title from the user’s copy for that industry)\n- Next Steps (include the closing sentence + the two CTA links to /contact, preserving visible text)\n\nIndustry pages to update (pageId → title):\n- corporate-enterprise → “Corporate & Enterprise Offices”\n- education → “Education & Digital Classrooms”\n- healthcare → “Healthcare Facilities”\n- manufacturing → “Manufacturing & Industrial Facilities”\n- government → “Government & Public Sector”\n- hospitality → “Hospitality & Convention Centers”\n- banking → “Banking & Financial Institution”\n- training-centers → “Training Centers & Skill Development Institutes”\n- retail → “Retail & Commercial Spaces”\n- live-events → “Live Events & Corporate Events”\n\nUse the exact English text provided by the user for each industry’s Headline, Subhead, Overview, Core Services, Delivery Approach, Typical Deployment Locations, Why Choose section, and Next Steps.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "for each page i have data as following:",
+          "for 'Corporate & Enterprise Offices' i have following data:",
+          "for 'Education & Digital Classrooms' i have following data:",
+          "for 'Healthcare Facilities' i have following data:",
+          "for 'Manufacturing & Industrial Facilities' i have following data:",
+          "for 'Government & Public Sector' i have following data:",
+          "for 'Hospitality & Convention Centers' i have following data:",
+          "for 'Banking & Financial Institution' i have following data:",
+          "for 'Training Centers & Skill Development Institutes' i have following data:",
+          "for 'Retail & Commercial Spaces' i have following data:",
+          "for 'Live Events & Corporate Events' i have following data:"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to each industry route renders a page with title matching the corresponding dropdown label exactly.",
+        "Each industry page includes sections for Headline, Subhead, CTA text, Overview, Core Services (with per-service Benefit lines), Our Delivery Approach, Typical Deployment Locations, Why Choose…, and Next Steps.",
+        "CTA links “Request a consultation” and “Get a project proposal” are clickable and route to /contact (hash-router compatible).",
+        "No industry page shows the old placeholder/summary content currently present in frontend/src/content/pages.ts for those pageIds."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (shadcn components are read-only).",
-    "Respect existing navigation IDs/paths; only reorder items."
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
+    "Respect the existing TanStack Router hash-history routing (do not introduce non-hash routing assumptions).",
+    "Keep backend as single-actor; no backend changes are required for this request."
   ],
   "nonGoals": [
-    "No changes to page content or routing.",
-    "No changes to footer navigation layout/content unless required as a direct consequence of reordering the shared navigation config."
+    "Do not add new backend storage or APIs for industry content (keep content static in the frontend registry).",
+    "Do not change existing industry route paths unless required to satisfy the exact dropdown list (current /industries/... paths should remain).",
+    "Do not create new image assets or change banner mappings unless required for rendering; existing page banners may remain as-is."
   ],
   "imageRequirements": {
     "required": [],

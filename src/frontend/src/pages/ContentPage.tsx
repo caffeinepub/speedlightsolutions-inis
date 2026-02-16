@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ContentRenderer from '../components/content/ContentRenderer';
-import { pageContents } from '../content/pages';
+import { pages } from '../content/pages';
+import { solutionServicePages } from '../content/solutionServicePages';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { getPageTheme } from '../site/pageThemes';
 import { resolvePageBanner, getFallbackBanner } from '../site/pageBannerResolver';
@@ -10,7 +11,8 @@ interface ContentPageProps {
 }
 
 export default function ContentPage({ pageId }: ContentPageProps) {
-  const content = pageContents[pageId];
+  // Try to get content from pages first, then from solutionServicePages
+  const content = pages[pageId] || solutionServicePages[pageId];
   const pageTheme = getPageTheme(pageId);
   const [banner, setBanner] = useState(resolvePageBanner(pageId));
   const [imageError, setImageError] = useState(false);

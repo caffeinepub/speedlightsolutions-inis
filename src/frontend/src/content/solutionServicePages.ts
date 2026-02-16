@@ -10,16 +10,21 @@ import { solutionServices } from './solutionServices';
 
 export const solutionServicePages: Record<string, PageContent> = {
   // Workplace Collaboration Services
-  'microsoft-teams-rooms': {
-    id: 'microsoft-teams-rooms',
-    title: 'Microsoft Teams Rooms',
+  'executive-boardroom-conference-room-av-integration': {
+    id: 'executive-boardroom-conference-room-av-integration',
+    title: 'Executive Boardroom & Conference Room AV Integration',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Transform your meeting spaces with certified Microsoft Teams Rooms solutions that deliver seamless video conferencing experiences. Our expertly designed and deployed Teams Rooms integrate native Microsoft Teams functionality with professional-grade audio, video, and control systems.',
+            text: 'We engineer high-performance boardroom and conference room environments that support strategic discussions, executive presentations, and global hybrid collaboration.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Our solutions integrate video conferencing platforms, precision audio systems, large-format displays, and centralized automation — ensuring reliability and operational simplicity.',
           },
         ],
       },
@@ -31,56 +36,46 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'One-touch join for scheduled Teams meetings',
-              'Native Teams interface on touch panels',
-              'Intelligent camera framing and speaker tracking',
-              'Content sharing with HDMI ingest',
-              'Dual-screen support for content and video',
-              'Microsoft certified hardware and software',
+              '4K video conferencing system integration',
+              'Ceiling and table-mounted microphone arrays',
+              'Professional speaker systems with acoustic tuning',
+              'Large-format displays and dual-screen configurations',
+              'Touch panel control and room automation',
+              'Platform integration with Microsoft Teams and Zoom',
+              'Acoustic optimization and DSP configuration',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'solutions',
+        title: 'Solutions We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Executive boardrooms',
+              'Corporate conference rooms',
+              'Strategy and decision-making spaces',
+              'Client presentation environments',
+              'Multi-purpose meeting rooms',
             ],
           },
         ],
       },
       {
         id: 'benefits',
-        title: 'Benefits',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Enhance hybrid meeting equity, simplify user experience, ensure enterprise-grade security, and maximize your Microsoft 365 investment with purpose-built Teams Rooms solutions.',
-          },
-        ],
-      },
-    ],
-  },
-
-  'zoom-rooms': {
-    id: 'zoom-rooms',
-    title: 'Zoom Rooms',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Deploy Zoom Rooms certified solutions that bring the power of Zoom video conferencing to your physical meeting spaces. Our Zoom Rooms implementations provide consistent, reliable video collaboration experiences across all room sizes.',
-          },
-        ],
-      },
-      {
-        id: 'capabilities',
-        title: 'Capabilities',
+        title: 'Business Benefits',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Zoom Rooms certified hardware bundles',
-              'Wireless content sharing with Zoom Rooms',
-              'Calendar integration and room scheduling',
-              'Zoom Phone integration for unified communications',
-              'Remote management and monitoring',
-              'Zoom Rooms Controller for intuitive operation',
+              '✔ Professional and executive-grade meeting experience',
+              '✔ Reliable hybrid collaboration',
+              '✔ Simplified room operation',
+              '✔ Clear, distraction-free communication',
             ],
           },
         ],
@@ -88,66 +83,70 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 
-  'huddle-room-solutions': {
-    id: 'huddle-room-solutions',
-    title: 'Huddle Room Solutions',
+  'smart-meeting-room-solutions': {
+    id: 'smart-meeting-room-solutions',
+    title: 'Smart Meeting Room Solutions',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Optimize small meeting spaces with purpose-built huddle room solutions that deliver big meeting room capabilities in compact footprints. Perfect for 2-6 person collaboration spaces, our huddle room packages provide professional video conferencing at an accessible price point.',
+            text: 'We transform traditional meeting rooms into intelligent, automated collaboration environments that streamline workflows and enhance user experience.',
           },
-        ],
-      },
-      {
-        id: 'components',
-        title: 'Solution Components',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'All-in-one video bars with integrated camera, microphone, and speaker',
-              'Compact touch controllers or wireless control',
-              'Single-cable USB connectivity for BYOD scenarios',
-              'Small-format displays optimized for close viewing',
-              'Wireless presentation and content sharing',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  'interactive-whiteboards': {
-    id: 'interactive-whiteboards',
-    title: 'Interactive Whiteboards',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
           {
             type: 'paragraph',
-            text: 'Enable dynamic collaboration with interactive whiteboard solutions that combine digital displays with intuitive touch and pen input. Our interactive whiteboards support brainstorming, annotation, and content sharing for in-room and remote participants.',
+            text: 'These smart environments integrate scheduling systems, automation controls, camera intelligence, and wireless connectivity for frictionless operation.',
           },
         ],
       },
       {
         id: 'features',
-        title: 'Interactive Features',
+        title: 'Key Features',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Multi-touch and pen input with palm rejection',
-              'Native whiteboarding apps and annotation tools',
-              'Integration with Microsoft Whiteboard and Miro',
-              'Save and share whiteboard sessions',
-              'Wireless screen mirroring from any device',
-              'Built-in video conferencing capabilities',
+              'Automated room control and scheduling integration',
+              'One-touch meeting start',
+              'Occupancy-based automation',
+              'Intelligent camera tracking and speaker framing',
+              'Wireless multi-device connectivity',
+              'Energy-efficient system management',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Ideal Applications',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Corporate offices',
+              'Innovation labs',
+              'Training environments',
+              'Hybrid collaboration spaces',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'benefits',
+        title: 'Business Benefits',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Faster meeting start times',
+              '✔ Reduced IT intervention',
+              '✔ Consistent user experience',
+              '✔ Future-ready infrastructure',
             ],
           },
         ],
@@ -155,33 +154,207 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 
-  'wireless-presentation': {
-    id: 'wireless-presentation',
-    title: 'Wireless Presentation Systems',
+  'huddle-room-small-room-collaboration-setup': {
+    id: 'huddle-room-small-room-collaboration-setup',
+    title: 'Huddle Room & Small Room Collaboration Setup',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Eliminate cables and streamline content sharing with wireless presentation systems that support BYOD environments. Our solutions enable seamless screen sharing from laptops, tablets, and smartphones to meeting room displays.',
+            text: 'We design compact yet powerful collaboration environments tailored for small teams and agile workspaces.',
+          },
+          {
+            type: 'paragraph',
+            text: 'These solutions deliver enterprise-grade video and audio performance within space-efficient configurations.',
           },
         ],
       },
       {
-        id: 'capabilities',
-        title: 'Presentation Capabilities',
+        id: 'features',
+        title: 'Key Features',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Cross-platform support (Windows, Mac, iOS, Android)',
-              'App-based and app-free connection options',
-              'Multi-user collaboration with split-screen',
-              'Moderation and host controls',
-              'AirPlay, Miracast, and Chromecast support',
-              'Enterprise security and network integration',
+              'All-in-one video conferencing systems',
+              'Wide-angle intelligent cameras',
+              'Integrated speaker and microphone arrays',
+              'Plug-and-play device connectivity',
+              'Small-room acoustic optimization',
+              'Cost-effective scalable deployment',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'use-cases',
+        title: 'Typical Use Cases',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Small meeting rooms',
+              'Focus collaboration zones',
+              'Startup and agile workspaces',
+              'Remote interaction hubs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'benefits',
+        title: 'Business Benefits',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Efficient space utilization',
+              '✔ Rapid deployment',
+              '✔ Consistent collaboration quality',
+              '✔ Budget-optimized solutions',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'wireless-presentation-screen-sharing-systems': {
+    id: 'wireless-presentation-screen-sharing-systems',
+    title: 'Wireless Presentation & Screen Sharing Systems',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Enable seamless, secure, and cable-free content sharing across devices and platforms.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Our wireless presentation systems simplify collaboration while maintaining enterprise-level security and performance standards.',
+          },
+        ],
+      },
+      {
+        id: 'features',
+        title: 'Key Features',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'One-click wireless screen sharing',
+              'Multi-user content collaboration',
+              'BYOD (Bring Your Own Device) support',
+              'Cross-platform compatibility',
+              'Secure enterprise-grade connectivity',
+              'Integration with existing AV systems',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'integration',
+        title: 'Integration Capabilities',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Corporate network compatibility',
+              'Centralized control system integration',
+              'Multi-display presentation environments',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'benefits',
+        title: 'Business Benefits',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Reduced cable clutter',
+              '✔ Faster meeting collaboration',
+              '✔ Improved productivity',
+              '✔ Flexible device compatibility',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'enterprise-townhall-auditorium-av-solutions': {
+    id: 'enterprise-townhall-auditorium-av-solutions',
+    title: 'Enterprise Townhall & Auditorium AV Solutions',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We design and integrate large-scale AV ecosystems for corporate townhalls, auditoriums, and communication venues — ensuring powerful sound, immersive visuals, and seamless audience engagement.',
+          },
+        ],
+      },
+      {
+        id: 'features',
+        title: 'Key Features',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Large venue sound reinforcement systems',
+              'Digital signal processing and acoustic engineering',
+              'LED display walls, projection, and video wall integration',
+              'Presenter confidence monitors and stage displays',
+              'Centralized AV control and automation',
+              'Live streaming and recording integration',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Corporate townhall spaces',
+              'Auditoriums and training centers',
+              'Large presentation venues',
+              'Internal communication halls',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'benefits',
+        title: 'Business Benefits',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Clear communication for large audiences',
+              '✔ Scalable and future-ready infrastructure',
+              '✔ Professional event execution',
+              '✔ Reliable performance in high-demand environments',
             ],
           },
         ],
@@ -190,169 +363,404 @@ export const solutionServicePages: Record<string, PageContent> = {
   },
 
   // Professional Sound Services
-  'conference-audio': {
-    id: 'conference-audio',
-    title: 'Conference Room Audio Systems',
+  'commercial-audio-system-design-installation': {
+    id: 'commercial-audio-system-design-installation',
+    title: 'Commercial Audio System Design & Installation',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ensure crystal-clear audio in every meeting with professional conference room audio systems designed for speech intelligibility and natural conversation. Our solutions eliminate echo, reduce background noise, and provide consistent audio coverage.',
+            text: 'We design and deploy scalable commercial audio systems engineered for consistent coverage, superior clarity, and operational reliability. Each solution is customized based on acoustic characteristics, architectural layout, and functional requirements.',
           },
         ],
       },
       {
-        id: 'components',
-        title: 'Audio Components',
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Ceiling and tabletop microphone arrays',
-              'Beamforming and acoustic echo cancellation',
-              'Integrated speakers with optimized placement',
-              'DSP-based audio processing and mixing',
-              'USB and network audio connectivity',
-              'Dante and AES67 audio networking',
+              'Detailed site survey and acoustic assessment',
+              'System architecture planning and equipment selection',
+              'Speaker placement design and coverage modeling',
+              'DSP configuration and signal routing',
+              'Professional installation, testing, and commissioning',
             ],
-          },
-        ],
-      },
-    ],
-  },
-
-  'auditorium-sound': {
-    id: 'auditorium-sound',
-    title: 'Auditorium Sound Systems',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Deliver powerful, intelligible audio to large audiences with professionally designed auditorium sound systems. Our solutions provide even coverage, speech clarity, and musical fidelity for presentations, performances, and events.',
-          },
-        ],
-      },
-      {
-        id: 'systems',
-        title: 'System Design',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Line array and point-source speaker systems',
-              'Acoustic modeling and system optimization',
-              'Wireless and wired microphone systems',
-              'Digital mixing consoles and processors',
-              'Assistive listening system integration',
-              'Recording and streaming audio infrastructure',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  'wireless-microphones': {
-    id: 'wireless-microphones',
-    title: 'Wireless Microphone Systems',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Provide presenters with freedom of movement using professional wireless microphone systems with reliable RF performance and broadcast-quality audio. Our solutions support handheld, lapel, and headset microphone configurations.',
-          },
-        ],
-      },
-      {
-        id: 'features',
-        title: 'System Features',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Digital wireless transmission for interference-free operation',
-              'Automatic frequency coordination and scanning',
-              'Rechargeable battery systems with runtime monitoring',
-              'Multiple microphone types (handheld, lavalier, headset)',
-              'Networked monitoring and control',
-              'Dante audio output for system integration',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  'dsp-audio-processing': {
-    id: 'dsp-audio-processing',
-    title: 'DSP & Audio Processing',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Optimize audio quality and system performance with digital signal processing solutions that provide precise control over every aspect of your audio system. Our DSP platforms enable sophisticated audio routing, mixing, and processing.',
-          },
-        ],
-      },
-      {
-        id: 'capabilities',
-        title: 'Processing Capabilities',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Acoustic echo cancellation and noise reduction',
-              'Automatic gain control and limiting',
-              'Parametric EQ and crossover filtering',
-              'Audio routing and matrix mixing',
-              'Feedback suppression and room tuning',
-              'Dante and AES67 network audio processing',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  'public-address-systems': {
-    id: 'public-address-systems',
-    title: 'Public Address Systems',
-    sections: [
-      {
-        id: 'overview',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Communicate effectively across large facilities with public address and mass notification systems. Our PA solutions provide clear announcements, background music, and emergency notifications throughout your organization.',
           },
         ],
       },
       {
         id: 'applications',
-        title: 'System Applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Corporate offices · Educational institutions · Hospitality environments · Retail spaces · Auditoriums',
+          },
+        ],
+      },
+      {
+        id: 'technology-partners',
+        title: 'Technology Partners',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'JBL Professional · Bose Professional · QSC · Biamp',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Campus-wide paging and announcements',
-              'Emergency notification and life safety',
-              'Background music and sound masking',
-              'Zone-based audio distribution',
-              'Integration with fire alarm and security systems',
-              'Scheduled announcements and bell schedules',
+              '✔ Precision-driven system design',
+              '✔ Certified installation standards',
+              '✔ Vendor-neutral approach',
+              '✔ End-to-end lifecycle support',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'conference-boardroom-audio-solutions': {
+    id: 'conference-boardroom-audio-solutions',
+    title: 'Conference & Boardroom Audio Solutions',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We implement high-intelligibility conferencing audio systems that ensure every participant is heard clearly — whether in-room or remote.',
+          },
+        ],
+      },
+      {
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Conference microphone systems and array solutions',
+              'Integrated speakers and amplification systems',
+              'Echo cancellation and advanced noise management',
+              'DSP tuning optimized for speech clarity',
+              'Seamless integration with video conferencing platforms',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Boardrooms · Meeting rooms · Training facilities · Collaboration spaces',
+          },
+        ],
+      },
+      {
+        id: 'technology-partners',
+        title: 'Technology Partners',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Shure · Biamp · QSC · Logitech · Poly',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Optimized for speech intelligibility',
+              '✔ Seamless VC integration',
+              '✔ Precision audio calibration',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'public-address-pa-announcement-systems': {
+    id: 'public-address-pa-announcement-systems',
+    title: 'Public Address (PA) & Announcement Systems',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We design and deploy reliable public address and announcement systems built for clarity, coverage, and scalability across facilities of any size.',
+          },
+        ],
+      },
+      {
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Centralized PA system architecture',
+              'Zonal audio distribution systems',
+              'Paging microphones and control consoles',
+              'Emergency announcement integration',
+              'Scalable amplification infrastructure',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Corporate campuses · Industrial facilities · Schools · Warehouses · Public infrastructure',
+          },
+        ],
+      },
+      {
+        id: 'technology-partners',
+        title: 'Technology Partners',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Bosch · JBL Professional · QSC',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ High reliability architecture',
+              '✔ Clear and intelligible voice projection',
+              '✔ Scalable and expandable systems',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'background-music-systems': {
+    id: 'background-music-systems',
+    title: 'Background Music Systems',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We create ambient audio systems that enhance customer experience and workplace environments through balanced and consistent sound distribution.',
+          },
+        ],
+      },
+      {
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Distributed speaker network design',
+              'Zonal music control solutions',
+              'Amplification and source integration',
+              'Sound level calibration',
+              'Centralized audio management systems',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Retail stores · Corporate offices · Hotels · Restaurants · Commercial environments',
+          },
+        ],
+      },
+      {
+        id: 'technology-partners',
+        title: 'Technology Partners',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Bose Professional · JBL Professional · QSC',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Uniform sound coverage',
+              '✔ Discreet and elegant integration',
+              '✔ Low-maintenance architecture',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'live-sound-event-audio-solutions': {
+    id: 'live-sound-event-audio-solutions',
+    title: 'Live Sound & Event Audio Solutions',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We provide professional live sound reinforcement systems engineered for performance-grade clarity and audience coverage across events and institutional venues.',
+          },
+        ],
+      },
+      {
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Event sound system design',
+              'Mixing console configuration',
+              'Stage monitoring systems',
+              'Portable PA systems',
+              'System tuning and on-site technical support',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Corporate events · Auditoriums · Conferences · Product launches · Institutional programs',
+          },
+        ],
+      },
+      {
+        id: 'technology-partners',
+        title: 'Technology Partners',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Yamaha · JBL Professional · Shure',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Professional audio engineering',
+              '✔ Reliable event deployment',
+              '✔ Experienced on-site technical support',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  'acoustic-consulting-sound-optimization': {
+    id: 'acoustic-consulting-sound-optimization',
+    title: 'Acoustic Consulting & Sound Optimization',
+    sections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'We analyze acoustic environments and optimize system performance to achieve balanced sound, improved speech intelligibility, and reduced reverberation.',
+          },
+        ],
+      },
+      {
+        id: 'what-we-deliver',
+        title: 'What We Deliver',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Acoustic measurement and environmental analysis',
+              'Reverberation control recommendations',
+              'Speaker placement optimization',
+              'DSP tuning and calibration',
+              'Performance validation testing',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'applications',
+        title: 'Applications',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Boardrooms · Auditoriums · Classrooms · Conference centers · Performance venues',
+          },
+        ],
+      },
+      {
+        id: 'why-speedlight',
+        title: 'Why Speedlight Infosolutions',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              '✔ Science-based acoustic optimization',
+              '✔ Measurable performance enhancement',
+              '✔ Environment-specific tuning approach',
             ],
           },
         ],
@@ -370,7 +778,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Create stunning visual impact with LED video wall solutions that deliver seamless, high-brightness displays at any size. Our LED video walls provide superior image quality for corporate lobbies, control rooms, retail environments, and event spaces.',
+            text: 'Create stunning visual impact with LED video wall solutions that deliver brilliant color, seamless imagery, and flexible configurations. Our LED walls range from fine-pitch indoor displays to large-format outdoor installations.',
           },
         ],
       },
@@ -383,11 +791,11 @@ export const solutionServicePages: Record<string, PageContent> = {
             ordered: false,
             items: [
               'Fine-pitch LED for close viewing distances',
-              'Indoor and outdoor LED display options',
-              'Curved and creative LED configurations',
-              'High dynamic range (HDR) and wide color gamut',
-              'Modular panels for flexible sizing',
-              'Front and rear serviceability options',
+              'Direct-view LED with seamless tile design',
+              'HDR and wide color gamut support',
+              'Modular and scalable configurations',
+              'Video wall processors and content management',
+              'Redundant power and signal distribution',
             ],
           },
         ],
@@ -404,7 +812,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Engage audiences with interactive touch displays that respond to multi-touch gestures and pen input. Our interactive displays support collaboration, wayfinding, product exploration, and educational applications.',
+            text: 'Enable collaborative interaction with large-format interactive displays that respond to touch, pen, and gesture input. Our interactive solutions support education, corporate collaboration, and public engagement applications.',
           },
         ],
       },
@@ -416,12 +824,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              '4K and 8K ultra-high-definition resolution',
-              'Multi-touch with up to 40 simultaneous touch points',
-              'Pen and stylus input with pressure sensitivity',
-              'Anti-glare and anti-fingerprint coatings',
-              'Built-in computing and wireless connectivity',
-              'Portrait and landscape orientation support',
+              'Multi-touch and multi-user interaction',
+              'Integrated collaboration software',
+              'Wireless content sharing and annotation',
+              '4K resolution and anti-glare surfaces',
+              'Built-in computing and connectivity',
+              'Mobile device integration',
             ],
           },
         ],
@@ -438,24 +846,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Communicate dynamically with digital signage solutions that deliver targeted content to the right audience at the right time. Our digital signage platforms support corporate communications, wayfinding, advertising, and information display.',
+            text: 'Communicate effectively with dynamic digital signage solutions that deliver the right message to the right audience at the right time. Our signage systems combine professional displays, content management software, and network infrastructure.',
           },
         ],
       },
       {
-        id: 'platform',
-        title: 'Signage Platform',
+        id: 'capabilities',
+        title: 'Signage Capabilities',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Cloud-based content management system',
-              'Scheduled and triggered content playback',
-              'Multi-zone layouts and playlists',
-              'Data integration for real-time information',
-              'Remote monitoring and device management',
-              'Analytics and proof-of-play reporting',
+              'Centralized content management and scheduling',
+              'Multi-location deployment and control',
+              'Interactive wayfinding and directories',
+              'Real-time data integration and feeds',
+              'Emergency messaging and alerts',
+              'Analytics and audience measurement',
             ],
           },
         ],
@@ -472,7 +880,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Deliver large-scale visual presentations with professional projection systems designed for auditoriums, classrooms, and large meeting spaces. Our projection solutions provide bright, clear images with flexible installation options.',
+            text: 'Deliver large-scale visual experiences with professional projection systems designed for education, corporate, and entertainment applications. Our solutions range from single projectors to multi-projector edge-blended installations.',
           },
         ],
       },
@@ -484,12 +892,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Laser phosphor projectors with long lamp life',
-              'Ultra-short-throw and standard-throw options',
+              'Laser phosphor and lamp-based projectors',
+              'Ultra-short-throw and standard throw options',
               '4K resolution and HDR support',
-              'Edge-blending for seamless multi-projector displays',
-              'Motorized lenses and lens shift',
-              'Network monitoring and control',
+              'Edge blending and geometric correction',
+              'Projection mapping and immersive displays',
+              'Automated screen and lift systems',
             ],
           },
         ],
@@ -506,7 +914,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Monitor critical operations with control room display solutions designed for 24/7 operation and mission-critical applications. Our control room displays provide reliable performance, flexible configuration, and comprehensive source management.',
+            text: 'Monitor critical operations with professional control room display solutions designed for 24/7 reliability and optimal situational awareness. Our systems support security operations centers, network operations centers, and command centers.',
           },
         ],
       },
@@ -518,12 +926,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Ultra-narrow bezel video walls',
-              '24/7 rated displays with extended warranties',
-              'Video wall processors and controllers',
+              'Video wall processors and matrix switching',
               'Multi-source display and windowing',
-              'Redundant power and failover capabilities',
-              'Calibration and color uniformity',
+              'Operator workstation displays',
+              'Redundant signal paths and failover',
+              'Ergonomic viewing and ambient light control',
+              'Integration with monitoring and management systems',
             ],
           },
         ],
@@ -531,7 +939,7 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 
-  // Networking & Connectivity Services
+  // Enterprise Networking & Connectivity Services
   'structured-cabling': {
     id: 'structured-cabling',
     title: 'Structured Cabling Infrastructure',
@@ -541,7 +949,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Build a reliable foundation for your AV and IT systems with professionally designed and installed structured cabling infrastructure. Our cabling solutions support current and future technology requirements with industry-standard performance.',
+            text: 'Build a reliable foundation for your technology systems with professional structured cabling infrastructure. Our cabling solutions support current requirements while providing scalability for future growth.',
           },
         ],
       },
@@ -553,12 +961,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Cat6A and Cat7 copper cabling',
-              'Single-mode and multi-mode fiber optic cabling',
-              'Cable pathway design and installation',
-              'Rack and cabinet infrastructure',
-              'Cable testing and certification',
+              'Category 6A and fiber optic cabling',
+              'Pathway design and cable management',
+              'Testing and certification',
               'Documentation and labeling',
+              'Rack and cabinet installation',
+              'Maintenance and troubleshooting',
             ],
           },
         ],
@@ -575,24 +983,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Distribute audio and video over standard network infrastructure with AV-over-IP solutions that provide flexibility, scalability, and cost-effectiveness. Our AV-over-IP systems support 4K video, low latency, and unlimited endpoints.',
+            text: 'Distribute audio and video content over standard network infrastructure with AV-over-IP solutions that provide flexibility, scalability, and cost-effectiveness. Our systems support both compressed and uncompressed video transmission.',
           },
         ],
       },
       {
-        id: 'technologies',
-        title: 'AV-over-IP Technologies',
+        id: 'capabilities',
+        title: 'AV-over-IP Capabilities',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'SDVoE (Software Defined Video over Ethernet)',
-              'Dante AV for audio and video distribution',
-              'NDI (Network Device Interface) support',
-              'JPEG 2000 and H.264/H.265 compression',
-              'Zero-latency switching and routing',
-              'Centralized management and control',
+              'Point-to-point and multicast distribution',
+              '4K and HDR video support',
+              'Low-latency encoding and decoding',
+              'Matrix switching and routing',
+              'Integration with control systems',
+              'Standards-based protocols (Dante, NDI, SDVoE)',
             ],
           },
         ],
@@ -609,7 +1017,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ensure reliable network performance for AV systems with managed network switches optimized for audio and video traffic. Our network solutions provide the bandwidth, quality of service, and redundancy required for professional AV applications.',
+            text: 'Ensure reliable network performance with enterprise-grade managed switches designed for AV and IT convergence. Our switch solutions provide the bandwidth, quality of service, and management features required for modern AV systems.',
           },
         ],
       },
@@ -621,12 +1029,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Gigabit and 10-Gigabit Ethernet ports',
-              'Power over Ethernet (PoE/PoE+/PoE++) support',
-              'VLAN and QoS configuration for AV traffic',
+              'Gigabit and 10-gigabit Ethernet ports',
+              'Power over Ethernet (PoE/PoE+)',
+              'VLAN and QoS configuration',
               'IGMP snooping for multicast optimization',
-              'Redundant power supplies and stacking',
-              'Network monitoring and SNMP management',
+              'Redundant power and stacking',
+              'Network monitoring and management',
             ],
           },
         ],
@@ -643,7 +1051,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Enable mobile collaboration and BYOD scenarios with enterprise-grade wireless infrastructure. Our wireless solutions provide secure, high-performance connectivity for wireless presentation, mobile control, and device connectivity.',
+            text: 'Provide seamless wireless connectivity with enterprise wireless infrastructure designed for high-density environments and mobile device support. Our wireless solutions ensure reliable coverage and performance for BYOD and collaboration applications.',
           },
         ],
       },
@@ -656,11 +1064,11 @@ export const solutionServicePages: Record<string, PageContent> = {
             ordered: false,
             items: [
               'Wi-Fi 6 and Wi-Fi 6E access points',
-              'Site survey and RF planning',
-              'Guest network and captive portal',
-              'Wireless security and authentication',
-              'Centralized wireless controller',
-              'Roaming and load balancing',
+              'Site survey and coverage planning',
+              'Centralized management and monitoring',
+              'Guest access and authentication',
+              'Seamless roaming and load balancing',
+              'Security and encryption',
             ],
           },
         ],
@@ -677,24 +1085,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Distribute video signals throughout your facility with flexible video distribution systems that support multiple sources and displays. Our solutions provide reliable signal extension, switching, and routing for any application.',
+            text: 'Distribute video content to multiple displays and locations with professional video distribution systems. Our solutions support both traditional matrix switching and modern IP-based distribution architectures.',
           },
         ],
       },
       {
-        id: 'systems',
-        title: 'Distribution Systems',
+        id: 'technologies',
+        title: 'Distribution Technologies',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'HDMI and DisplayPort matrix switchers',
-              'HDBaseT extenders and distribution',
-              'Fiber optic video transmission',
-              'Video scalers and format converters',
-              'Multi-viewer and video wall processors',
+              'HDMI and HDBaseT matrix switchers',
+              'Video over IP encoders and decoders',
+              'Scaling and format conversion',
+              'Multi-viewer and video wall processing',
               'Control system integration',
+              'HDCP management and EDID control',
             ],
           },
         ],
@@ -702,7 +1110,7 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 
-  // Intelligent Systems Services
+  // Intelligent Systems & Control Platforms Services
   'crestron-control': {
     id: 'crestron-control',
     title: 'Crestron Control Systems',
@@ -712,24 +1120,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Simplify complex AV environments with Crestron control systems that provide intuitive operation and centralized management. Our Crestron solutions integrate all room technologies into a single, easy-to-use interface.',
+            text: 'Simplify technology operation with Crestron control systems that provide intuitive interfaces and powerful automation. Our Crestron solutions integrate all aspects of your AV environment into a unified, easy-to-use system.',
           },
         ],
       },
       {
-        id: 'solutions',
-        title: 'Crestron Solutions',
+        id: 'features',
+        title: 'Crestron Features',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Crestron Flex unified communications systems',
-              'Crestron Mercury tabletop conferencing',
               'Touch panel and button panel interfaces',
-              'Crestron Home automation integration',
-              'XiO Cloud provisioning and management',
-              'Custom programming and user interfaces',
+              'Room scheduling and resource management',
+              'Lighting and shade control integration',
+              'Video conferencing automation',
+              'Mobile device control',
+              'Enterprise management and monitoring',
             ],
           },
         ],
@@ -746,24 +1154,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Deploy reliable Extron control systems that combine control, switching, and signal processing in integrated solutions. Our Extron implementations provide consistent user experiences and simplified system management.',
+            text: 'Deliver reliable AV control with Extron systems known for their stability and ease of programming. Our Extron solutions provide comprehensive control of audio, video, and environmental systems.',
           },
         ],
       },
       {
-        id: 'products',
-        title: 'Extron Products',
+        id: 'capabilities',
+        title: 'Extron Capabilities',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Extron Pro Series control processors',
-              'TouchLink Pro touchpanels and controllers',
-              'Extron Room Scheduling solutions',
-              'Integrated switcher/control systems',
-              'Global Configurator programming software',
-              'Extron AV switching and distribution',
+              'Control processors and touch panels',
+              'Integrated switching and control',
+              'Audio DSP and matrix switching',
+              'Video scaling and distribution',
+              'Scheduling and room booking',
+              'GlobalViewer Enterprise management',
             ],
           },
         ],
@@ -780,7 +1188,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Enhance user experience and energy efficiency with intelligent room automation that responds to occupancy, schedules, and environmental conditions. Our automation solutions integrate AV, lighting, shades, and HVAC control.',
+            text: 'Create intelligent spaces that respond to occupancy, scheduling, and user preferences with room automation solutions. Our automation systems improve user experience while reducing energy consumption and operational costs.',
           },
         ],
       },
@@ -792,12 +1200,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Occupancy-based system power management',
-              'Automated lighting and shade control',
-              'Temperature and climate control integration',
-              'Preset scenes for different meeting types',
-              'Calendar integration for scheduled automation',
-              'Energy monitoring and reporting',
+              'Occupancy-based system control',
+              'Automated lighting and shade adjustment',
+              'Temperature and climate control',
+              'One-touch meeting start',
+              'Scheduled system power management',
+              'Integration with building management systems',
             ],
           },
         ],
@@ -814,7 +1222,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Optimize meeting room utilization with intelligent room scheduling systems that integrate with your calendar platform. Our scheduling solutions provide real-time room availability, booking management, and usage analytics.',
+            text: 'Optimize space utilization with room scheduling systems that integrate with calendar platforms and provide real-time availability information. Our scheduling solutions reduce meeting conflicts and improve resource management.',
           },
         ],
       },
@@ -826,12 +1234,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              'Microsoft 365 and Google Workspace integration',
-              'Room panel displays with touch interface',
-              'Mobile app for room booking and wayfinding',
-              'Check-in and no-show detection',
-              'Room utilization analytics and reporting',
-              'Hot-desking and workspace reservation',
+              'Calendar integration (Microsoft 365, Google Workspace)',
+              'Room panel displays with availability',
+              'Mobile booking and check-in',
+              'Analytics and utilization reporting',
+              'Automated room release for no-shows',
+              'Wayfinding integration',
             ],
           },
         ],
@@ -848,24 +1256,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Empower users to control meeting room technology from their personal mobile devices. Our mobile control solutions provide intuitive apps and web interfaces for AV system operation without dedicated touch panels.',
+            text: 'Put AV control in users\' hands with mobile device control solutions that work with smartphones and tablets. Our mobile control systems provide intuitive interfaces for managing meeting room technology from personal devices.',
           },
         ],
       },
       {
         id: 'features',
-        title: 'Mobile Features',
+        title: 'Mobile Control Features',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'iOS and Android native apps',
-              'Web-based control interfaces',
-              'BYOD support without app installation',
-              'Source selection and volume control',
-              'Preset recall and system power',
-              'Help and support integration',
+              'iOS and Android app support',
+              'Wireless content sharing',
+              'Video conferencing control',
+              'Audio and video source selection',
+              'Lighting and shade adjustment',
+              'Room booking and check-in',
             ],
           },
         ],
@@ -873,7 +1281,7 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 
-  // Lifecycle Support Services
+  // System Lifecycle & Support Solutions Services
   'system-design': {
     id: 'system-design',
     title: 'System Design & Consultation',
@@ -883,7 +1291,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Partner with our experienced design team to create AV solutions that meet your specific requirements and budget. Our consultation and design services ensure your technology investments deliver maximum value and performance.',
+            text: 'Start your project right with professional system design and consultation services. Our design team works with you to understand requirements, develop solutions, and create detailed documentation for successful implementation.',
           },
         ],
       },
@@ -898,9 +1306,9 @@ export const solutionServicePages: Record<string, PageContent> = {
               'Needs assessment and requirements gathering',
               'Technology recommendations and system architecture',
               'Detailed design drawings and documentation',
-              'Budget estimation and value engineering',
-              'Acoustic modeling and room analysis',
-              'Standards compliance and best practices',
+              'Equipment specifications and budgeting',
+              'Acoustic modeling and analysis',
+              'Project planning and scheduling',
             ],
           },
         ],
@@ -917,23 +1325,23 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ensure flawless system deployment with professional installation and commissioning services. Our certified technicians follow industry best practices to deliver systems that perform to specification from day one.',
+            text: 'Ensure flawless system performance with professional installation and commissioning services. Our certified technicians follow industry best practices to deliver systems that meet specifications and exceed expectations.',
           },
         ],
       },
       {
-        id: 'process',
-        title: 'Installation Process',
+        id: 'services',
+        title: 'Installation Services',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Project management and coordination',
-              'Equipment installation and rack building',
-              'Cable termination and testing',
-              'System programming and configuration',
-              'Testing, calibration, and optimization',
+              'Professional equipment installation and mounting',
+              'Cable installation and termination',
+              'System integration and programming',
+              'Testing and quality assurance',
+              'System optimization and tuning',
               'Documentation and as-built drawings',
             ],
           },
@@ -951,24 +1359,24 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Maximize system adoption and user satisfaction with comprehensive training programs tailored to your organization. Our training services ensure users can confidently operate technology and troubleshoot common issues.',
+            text: 'Maximize system adoption and effectiveness with comprehensive user training programs. Our training services ensure users understand how to operate technology confidently and take advantage of all system capabilities.',
           },
         ],
       },
       {
         id: 'training',
-        title: 'Training Options',
+        title: 'Training Programs',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'End-user training for meeting room operation',
-              'Administrator training for system management',
-              'Train-the-trainer programs',
-              'Custom training materials and quick reference guides',
-              'On-site and remote training sessions',
-              'Ongoing training for new employees',
+              'End-user operation training',
+              'Administrator and IT staff training',
+              'Custom training materials and documentation',
+              'Hands-on practice sessions',
+              'Video tutorials and quick reference guides',
+              'Follow-up training and refresher courses',
             ],
           },
         ],
@@ -985,7 +1393,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Protect your technology investment with proactive maintenance and responsive support services. Our support programs minimize downtime, extend system life, and ensure consistent performance.',
+            text: 'Keep systems running at peak performance with comprehensive maintenance and support services. Our support programs provide peace of mind with preventive maintenance, rapid response, and expert technical assistance.',
           },
         ],
       },
@@ -997,12 +1405,12 @@ export const solutionServicePages: Record<string, PageContent> = {
             type: 'list',
             ordered: false,
             items: [
-              '24/7 helpdesk and remote support',
-              'Preventive maintenance visits',
-              'Priority response for critical issues',
-              'Spare parts inventory and management',
-              'Software updates and security patches',
-              'Extended warranty and equipment replacement',
+              '24/7 helpdesk and technical support',
+              'Preventive maintenance programs',
+              'Emergency repair and replacement',
+              'Software updates and patches',
+              'System health monitoring',
+              'Annual system inspections and optimization',
             ],
           },
         ],
@@ -1019,7 +1427,7 @@ export const solutionServicePages: Record<string, PageContent> = {
         blocks: [
           {
             type: 'paragraph',
-            text: 'Gain visibility into system health and performance with remote monitoring and management services. Our monitoring solutions provide proactive alerts, usage analytics, and remote troubleshooting capabilities.',
+            text: 'Proactively manage system health and performance with remote monitoring and management services. Our monitoring solutions identify and resolve issues before they impact users, ensuring maximum uptime and reliability.',
           },
         ],
       },
@@ -1032,10 +1440,10 @@ export const solutionServicePages: Record<string, PageContent> = {
             ordered: false,
             items: [
               'Real-time system status monitoring',
-              'Automated alerts for system issues',
-              'Usage analytics and reporting',
+              'Automated alerts and notifications',
               'Remote diagnostics and troubleshooting',
-              'Firmware and software update management',
+              'Usage analytics and reporting',
+              'Firmware and software management',
               'Predictive maintenance and trend analysis',
             ],
           },
@@ -1044,17 +1452,3 @@ export const solutionServicePages: Record<string, PageContent> = {
     ],
   },
 };
-
-/**
- * Get page content for a service by pageId
- */
-export function getServicePageContent(pageId: string): PageContent | undefined {
-  return solutionServicePages[pageId];
-}
-
-/**
- * Get all service page IDs
- */
-export function getAllServicePageIds(): string[] {
-  return Object.keys(solutionServicePages);
-}

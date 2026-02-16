@@ -85,12 +85,12 @@ export const navigationConfig: NavigationItem[] = [
       },
       {
         id: 'banking',
-        label: 'Banking & Financial Institutions',
+        label: 'Banking & Financial Institution',
         path: '/industries/banking',
       },
       {
         id: 'training-centers',
-        label: 'Training Centers & Skill Development',
+        label: 'Training Centers & Skill Development Institutes',
         path: '/industries/training-centers',
       },
       {

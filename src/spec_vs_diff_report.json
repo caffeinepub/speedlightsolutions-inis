@@ -1,28 +1,60 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T20:35:38.825Z",
-  "summary": "REQ-3 appears implemented by placing the top-level \"About Us\" navigation item immediately after \"Industries We Serve\" and before \"Contact Us\" in the shared navigation config. However, the diff content shows additional navigation content/utility code that is not requested by the BuildRequest, which may violate the \"only reorder items\" constraint.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-16T11:02:37.866Z",
+  "summary": "REQ-1 appears implemented via updates to the navigation configuration for the “Industries We Serve” dropdown. REQ-2 cannot be verified from the provided (truncated) diff content for pages.ts; additionally, unrelated content/navigation helper/state-summary changes appear in the diff that were not requested.",
+  "missing_requirements": [
     {
-      "description": "Added/retained a \"Custom Domain\" navigation entry under the \"About Us\" dropdown (\"/custom-domain\"), which is not part of the requested reorder and could violate the \"only reorder items; labels/paths/children unchanged\" constraint.",
-      "reason": "BuildRequest REQ-3 and constraints specify only reordering existing navigation items with no changes to labels/paths/children. The diff shows a specific additional child link under About Us that is unrelated to reordering.",
+      "id": "REQ-1",
+      "requirement": "Ensure both desktop dropdown and mobile navigation render the same 10 industry labels and navigate correctly.",
+      "reason": "The diff shows the updated labels/routes in the shared navigation config, but does not include evidence of how the mobile navigation consumes this config or renders labels/links; no header/mobile component diff is provided.",
       "evidence": [
         "frontend/src/site/navigation.ts"
       ]
     },
     {
-      "description": "Added/retained a helper function `getAllRoutes` that recursively extracts routes from the navigation config, which is not requested by REQ-3.",
-      "reason": "REQ-3 only asks to reorder navigation items; introducing utility functions is outside scope unless it already existed. The diff summary provides no evidence this function existed previously.",
+      "id": "REQ-2",
+      "requirement": "Replace the content for each of the 10 industry pages in frontend/src/content/pages.ts with the user-provided copy, with titles exactly matching the dropdown labels and required section order (Headline, Subhead, CTAs to /contact, Overview, Core Services with Benefit lines, Delivery Approach, Typical Deployment Locations, Why Choose section title per copy, Next Steps with CTAs).",
+      "reason": "frontend/src/content/pages.ts is truncated and the visible portion only shows updates to solution pages; the diff snippet does not show the 10 industry page entries or the required block structure/ordering/CTA links, so implementation cannot be confirmed from the provided evidence.",
       "evidence": [
-        "frontend/src/site/navigation.ts"
+        "frontend/src/content/pages.ts (truncated)"
       ]
     }
   ],
-  "confidence": 0.62,
+  "hallucinated_features": [
+    {
+      "description": "Added/modified content for non-industry pages (e.g., Solutions landing and solution category pages like “workplace-collaboration”, “professional-sound”).",
+      "reason": "BuildRequest only asks to update the Industries dropdown items and replace content for the 10 industry pages; changes to solution page copy are not requested.",
+      "evidence": [
+        "frontend/src/content/pages.ts (truncated)"
+      ]
+    },
+    {
+      "description": "Added/modified a navigation helper function getAllRoutes in the navigation config module.",
+      "reason": "BuildRequest only requires updating the Industries dropdown labels/paths; adding a route extraction helper is not requested.",
+      "evidence": [
+        "frontend/src/site/navigation.ts"
+      ]
+    },
+    {
+      "description": "Updated project tracking/state summary in project_state.json.",
+      "reason": "BuildRequest does not request changes to project_state.json; this appears to be meta/project bookkeeping rather than implementing REQ-1/REQ-2.",
+      "evidence": [
+        "project_state.json (truncated)"
+      ]
+    },
+    {
+      "description": "Updated frontend-file-summaries.txt content describing many additional changes beyond the 4 modified files.",
+      "reason": "BuildRequest does not require maintaining this summary file, and the claims inside describe changes not evidenced in the provided modified-file list.",
+      "evidence": [
+        "frontend-file-summaries.txt (truncated)"
+      ]
+    }
+  ],
+  "confidence": 0.56,
   "changed_files": [
     "frontend-file-summaries.txt",
+    "frontend/src/content/pages.ts",
     "frontend/src/site/navigation.ts",
     "project_state.json"
   ]

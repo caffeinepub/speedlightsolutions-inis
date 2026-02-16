@@ -1,58 +1,52 @@
 import type { PageContent } from './contentTypes';
-import { solutionServicePages } from './solutionServicePages';
 import { getServicesForCategory } from './solutionServices';
 
-export const pageContents: Record<string, PageContent> = {
-  // Our Solutions Landing
+/**
+ * Page Content Registry
+ * 
+ * This file contains the structured content for all pages in the application.
+ * Content is organized into sections and blocks for flexible rendering.
+ */
+
+export const pages: Record<string, PageContent> = {
+  // Solutions Landing Page
   solutions: {
     id: 'solutions',
     title: 'Our Solutions',
     sections: [
       {
-        id: 'intro',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'We deliver comprehensive audiovisual and technology solutions designed to transform how organizations communicate, collaborate, and operate. Our integrated approach combines cutting-edge hardware, intelligent software, and expert services to create seamless experiences across every environment.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers enterprise-grade audio-visual, collaboration, and IT infrastructure solutions engineered for performance, reliability, and scalability.',
           },
           {
             type: 'paragraph',
-            text: 'From boardrooms to classrooms, from manufacturing floors to convention centers, our solutions empower teams to work smarter, connect better, and achieve more.',
-          },
-        ],
-      },
-      {
-        id: 'solution-categories',
-        title: 'Solution Categories',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Workplace Collaboration & Video Conferencing Technologies',
-              'Integrated Professional Sound Systems',
-              'Display & Visualization Solutions',
-              'Enterprise Networking & Connectivity Solutions',
-              'Intelligent Systems & Control Platforms',
-              'System Lifecycle & Support Solutions',
-            ],
+            text: 'From intelligent meeting rooms to mission-critical control environments, we design, integrate, and support technology ecosystems that empower modern organizations to communicate, collaborate, and operate with confidence.',
           },
         ],
       },
     ],
   },
 
-  // Solutions Subpages with service links
+  // Workplace Collaboration & Video Conferencing Technologies
   'workplace-collaboration': {
     id: 'workplace-collaboration',
     title: 'Workplace Collaboration & Video Conferencing Technologies',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Transform your meeting spaces with state-of-the-art video conferencing and collaboration technologies. Our solutions enable seamless communication across distributed teams, ensuring every participant can contribute effectively regardless of location.',
+            text: 'Speedlight Infosolutions Pvt Ltd designs and deploys intelligent collaboration environments that enable seamless communication, hybrid work, and enterprise-grade video conferencing.',
+          },
+          {
+            type: 'paragraph',
+            text: 'From executive boardrooms to agile huddle spaces, our solutions integrate leading platforms, professional AV systems, and centralized automation — ensuring reliability, clarity, and operational simplicity across every meeting environment.',
           },
         ],
       },
@@ -69,54 +63,25 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'offerings',
-        title: 'Key Offerings',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Microsoft Teams Rooms and Zoom Rooms certified solutions',
-              'High-definition PTZ cameras and intelligent framing systems',
-              'Professional-grade speakerphones and microphone arrays',
-              'Interactive whiteboards and wireless presentation systems',
-              'Unified communications platforms integration',
-              'Room scheduling and analytics solutions',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'benefits',
-        title: 'Benefits',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Enhanced remote collaboration and productivity',
-              'Reduced travel costs and carbon footprint',
-              'Improved meeting equity for hybrid teams',
-              'Simplified user experience with one-touch join',
-              'Enterprise-grade security and reliability',
-            ],
-          },
-        ],
-      },
     ],
   },
 
+  // Integrated Professional Sound Systems
   'professional-sound': {
     id: 'professional-sound',
     title: 'Integrated Professional Sound Systems',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Deliver crystal-clear audio experiences with our professional sound system solutions. From conference rooms to auditoriums, we design and deploy acoustic environments that ensure every word is heard with perfect clarity.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers precision-engineered professional audio solutions designed for clarity, coverage, and operational reliability across corporate, institutional, and live event environments.',
+          },
+          {
+            type: 'paragraph',
+            text: 'From boardroom conferencing to large-venue sound reinforcement, our systems integrate advanced DSP, acoustic optimization, and enterprise-grade components — ensuring intelligible communication and immersive audio experiences.',
           },
         ],
       },
@@ -133,47 +98,25 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'solutions',
-        title: 'Sound Solutions',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Ceiling and wall-mounted speaker systems',
-              'Wireless microphone systems and lapel mics',
-              'Digital signal processors and audio mixers',
-              'Acoustic treatment and sound masking',
-              'Public address and emergency notification systems',
-              'Audio conferencing and voice lift systems',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'applications',
-        title: 'Applications',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Our professional sound systems serve diverse environments including corporate boardrooms, training facilities, houses of worship, performing arts centers, retail spaces, and hospitality venues.',
-          },
-        ],
-      },
     ],
   },
 
+  // Display & Visualization Solutions
   'display-visualization': {
     id: 'display-visualization',
     title: 'Display & Visualization Solutions',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Create stunning visual experiences with our comprehensive display and visualization solutions. We provide everything from single displays to massive video walls, ensuring your content makes maximum impact.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers enterprise-grade display and visualization environments engineered for clarity, reliability, and seamless AV integration.',
+          },
+          {
+            type: 'paragraph',
+            text: 'From corporate workspaces to mission-critical control rooms, our solutions are designed to deliver impactful visual communication, operational efficiency, and scalable deployment across modern environments.',
           },
         ],
       },
@@ -190,54 +133,25 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'technologies',
-        title: 'Display Technologies',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'LED video walls and fine-pitch LED displays',
-              'Large-format LCD and OLED displays',
-              'Interactive touchscreen displays and kiosks',
-              'Projection systems and edge-blending solutions',
-              'Digital signage and content management platforms',
-              'Control room and command center displays',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'features',
-        title: 'Key Features',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              '4K and 8K ultra-high-definition resolution',
-              'HDR and wide color gamut support',
-              'Seamless video wall processing',
-              'Remote monitoring and management',
-              'Energy-efficient operation',
-            ],
-          },
-        ],
-      },
     ],
   },
 
+  // Enterprise Networking & Connectivity Solutions
   'networking-connectivity': {
     id: 'networking-connectivity',
     title: 'Enterprise Networking & Connectivity Solutions',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Build a robust, secure, and scalable network infrastructure that supports your AV systems and business operations. Our networking solutions ensure reliable connectivity and optimal performance for all your technology investments.',
+            text: 'Speedlight Infosolutions Pvt Ltd designs and deploys secure, scalable, and high-performance networking environments that power modern enterprise operations.',
+          },
+          {
+            type: 'paragraph',
+            text: 'From structured cabling foundations to advanced AV over IP ecosystems, we deliver reliable connectivity infrastructures engineered for performance, security, and long-term scalability.',
           },
         ],
       },
@@ -254,47 +168,25 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'networking-services',
-        title: 'Networking Services',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Structured cabling and fiber optic infrastructure',
-              'Managed network switches and routers',
-              'Wireless access points and coverage optimization',
-              'Network security and firewall solutions',
-              'AV-over-IP and video distribution systems',
-              'Network monitoring and performance management',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'standards',
-        title: 'Industry Standards',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We design and implement networks following industry best practices including Dante, AVB, NDI, and SDVoE standards, ensuring interoperability and future-proof scalability.',
-          },
-        ],
-      },
     ],
   },
 
+  // Intelligent Systems & Control Platforms
   'intelligent-systems': {
     id: 'intelligent-systems',
     title: 'Intelligent Systems & Control Platforms',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Simplify complex technology environments with intelligent control systems that put power at your fingertips. Our automation and control solutions make sophisticated AV systems easy to operate for users of all technical levels.',
+            text: 'Speedlight Infosolutions Pvt Ltd designs and deploys intelligent control ecosystems that unify audio, video, collaboration, and environmental technologies into seamless, centralized platforms.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Our solutions simplify system management, enhance operational efficiency, and deliver intuitive user experiences across enterprise and premium residential environments.',
           },
         ],
       },
@@ -311,47 +203,25 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'capabilities',
-        title: 'Control Capabilities',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Centralized AV control systems and touch panels',
-              'Room automation and environmental controls',
-              'Scheduling and resource management integration',
-              'Mobile device control and BYOD support',
-              'Voice control and AI-powered automation',
-              'Custom user interfaces and presets',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'platforms',
-        title: 'Leading Platforms',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We partner with industry leaders including Crestron, Extron, AMX, and QSC to deliver reliable, scalable control solutions tailored to your specific requirements.',
-          },
-        ],
-      },
     ],
   },
 
+  // System Lifecycle & Support Solutions
   'lifecycle-support': {
     id: 'lifecycle-support',
     title: 'System Lifecycle & Support Solutions',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Maximize your technology investment with comprehensive lifecycle management and support services. From initial design through ongoing maintenance, we ensure your systems deliver consistent performance and value.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers comprehensive lifecycle management and technical support services to ensure enterprise AV and IT infrastructures remain reliable, optimized, and future-ready.',
+          },
+          {
+            type: 'paragraph',
+            text: 'From system upgrades to emergency response, we provide structured support frameworks that protect technology investments and ensure uninterrupted operational performance.',
           },
         ],
       },
@@ -368,115 +238,276 @@ export const pageContents: Record<string, PageContent> = {
           },
         ],
       },
-      {
-        id: 'support-services',
-        title: 'Support Services',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Consultation and system design services',
-              'Professional installation and commissioning',
-              'User training and documentation',
-              '24/7 helpdesk and remote support',
-              'Preventive maintenance programs',
-              'System upgrades and technology refresh planning',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'commitment',
-        title: 'Our Commitment',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We stand behind every installation with responsive support, proactive monitoring, and continuous optimization to ensure your systems perform at their best throughout their entire lifecycle.',
-          },
-        ],
-      },
     ],
   },
 
-  // Industries Landing
+  // Industries Landing Page
   industries: {
     id: 'industries',
     title: 'Industries We Serve',
     sections: [
       {
-        id: 'intro',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Our audiovisual and technology solutions serve diverse industries, each with unique communication and collaboration needs. We bring deep vertical expertise and proven methodologies to deliver solutions that address industry-specific challenges and opportunities.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers industry-specific AV and IT infrastructure solutions tailored to the unique operational requirements, compliance standards, and communication needs of diverse sectors.',
           },
-        ],
-      },
-      {
-        id: 'sectors',
-        title: 'Industry Sectors',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Corporate & Enterprise Offices',
-              'Education & Digital Classrooms',
-              'Healthcare Facilities',
-              'Manufacturing & Industrial Facilities',
-              'Government & Public Sector',
-              'Hospitality & Convention Centers',
-              'Banking & Financial Institutions',
-              'Training Centers & Skill Development Institutes',
-              'Retail & Commercial Spaces',
-              'Live Events & Corporate Events',
-            ],
+            type: 'paragraph',
+            text: 'From corporate enterprises to healthcare facilities, our solutions are engineered to enhance collaboration, streamline operations, and support mission-critical environments with reliability and scalability.',
           },
         ],
       },
     ],
   },
 
-  // Industry Subpages
+  // Industry Pages
   'corporate-enterprise': {
     id: 'corporate-enterprise',
     title: 'Corporate & Enterprise Offices',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Future-ready workplace technology that empowers collaboration, simplifies operations, and protects your IT investment.',
+          },
           {
             type: 'paragraph',
-            text: 'Empower your workforce with technology solutions that enhance collaboration, productivity, and employee experience. From executive boardrooms to open collaboration spaces, we create environments where teams thrive.',
+            text: 'End-to-end design, deployment and support of integrated AV & IT systems for headquarters, regional offices and executive facilities.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Corporate Solutions',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Executive boardrooms with premium AV systems',
-              'Huddle rooms and collaboration spaces',
-              'Town hall and all-hands meeting facilities',
-              'Digital signage and corporate communications',
-              'Visitor management and reception displays',
-              'Hybrid workplace technology enablement',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'benefits',
-        title: 'Business Benefits',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Improve meeting effectiveness, reduce real estate costs through flexible space utilization, attract and retain top talent with modern workplace technology, and support distributed teams with seamless collaboration tools.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers turnkey AV and IT infrastructure for corporate environments. We combine practical design, disciplined project execution and dependable support to deliver systems that are secure, intuitive and easy to operate. Our solutions are engineered for reliability, scalability and low total cost of ownership.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Boardroom & Executive Meeting Rooms',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Full turnkey AV fit-out: cameras, DSP audio, microphones, displays and signal management.',
+              'Seamless presentation workflows and wireless content sharing.',
+              'Commissioning and acoustic tuning for optimal speech intelligibility.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Executive-grade meeting experiences with predictable performance.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Unified Collaboration & Hybrid Meeting Solutions',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Certified meeting-room deployments, MTR and UC-ready rooms.',
+              'Intelligent camera and audio solutions for hybrid participation.',
+              'Simplified UX with one-touch meeting start and calendar integration.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable hybrid meetings that reduce friction and travel.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training Rooms & Collaboration Spaces',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Interactive displays, lecture capture and multi-zone audio.',
+              'Flexible AV configurations for instructor-led and workshop modes.',
+              'Recording and distribution workflows for on-demand training.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Higher engagement and repeatable training outcomes.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Digital Signage & Corporate Communications',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Lobby and internal comms displays, content scheduling and CMS integration.',
+              'Real-time dashboards for KPIs and operational messaging.',
+              'Managed rollouts across multiple locations.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent, centrally managed corporate messaging.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Intelligent Room Control & Automation',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Centralized room control panels and scheduling integration.',
+              'Automated workflows: lighting, AV sources, blinds and presets.',
+              'Remote monitoring and health-check reporting.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reduced operational complexity and faster incident resolution.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Enterprise Network & Connectivity for AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling, enterprise switching, VLAN design and secure wireless.',
+              'AV-over-IP architecture and QoS planning for high-availability media.',
+              'Rack design, power planning and redundancy recommendations.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Network foundations that protect AV performance and security.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation.',
+              'Commissioning, user training and as-built documentation.',
+              'Preventive maintenance, remote diagnostics and SLA-based support.',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and longer equipment life.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Discovery & Requirements: Stakeholder workshops and technical site surveys.',
+              'Design & Documentation: Scalable designs, BOM, schematics and deployment plan.',
+              'Implementation & Commissioning: Certified installation, integration and tuning.',
+              'Training & Handover: User training, admin training and detailed documentation.',
+              'Support & Optimization: Preventive maintenance, upgrades and managed services.',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'We follow clear project governance, staged testing and sign-off milestones to ensure timely delivery and quality outcomes.',
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Corporate headquarters & executive suites',
+              'Regional and satellite offices',
+              'Executive briefing centers and boardrooms',
+              'Training & learning centers',
+              'Collaboration hubs and innovation labs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Clients Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Single-vendor project accountability from design through support',
+              'Experienced engineers with enterprise deployment discipline',
+              'Solutions tailored to operational workflows and security policies',
+              'Focus on usability: intuitive controls and minimal training overhead',
+              'Transparent budget planning and lifecycle cost management',
+              'Fast, documented support processes and preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To discuss a site assessment, feasibility study or project proposal, contact Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -488,39 +519,241 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Education & Digital Classrooms',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Connected learning environments that enable interactive teaching, hybrid delivery, and scalable campus technology.',
+          },
           {
             type: 'paragraph',
-            text: 'Transform learning environments with technology that engages students, empowers educators, and enables innovative teaching methodologies. Our education solutions support in-person, remote, and hybrid learning models.',
+            text: 'End-to-end AV & IT integration for schools, colleges, universities, and training institutes.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Education Technology',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Interactive displays and smart boards',
-              'Lecture capture and video streaming systems',
-              'Distance learning and hybrid classroom solutions',
-              'Campus-wide digital signage networks',
-              'Auditorium and performance venue AV systems',
-              'Learning management system integration',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'outcomes',
-        title: 'Learning Outcomes',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Enhance student engagement and participation, support diverse learning styles, enable flexible teaching methods, improve accessibility for all learners, and prepare students for technology-driven careers.',
+            text: 'Speedlight Infosolutions Pvt Ltd designs and deploys technology-enabled learning spaces that enhance engagement, simplify instruction, and support hybrid education models. Our solutions are reliable, easy to operate, and scalable across single classrooms or entire campuses.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Smart Classrooms',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Interactive display systems with intuitive annotation tools',
+              'Integrated audio for clear speech across the room',
+              'Wireless presentation and content sharing',
+              'Instructor-friendly control interfaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Higher student engagement and simplified teaching workflows.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Hybrid Learning & Lecture Capture',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Classroom systems for simultaneous in-person and remote participation',
+              'Automated lecture recording and content distribution',
+              'Camera and audio optimization for clear remote visibility',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent learning experience for on-site and remote students.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Auditoriums & Lecture Halls',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Large-format display and projection systems',
+              'Speech reinforcement and coverage-optimized audio design',
+              'Centralized control for seamless session management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable performance for high-capacity teaching environments.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Campus Digital Signage & Information Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Centralized content management for announcements and wayfinding',
+              'Departmental messaging and emergency notifications',
+              'Multi-building deployment and scheduling',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent, real-time communication across campus.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training Labs & Collaboration Spaces',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Flexible AV setups for workshops and group learning',
+              'Recording and presentation infrastructure',
+              'Multi-room integration for shared sessions',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Adaptive spaces that support modern pedagogies.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Education AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure campus networking',
+              'AV-over-IP architecture for scalable distribution',
+              'Rack design, power planning and bandwidth optimization',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable, secure connectivity for uninterrupted learning.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Requirement analysis, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system reliability.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Academic needs analysis and site survey.',
+              'Design: Scalable classroom standards and detailed documentation.',
+              'Deployment: Professional installation, integration and testing.',
+              'Training: Faculty and IT staff enablement.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Schools and K–12 classrooms',
+              'Colleges and universities',
+              'Training institutes and skill centers',
+              'Seminar halls and auditoriums',
+              'Campus common areas and lobbies',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Institutions Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey implementation from concept to support',
+              'User-friendly systems requiring minimal training',
+              'Scalable designs for campus-wide rollout',
+              'Focus on reliability, clarity and ease of management',
+              'Transparent budgeting and lifecycle planning',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a smart classroom or campus-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -532,39 +765,241 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Healthcare Facilities',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Reliable communication and visualization systems designed for clinical efficiency and operational continuity.',
+          },
           {
             type: 'paragraph',
-            text: 'Support better patient outcomes and operational efficiency with healthcare-specific AV and communication solutions. Our systems meet stringent healthcare standards while improving care delivery and staff collaboration.',
+            text: 'End-to-end AV & IT integration for hospitals, clinics, medical colleges, and healthcare networks.',
           },
-        ],
-      },
-      {
-        id: 'applications',
-        title: 'Healthcare Applications',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Telemedicine and remote consultation systems',
-              'Operating room integration and surgical displays',
-              'Patient room entertainment and education',
-              'Medical imaging display and PACS integration',
-              'Emergency department communication systems',
-              'Staff training and simulation facilities',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'compliance',
-        title: 'Healthcare Standards',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'All solutions comply with HIPAA privacy requirements, infection control protocols, and medical-grade equipment standards, ensuring patient safety and regulatory compliance.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure tailored to healthcare environments. Our solutions support clear communication, real-time information visibility, and dependable system performance—while aligning with facility workflows and uptime requirements.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Telemedicine & Consultation Rooms',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Video-enabled consultation environments',
+              'Optimized audio capture and playback for clinical clarity',
+              'Secure presentation and content sharing',
+              'Simple, clinician-friendly controls',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Effective remote consultations with consistent audio-visual quality.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Command Centers & Monitoring Displays',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Multi-source display systems for real-time monitoring',
+              'Centralized visualization for operations and incident response',
+              'Ergonomic layouts for continuous use',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Faster decision-making with clear, consolidated information.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Public Address & Patient Communication',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Zonal public address and background audio systems',
+              'Paging integration for departments and wards',
+              'Clear, intelligible announcements in high-noise areas',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable facility-wide communication that supports patient care.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training Rooms & Medical Education Spaces',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'AV-enabled classrooms for clinical training and briefings',
+              'Recording and presentation infrastructure',
+              'Flexible room configurations for workshops',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent delivery of training and knowledge sharing.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Digital Signage & Wayfinding',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Reception and waiting-area information displays',
+              'Queue status and service messaging',
+              'Centralized content management across departments',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Improved patient experience and operational transparency.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Healthcare AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure network segmentation',
+              'AV-over-IP distribution for scalable deployments',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable, secure infrastructure that protects system performance.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: High availability and predictable operational costs.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Clinical workflow review and technical site survey.',
+              'Design: Standards-based system design and detailed documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: Staff training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Hospitals and multi-specialty clinics',
+              'Diagnostic centers and day-care facilities',
+              'Medical colleges and training institutes',
+              'Control rooms and administrative offices',
+              'Reception areas and patient waiting zones',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Healthcare Providers Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Systems engineered for reliability and ease of use',
+              'Scalable solutions for single sites or multi-facility networks',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a consultation room, command center, or facility-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -576,39 +1011,222 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Manufacturing & Industrial Facilities',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Robust communication and visualization systems for safe, efficient, and connected industrial operations.',
+          },
           {
             type: 'paragraph',
-            text: 'Improve operational efficiency, safety, and communication across your manufacturing operations with industrial-grade AV and communication systems designed for demanding production environments.',
+            text: 'End-to-end AV & IT integration for plants, factories, warehouses, and industrial campuses.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Industrial Solutions',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Production floor digital signage and KPI displays',
-              'Mass notification and emergency alert systems',
-              'Remote expert collaboration and troubleshooting',
-              'Training room and safety briefing facilities',
-              'Quality control and inspection displays',
-              'Warehouse and logistics communication systems',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'features',
-        title: 'Industrial Features',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ruggedized equipment for harsh environments, high-brightness displays for ambient light conditions, noise-canceling audio systems, and integration with industrial control systems and SCADA platforms.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers industrial-grade AV and IT infrastructure that supports real-time monitoring, plant-wide communication, and reliable connectivity. Our solutions are engineered for durability, scalability, and continuous operation in demanding environments.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Control Rooms & Operations Centers',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Multi-source visualization and large-format display systems',
+              'Ergonomic layouts for continuous monitoring',
+              'Integrated audio for alerts and coordination',
+              'Centralized control and system management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Clear situational awareness and faster operational decisions.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Plant-wide Communication Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Zonal public address and paging systems',
+              'Emergency and safety announcement integration',
+              'High-intelligibility audio for noisy environments',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable communication that enhances safety and response time.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Industrial Display & Information Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Production dashboards and KPI visualization',
+              'Shop-floor status displays and messaging',
+              'Centralized content management across zones',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Real-time visibility into performance and operations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training Rooms & Briefing Facilities',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'AV-enabled spaces for safety briefings and technical training',
+              'Presentation and recording infrastructure',
+              'Flexible configurations for shift-based sessions',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent knowledge transfer and workforce readiness.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Industrial AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and hardened network design',
+              'AV-over-IP distribution for scalable deployments',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable, secure infrastructure supporting critical operations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system performance.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Operational workflow review and technical site survey.',
+              'Design: Scalable system architecture and detailed documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: Operator training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Manufacturing plants and assembly lines',
+              'Process industries and utilities',
+              'Warehouses and logistics hubs',
+              'Industrial campuses and administrative blocks',
+              'Control rooms and command centers',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Industrial Clients Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Solutions engineered for reliability in demanding conditions',
+              'Scalable designs for single sites or multi-plant rollouts',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a control room, plant communication system, or facility-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -620,39 +1238,223 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Government & Public Sector',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Secure, scalable communication and visualization systems for mission-critical public environments.',
+          },
           {
             type: 'paragraph',
-            text: 'Serve citizens effectively with secure, reliable AV and communication systems designed for government facilities. Our solutions support public meetings, emergency operations, and inter-agency collaboration while meeting strict security requirements.',
+            text: 'End-to-end AV & IT integration for government offices, command centers, and public institutions.',
           },
-        ],
-      },
-      {
-        id: 'applications',
-        title: 'Government Applications',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Council chambers and public meeting spaces',
-              'Emergency operations centers',
-              'Courtroom AV and evidence presentation',
-              'Secure video conferencing for classified environments',
-              'Public information displays and kiosks',
-              'Training facilities for first responders',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'compliance',
-        title: 'Security & Compliance',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'All government solutions meet applicable security standards including FIPS, TAA compliance, and cybersecurity requirements for federal, state, and local agencies.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure that supports secure communication, real-time monitoring, and efficient public service operations. Our solutions are engineered for reliability, ease of operation, and long-term scalability across single facilities or multi-site deployments.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Command & Control Centers',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Multi-source visualization and large-format display systems',
+              'Centralized monitoring and incident coordination environments',
+              'Integrated audio for alerts and communication',
+              'Unified system control and management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Clear situational awareness and faster response capabilities.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Conference & Briefing Rooms',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Video conferencing and presentation environments',
+              'Professional audio systems for speech clarity',
+              'Secure content sharing and display integration',
+              'Simplified room control interfaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Effective decision-making and inter-department collaboration.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Public Information & Digital Signage',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Information display systems for public communication',
+              'Wayfinding and announcement platforms',
+              'Centralized content management across locations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent, real-time communication with citizens and staff.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training & Capacity Building Facilities',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'AV-enabled training rooms and auditoriums',
+              'Recording and presentation infrastructure',
+              'Flexible configurations for seminars and workshops',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Standardized training delivery and knowledge sharing.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Government AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure network segmentation',
+              'AV-over-IP architecture for scalable distribution',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable, secure infrastructure for continuous operations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system reliability.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Operational requirement analysis and site survey.',
+              'Design: Standards-based system architecture and documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: User training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Government offices and administrative buildings',
+              'Command and monitoring centers',
+              'Public service facilities',
+              'Training institutes and auditoriums',
+              'Multi-department coordination centers',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Public Sector Clients Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Systems engineered for reliability and ease of use',
+              'Scalable designs for single sites or nationwide rollouts',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a command center, briefing facility, or department-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -664,39 +1466,223 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Hospitality & Convention Centers',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Technology environments that elevate guest experience and enable seamless event operations.',
+          },
           {
             type: 'paragraph',
-            text: 'Create memorable guest experiences with hospitality AV solutions that support events, meetings, and entertainment. Our systems provide the flexibility and reliability required for hotels, resorts, and convention centers.',
+            text: 'End-to-end AV & IT integration for hotels, resorts, banquet venues, and convention centers.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Hospitality Solutions',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Ballroom and meeting room AV systems',
-              'Digital signage and wayfinding',
-              'In-room entertainment and IPTV',
-              'Outdoor AV for pool and patio areas',
-              'Restaurant and bar audio systems',
-              'Event production and technical services',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'benefits',
-        title: 'Guest Benefits',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Enhance guest satisfaction, increase event bookings, provide seamless technology experiences, and differentiate your property with state-of-the-art AV capabilities.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure tailored for hospitality and event environments. Our solutions enhance guest communication, support flexible venue operations, and ensure reliable performance across single halls or multi-venue facilities.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Banquet Halls & Event Venues',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Professional sound reinforcement and speech optimization',
+              'Large-format displays and projection systems',
+              'Flexible AV configurations for diverse event formats',
+              'Centralized control for simplified operation',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent, high-quality experiences for events of any scale.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Conference & Convention Facilities',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Multi-room AV integration for conferences and seminars',
+              'Presentation and content distribution systems',
+              'Seamless switching between event configurations',
+              'Integrated control and scheduling',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Efficient management of complex, multi-session events.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Public Address & Background Music Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Zoned audio for lobbies, corridors, and common areas',
+              'Paging and announcement integration',
+              'Consistent coverage and intelligibility',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Clear communication and enhanced ambience throughout the property.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Digital Signage & Guest Information Displays',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Reception and wayfinding display systems',
+              'Event schedules and promotional content',
+              'Centralized content management across locations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Real-time information delivery and improved guest navigation.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Hospitality AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and enterprise-grade networking',
+              'AV-over-IP distribution for scalable deployments',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable infrastructure supporting guest services and events.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system performance.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Venue workflow review and technical site survey.',
+              'Design: Scalable system architecture and documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: Staff training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Hotels and resorts',
+              'Banquet halls and ballrooms',
+              'Convention and exhibition centers',
+              'Conference facilities and meeting suites',
+              'Public areas and guest common spaces',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Hospitality Clients Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Flexible systems for diverse event requirements',
+              'Scalable solutions for single venues or multi-property deployments',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a banquet hall, convention facility, or property-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -705,42 +1691,225 @@ export const pageContents: Record<string, PageContent> = {
 
   banking: {
     id: 'banking',
-    title: 'Banking & Financial Institutions',
+    title: 'Banking & Financial Institution',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Secure communication and high-clarity visualization for modern banking environments.',
+          },
           {
             type: 'paragraph',
-            text: 'Support secure, professional communication in financial environments with AV solutions designed for banking and financial services. Our systems enable effective client meetings, training, and operations while maintaining the highest security standards.',
+            text: 'End-to-end AV & IT integration for bank headquarters, branches, and financial service facilities.',
           },
-        ],
-      },
-      {
-        id: 'applications',
-        title: 'Banking Applications',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Executive boardrooms and client meeting rooms',
-              'Trading floor communication systems',
-              'Branch video banking and teller assist',
-              'Training centers and financial education',
-              'Digital signage for rates and promotions',
-              'Secure video conferencing for sensitive discussions',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'security',
-        title: 'Security & Compliance',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'All banking solutions incorporate encryption, access controls, and audit logging to meet financial industry security requirements and regulatory compliance standards.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure that supports secure collaboration, real-time monitoring, and consistent customer communication across banking environments. Our solutions are designed for reliability, scalability, and seamless integration with enterprise operations.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Executive Boardrooms & Collaboration Spaces',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Video conferencing and presentation environments',
+              'Professional audio systems for speech clarity',
+              'Secure content sharing and display integration',
+              'Simplified room control interfaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Efficient decision-making and reliable executive communication.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Branch Communication & Customer Information Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Digital signage for customer messaging and queue information',
+              'Information display systems for service areas',
+              'Centralized content management across branches',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent communication and improved customer experience.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Monitoring & Operations Display Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Multi-source display solutions for operational monitoring',
+              'Centralized visualization for network and facility status',
+              'Integrated control and management interfaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Enhanced operational visibility and faster response.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Training & Conference Facilities',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'AV-enabled training rooms and seminar environments',
+              'Recording and presentation infrastructure',
+              'Flexible configurations for internal programs',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Standardized training and knowledge delivery.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Banking AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure network segmentation',
+              'AV-over-IP architecture for scalable deployments',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable, secure infrastructure aligned with enterprise standards.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system performance.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Operational requirement review and site survey.',
+              'Design: Standards-based architecture and detailed documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: User training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Bank headquarters and regional offices',
+              'Branch networks and service centers',
+              'Operations and monitoring rooms',
+              'Training and conference facilities',
+              'Customer service and reception areas',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Financial Institutions Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Systems engineered for reliability and ease of use',
+              'Scalable designs for single sites or nationwide rollouts',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a boardroom, branch rollout, or operations display system, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -752,39 +1921,222 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Training Centers & Skill Development Institutes',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Technology-enabled training environments that improve learning effectiveness and operational efficiency.',
+          },
           {
             type: 'paragraph',
-            text: 'Enable effective learning and skill development with AV technology designed for training environments. Our solutions support instructor-led training, hands-on labs, and remote learning scenarios.',
+            text: 'End-to-end AV & IT integration for corporate training centers, skill institutes, academies, and professional development facilities.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Training Solutions',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Interactive training rooms with collaboration tools',
-              'Lecture capture and content recording',
-              'Simulation and virtual reality training',
-              'Remote training and webinar capabilities',
-              'Assessment and testing systems',
-              'Learning management system integration',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'outcomes',
-        title: 'Training Outcomes',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Improve knowledge retention, support diverse learning styles, enable scalable training delivery, track learner progress, and reduce training costs through technology-enabled instruction.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure designed to support structured training delivery, hybrid learning models, and scalable institute operations. Our solutions are reliable, easy to manage, and optimized for consistent instructional performance.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Instructor-Led Training Rooms',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Interactive display and presentation systems',
+              'Integrated audio for clear instruction delivery',
+              'Wireless content sharing and recording capability',
+              'Simplified room control interfaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Clear communication and structured training delivery.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Hybrid Training & Remote Learning Environments',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Video-enabled classrooms for on-site and remote participants',
+              'Lecture capture and content distribution systems',
+              'Optimized camera and audio configuration',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Flexible training delivery without location limitations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Simulation & Practical Training Labs',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'AV integration for demonstration and skill-based learning',
+              'Multi-source visualization systems',
+              'Recording infrastructure for review and assessment',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Enhanced hands-on learning and performance tracking.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Seminar Halls & Presentation Spaces',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Large-format display and projection systems',
+              'Speech reinforcement and coverage-optimized audio',
+              'Centralized system control for smooth session management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable performance for large-group instruction.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Training AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure network design',
+              'AV-over-IP architecture for scalable deployment',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable infrastructure supporting continuous learning operations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Predictable uptime and long-term system reliability.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Training workflow review and technical site survey.',
+              'Design: Scalable system architecture and documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: Trainer and administrator training.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Skill development institutes',
+              'Corporate training centers',
+              'Coaching and certification facilities',
+              'Technical training labs',
+              'Seminar and workshop spaces',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Training Providers Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'User-friendly systems requiring minimal training',
+              'Scalable solutions for multi-room or multi-location institutes',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a training facility or institute-wide deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -796,39 +2148,222 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Retail & Commercial Spaces',
     sections: [
       {
-        id: 'overview',
+        id: 'hero',
         blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Engaging visual communication and reliable infrastructure for modern retail environments.',
+          },
           {
             type: 'paragraph',
-            text: 'Engage customers and drive sales with retail AV solutions that create immersive shopping experiences. Our digital signage, audio, and interactive display solutions help retailers communicate effectively and enhance the customer journey.',
+            text: 'End-to-end AV & IT integration for retail stores, malls, showrooms, and commercial facilities.',
           },
-        ],
-      },
-      {
-        id: 'solutions',
-        title: 'Retail Solutions',
-        blocks: [
           {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Digital signage and promotional displays',
-              'Interactive product displays and kiosks',
-              'In-store audio and background music',
-              'Video walls and experiential displays',
-              'Queue management and wayfinding',
-              'Window displays and outdoor signage',
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
             ],
           },
         ],
       },
       {
-        id: 'benefits',
-        title: 'Retail Benefits',
+        id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Increase customer engagement, promote products effectively, create memorable brand experiences, drive impulse purchases, and adapt messaging in real-time based on inventory and promotions.',
+            text: 'Speedlight Infosolutions Pvt Ltd delivers integrated AV and IT infrastructure that enhances customer engagement, streamlines communication, and supports scalable retail operations. Our solutions are designed for continuous operation, centralized management, and consistent brand presentation across locations.',
+          },
+        ],
+      },
+      {
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Digital Signage & Customer Engagement Displays',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'High-impact promotional display systems',
+              'Centralized content management and scheduling',
+              'Multi-location rollout and remote updates',
+              'Real-time messaging and campaign control',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Dynamic, consistent brand communication that drives engagement.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Video Walls & Feature Display Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Large-format visual solutions for flagship spaces',
+              'Multi-source content presentation',
+              'Seamless integration with promotional workflows',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: High-visibility displays that enhance in-store experience.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Background Music & Public Address Systems',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Zoned audio distribution for retail environments',
+              'Announcement and promotional messaging integration',
+              'Consistent coverage and clarity across spaces',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Improved ambience and effective in-store communication.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Control & Centralized Management',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Unified control of displays and AV systems',
+              'Scheduled content and system automation',
+              'Remote monitoring and device management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Simplified operation and consistent performance across locations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Network & Connectivity for Retail AV',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Structured cabling and secure network design',
+              'AV-over-IP architecture for scalable distribution',
+              'Rack design, power planning and redundancy recommendations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable infrastructure supporting digital retail operations.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'System Lifecycle & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Site survey, design documentation and installation',
+              'Commissioning, user training and handover',
+              'Preventive maintenance and SLA-based support',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Reliable performance and predictable operational costs.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Assessment: Store layout review and technical site survey.',
+              'Design: Scalable system architecture and documentation.',
+              'Implementation: Professional installation, integration and testing.',
+              'Enablement: Staff training and operational handover.',
+              'Support: Ongoing maintenance, upgrades and optimization.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'deployment-locations',
+        title: 'Typical Deployment Locations',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Retail stores and showrooms',
+              'Shopping malls and commercial complexes',
+              'Brand experience centers',
+              'Supermarkets and chain outlets',
+              'Reception and customer service areas',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Retail Clients Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey delivery from design through long-term support',
+              'Scalable solutions for single stores or multi-location rollouts',
+              'Systems engineered for continuous operation',
+              'Clear documentation and disciplined project governance',
+              'Responsive support with preventive maintenance programs',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'To plan a retail rollout or commercial facility deployment, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
@@ -840,115 +2375,244 @@ export const pageContents: Record<string, PageContent> = {
     title: 'Live Events & Corporate Events',
     sections: [
       {
+        id: 'hero',
+        blocks: [
+          {
+            type: 'heading',
+            level: 1,
+            text: 'Professional AV and IT environments that deliver seamless, high-impact event experiences.',
+          },
+          {
+            type: 'paragraph',
+            text: 'End-to-end AV integration for conferences, corporate events, product launches, and large venue productions.',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Get a project proposal', to: '/contact' },
+            ],
+          },
+        ],
+      },
+      {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Deliver impactful live events with professional AV production services and equipment. From corporate conferences to product launches, our event solutions ensure your message reaches audiences with maximum impact.',
+            text: 'Speedlight Infosolutions Pvt Ltd provides professional AV and IT solutions for live and corporate events, ensuring reliable performance, clear communication, and smooth event execution. Our systems are designed for rapid deployment, flexible configuration, and dependable on-site operation.',
           },
         ],
       },
       {
-        id: 'services',
-        title: 'Event Services',
+        id: 'core-services',
+        title: 'Core Services',
+        blocks: [
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Conference & Corporate Event AV Setup',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Complete audio-visual system deployment',
+              'Presentation and display integration',
+              'Wireless microphone and speech reinforcement systems',
+              'Centralized system control for event management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Consistent technical performance for professional event delivery.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Large Venue Display & Visualization',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'LED display walls and large-format screens',
+              'Projection systems for stage and venue environments',
+              'Multi-source content switching and management',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: High-visibility visual communication for audience engagement.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Professional Sound Reinforcement',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Event-grade sound system deployment',
+              'Speech clarity optimization for large audiences',
+              'Zoned audio configuration for venue coverage',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Clear, balanced audio across the entire venue.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Hybrid Event & Streaming Infrastructure',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Video-enabled event environments',
+              'Integration for remote participation and broadcasting',
+              'Recording and content distribution capability',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Extended event reach beyond physical attendance.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'Temporary Network & Connectivity Infrastructure',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Event-ready networking and structured connectivity',
+              'AV-over-IP system configuration',
+              'Reliable infrastructure for event operations',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Stable technical backbone for uninterrupted event performance.',
+          },
+          {
+            type: 'heading',
+            level: 3,
+            text: 'On-site Technical Management & Support',
+          },
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'System setup, testing, and commissioning',
+              'Real-time technical monitoring during events',
+              'Post-event dismantling and system handover',
+            ],
+          },
+          {
+            type: 'emphasis',
+            style: 'bold',
+            text: 'Benefit: Smooth execution with dedicated technical supervision.',
+          },
+        ],
+      },
+      {
+        id: 'delivery-approach',
+        title: 'Our Delivery Approach',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'Event production and technical direction',
-              'LED video walls and projection mapping',
-              'Professional audio and concert sound',
-              'Stage lighting and intelligent lighting',
-              'Live streaming and hybrid event production',
-              'Event recording and post-production',
+              'Requirement Assessment: Event scope review and technical planning.',
+              'System Design: Configuration planning and deployment strategy.',
+              'Installation & Setup: Professional equipment setup and testing.',
+              'Event Operation: On-site monitoring and technical management.',
+              'Post-Event Support: System dismantling and reporting.',
             ],
           },
         ],
       },
       {
-        id: 'expertise',
-        title: 'Event Expertise',
+        id: 'deployment-environments',
+        title: 'Typical Deployment Environments',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Corporate conferences and summits',
+              'Product launches and brand events',
+              'Annual meetings and town halls',
+              'Exhibition and convention venues',
+              'Auditoriums and large gathering spaces',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'why-choose',
+        title: 'Why Event Organizers Choose Speedlight',
+        blocks: [
+          {
+            type: 'list',
+            ordered: false,
+            items: [
+              'Turnkey AV deployment and technical management',
+              'Reliable systems designed for high-impact environments',
+              'Flexible configurations for diverse event formats',
+              'Experienced technical team for on-site support',
+              'Structured planning and disciplined execution',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'next-steps',
+        title: 'Next Steps',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Our experienced event production team handles everything from initial concept through load-out, ensuring flawless execution and memorable experiences for your attendees.',
+            text: 'To plan your upcoming event or discuss technical requirements, connect with Speedlight Infosolutions Pvt Ltd:',
+          },
+          {
+            type: 'link-list',
+            links: [
+              { label: 'Request a consultation', to: '/contact' },
+              { label: 'Request a proposal', to: '/contact' },
+            ],
           },
         ],
       },
     ],
   },
 
-  // About Us
-  about: {
-    id: 'about',
-    title: 'About Us',
-    sections: [
-      {
-        id: 'intro',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Speedlight Infosolutions is a leading provider of audiovisual and technology solutions, dedicated to transforming how organizations communicate, collaborate, and operate. With deep expertise and a commitment to excellence, we deliver innovative solutions that empower our clients to achieve their goals.',
-          },
-        ],
-      },
-      {
-        id: 'sections',
-        title: 'Learn More',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Our Organization',
-              'Why Choose Us',
-              'Case Studies',
-              'Careers',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
+  // About Pages
   'our-organization': {
     id: 'our-organization',
     title: 'Our Organization',
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Founded with a vision to revolutionize workplace technology, Speedlight Infosolutions has grown into a trusted partner for organizations across India. Our team of certified professionals brings decades of combined experience in AV design, integration, and support.',
+            text: 'Speedlight Infosolutions Pvt Ltd is a professional AV and IT systems integrator delivering enterprise-grade technology solutions across corporate, institutional, and commercial environments.',
           },
-        ],
-      },
-      {
-        id: 'values',
-        title: 'Our Values',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'Excellence in every project, from design to delivery',
-              'Innovation through continuous learning and technology adoption',
-              'Partnership with clients built on trust and transparency',
-              'Integrity in all business practices and relationships',
-              'Sustainability through energy-efficient and long-lasting solutions',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'team',
-        title: 'Our Team',
-        blocks: [
           {
             type: 'paragraph',
-            text: 'Our team includes CTS-certified designers, manufacturer-trained technicians, and experienced project managers who work collaboratively to deliver exceptional results. We invest in ongoing training to ensure our team stays at the forefront of AV technology.',
+            text: 'We combine technical expertise, disciplined project execution, and long-term support to deliver reliable, scalable, and user-friendly systems that empower modern organizations.',
           },
         ],
       },
@@ -961,38 +2625,29 @@ export const pageContents: Record<string, PageContent> = {
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Choosing the right AV partner is critical to your success. Speedlight Infosolutions stands out through our comprehensive approach, technical expertise, and unwavering commitment to client satisfaction.',
+            text: 'Organizations choose Speedlight Infosolutions Pvt Ltd for our proven track record of delivering reliable, scalable, and user-friendly AV and IT infrastructure solutions.',
           },
         ],
       },
       {
         id: 'differentiators',
-        title: 'What Sets Us Apart',
+        title: 'Our Differentiators',
         blocks: [
           {
             type: 'list',
             ordered: false,
             items: [
-              'End-to-end solutions from consultation through ongoing support',
-              'Certified partnerships with leading technology manufacturers',
-              'Proven track record across diverse industries and applications',
-              'Responsive support with local presence and 24/7 availability',
-              'Scalable solutions that grow with your organization',
-              'Competitive pricing without compromising quality',
+              '✔ End-to-end project accountability from design through support',
+              '✔ Experienced engineers with enterprise deployment discipline',
+              '✔ Solutions tailored to operational workflows and security requirements',
+              '✔ Focus on usability and minimal training overhead',
+              '✔ Transparent budget planning and lifecycle cost management',
+              '✔ Fast, documented support processes and preventive maintenance',
             ],
-          },
-        ],
-      },
-      {
-        id: 'approach',
-        title: 'Our Approach',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We begin every engagement by understanding your unique requirements, challenges, and goals. Our consultative approach ensures we recommend solutions that deliver real business value, not just the latest technology.',
           },
         ],
       },
@@ -1005,30 +2660,11 @@ export const pageContents: Record<string, PageContent> = {
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Explore how Speedlight Infosolutions has helped organizations across industries transform their communication and collaboration capabilities. Our case studies showcase real-world implementations and the measurable results achieved.',
-          },
-        ],
-      },
-      {
-        id: 'featured',
-        title: 'Featured Projects',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'From Fortune 500 corporate headquarters to educational institutions and healthcare facilities, our portfolio demonstrates our ability to deliver complex AV solutions on time and within budget.',
-          },
-        ],
-      },
-      {
-        id: 'contact',
-        title: 'Request Case Studies',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Contact us to receive detailed case studies relevant to your industry and application. We\'re happy to provide references and arrange site visits to see our solutions in action.',
+            text: 'Explore real-world deployments and success stories showcasing how Speedlight Infosolutions Pvt Ltd has delivered reliable, scalable AV and IT infrastructure solutions across diverse industries and environments.',
           },
         ],
       },
@@ -1041,81 +2677,31 @@ export const pageContents: Record<string, PageContent> = {
     sections: [
       {
         id: 'overview',
+        title: 'Overview',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Join a dynamic team of AV professionals passionate about technology and client success. Speedlight Infosolutions offers rewarding career opportunities for talented individuals who want to make an impact in the AV industry.',
-          },
-        ],
-      },
-      {
-        id: 'opportunities',
-        title: 'Career Opportunities',
-        blocks: [
-          {
-            type: 'list',
-            ordered: false,
-            items: [
-              'AV System Designers and Engineers',
-              'Installation Technicians and Programmers',
-              'Project Managers and Coordinators',
-              'Sales and Business Development Professionals',
-              'Technical Support Specialists',
-              'Service and Maintenance Technicians',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'benefits',
-        title: 'Why Work With Us',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'We offer competitive compensation, comprehensive benefits, ongoing training and certification opportunities, and a collaborative work environment where your contributions are valued and recognized.',
+            text: 'Join a team of professionals dedicated to delivering enterprise-grade AV and IT infrastructure solutions. We are always looking for talented engineers, project managers, and technical specialists.',
           },
         ],
       },
     ],
   },
 
-  // Contact Us
   contact: {
     id: 'contact',
     title: 'Contact Us',
     sections: [
       {
-        id: 'intro',
+        id: 'overview',
+        title: 'Get in Touch',
         blocks: [
           {
             type: 'paragraph',
-            text: 'Ready to transform your communication and collaboration capabilities? Contact Speedlight Infosolutions today to discuss your requirements and discover how our solutions can help you achieve your goals.',
-          },
-        ],
-      },
-      {
-        id: 'contact-info',
-        title: 'Get In Touch',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Our team is ready to answer your questions, provide consultations, and develop customized solutions for your organization. Reach out via phone, email, or the contact form below.',
-          },
-        ],
-      },
-      {
-        id: 'locations',
-        title: 'Our Locations',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'With offices and service coverage across India, we provide local support backed by national resources. Contact us to connect with your nearest Speedlight Infosolutions office.',
+            text: 'Ready to discuss your project requirements? Contact Speedlight Infosolutions Pvt Ltd to schedule a consultation or request a detailed proposal.',
           },
         ],
       },
     ],
   },
-
-  // Merge in all service pages
-  ...solutionServicePages,
 };

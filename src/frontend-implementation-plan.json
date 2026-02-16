@@ -1,21 +1,39 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Reorder header navigation: About Us after Industries We Serve",
+  "title": "Align Industries dropdown labels/routes and replace industry page content in static content registry",
   "requirements": [
     {
-      "id": "REQ-3",
-      "summary": "Reorder top-level navigation so \"About Us\" appears immediately after \"Industries We Serve\" in both desktop header and mobile menu without changing labels, paths, or dropdown behavior.",
+      "id": "REQ-1",
+      "summary": "Update “Industries We Serve” dropdown items to exactly match the provided 10 labels and keep links pointing to the corresponding /industries/... routes on both desktop and mobile navigation.",
       "acceptanceCriteria": [
-        "In the desktop header, the top-level menu order is: Home, Our Solutions, Industries We Serve, About Us, Contact Us.",
-        "In the mobile menu, the top-level menu order matches the desktop header order.",
-        "Only the ordering changes; labels, paths, dropdown children, and hover/dropdown behavior remain unchanged."
+        "In the site header, the “Industries We Serve” dropdown shows exactly 10 entries in the exact order and wording provided by the user.",
+        "Each dropdown item navigates to the correct existing industry route under /industries/...",
+        "On mobile navigation, the same 10 labels appear and navigate correctly.",
+        "No other navigation labels are unintentionally changed."
       ],
       "file_operations": [
         {
           "path": "frontend/src/site/navigation.ts",
           "operation": "modify",
-          "description": "Reorder the exported navigationConfig array so items appear in this order: home, solutions, industries, about, contact. Preserve existing item objects exactly (same ids, labels, paths, children arrays), changing only their position in the top-level array to satisfy desktop and mobile header rendering."
+          "description": "Update the navigationConfig entry for the 'industries' section so its 10 children labels match the user-provided wording exactly (including singular/plural) while preserving the existing /industries/... paths (notably: change 'Banking & Financial Institutions' → 'Banking & Financial Institution' and 'Training Centers & Skill Development' → 'Training Centers & Skill Development Institutes')."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Replace the content registry entries for the 10 industry pages so each industry route renders the user-provided sections and CTAs using existing ContentPage + ContentRenderer block types.",
+      "acceptanceCriteria": [
+        "Navigating to each industry route renders a page with title matching the corresponding dropdown label exactly.",
+        "Each industry page includes sections for Headline, Subhead, CTA text, Overview, Core Services (with per-service Benefit lines), Our Delivery Approach, Typical Deployment Locations, Why Choose…, and Next Steps.",
+        "CTA links “Request a consultation” and “Get a project proposal” are clickable and route to /contact (hash-router compatible).",
+        "No industry page shows the old placeholder/summary content currently present in frontend/src/content/pages.ts for those pageIds."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/content/pages.ts",
+          "operation": "modify",
+          "description": "For pageIds corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, and live-events: replace existing placeholder content with the exact user-provided English copy. Set each content.title to exactly the matching dropdown label. Structure sections/blocks in the required order using existing ContentRenderer block types: use a top section containing a prominent 'heading' block for Headline followed by Subhead; represent the CTA as a 'link-list' block with exactly two links labeled “Request a consultation” and “Get a project proposal”, both linking to '/contact'; render Overview as paragraph blocks; render Core Services with per-service sub-headings (use 'heading' blocks) + bullet lists (use 'list' blocks) and render each “Benefit:” line as an 'emphasis' block with style 'bold'; render Our Delivery Approach, Typical Deployment Locations, and the industry-specific “Why … Choose Speedlight” section as 'list' blocks (ensuring the section title matches the user copy exactly); render Next Steps with the closing sentence as a paragraph plus the same two '/contact' CTA links as a 'link-list' block."
         }
       ]
     }

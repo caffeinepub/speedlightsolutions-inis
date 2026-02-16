@@ -39,6 +39,32 @@ export const pageBanners: Record<string, PageBanner> = {
     alt: 'Comprehensive system lifecycle and support services',
   },
 
+  // Professional Sound Service Pages
+  'commercial-audio-system-design-installation': {
+    imagePath: '/assets/generated/commercial-audio-system-design-installation-hero.dim_1600x900.png',
+    alt: 'Commercial audio system design and installation services',
+  },
+  'conference-boardroom-audio-solutions': {
+    imagePath: '/assets/generated/conference-boardroom-audio-solutions-hero.dim_1600x900.png',
+    alt: 'Conference and boardroom audio solutions',
+  },
+  'public-address-pa-announcement-systems': {
+    imagePath: '/assets/generated/public-address-pa-announcement-systems-hero.dim_1600x900.png',
+    alt: 'Public address and announcement systems',
+  },
+  'background-music-systems': {
+    imagePath: '/assets/generated/background-music-systems-hero.dim_1600x900.png',
+    alt: 'Background music systems for commercial environments',
+  },
+  'live-sound-event-audio-solutions': {
+    imagePath: '/assets/generated/live-sound-event-audio-solutions-hero.dim_1600x900.png',
+    alt: 'Live sound and event audio solutions',
+  },
+  'acoustic-consulting-sound-optimization': {
+    imagePath: '/assets/generated/acoustic-consulting-sound-optimization-hero.dim_1600x900.png',
+    alt: 'Acoustic consulting and sound optimization services',
+  },
+
   // Industries
   'industries': {
     imagePath: '/assets/generated/industries-hero.dim_1600x900.png',
