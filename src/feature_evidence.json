@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-desktop-header-navigation-so-each-top-level-menu-item-with-children-opens-its-dropdown-on-hover-and-keeps-the-dropdown-visible-while-the-pointer-is-either-over-the-corresponding-header-item-trigger-area-or-anywhere-inside-that-dropdown-panel-including-when-the-panel-is-rendered-via-a-portal-the-dropdown-must-close-only-when-the-pointer-is-fully-outside-both-the-trigger-area-and-the-dropdown-panel-area-with-smooth-behavior-and-no-flicker",
-      "featureTitle": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
+      "featureId": "feature-update-the-top-level-header-navigation-order-so-the-menu-item-labeled-about-us-appears-immediately-after-the-menu-item-labeled-industries-we-serve-and-before-contact-us-in-both-the-desktop-header-navigation-and-the-mobile-menu",
+      "featureTitle": "Update the top-level header navigation order so the menu item labeled \"About Us\" appears immediately after the menu item labeled \"Industries We Serve\" (and before \"Contact Us\") in both the desktop header navigation and the mobile menu.",
       "files": [
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/hooks/useDropdownHoverRegion.ts"
+        "frontend/src/site/navigation.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,26 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-only-one-desktop-header-dropdown-can-be-open-at-a-time-when-the-pointer-enters-a-different-top-level-header-item-the-previously-open-dropdown-closes-and-the-newly-hovered-item-s-dropdown-opens-immediately-and-reliably-no-timeouts-or-delayed-close-behavior-that-causes-unstable-transitions",
-      "featureTitle": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
-      "files": [
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/hooks/useDropdownHoverRegion.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
+        "REQ-3"
       ],
       "confidence": "high"
     }

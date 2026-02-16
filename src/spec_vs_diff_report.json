@@ -1,39 +1,29 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T19:59:45.552Z",
-  "summary": "Implemented a new hover-region tracking hook and updated SiteHeader to use a single controlled openDropdownId with hover-to-open behavior (at least for the shown “solutions” dropdown), including logic to keep the dropdown open while the pointer is over the trigger or the portal-rendered panel. However, due to truncation, it’s not fully verifiable that *all* top-level items with children were updated to the same behavior. Also, some repository metadata/summary files were changed in ways not requested.",
-  "missing_requirements": [
-    {
-      "id": "REQ-1",
-      "requirement": "Apply hover-open + keep-open-until-pointer-leaves-trigger-and-panel behavior to each top-level desktop header menu item that has children (not just a single special-cased item).",
-      "reason": "The diff excerpt shows the new hover behavior and hover-region hook wired for a special-cased \"Our Solutions\" item (item.id === 'solutions'), but the remainder of SiteHeader.tsx is truncated, so there is no clear evidence that every other top-level item with children uses the same controlled open state + hover-region handling.",
-      "evidence": [
-        "frontend/src/components/layout/SiteHeader.tsx (truncated)"
-      ]
-    }
-  ],
+  "generatedAt": "2026-02-15T20:35:38.825Z",
+  "summary": "REQ-3 appears implemented by placing the top-level \"About Us\" navigation item immediately after \"Industries We Serve\" and before \"Contact Us\" in the shared navigation config. However, the diff content shows additional navigation content/utility code that is not requested by the BuildRequest, which may violate the \"only reorder items\" constraint.",
+  "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Added/updated repository metadata to track new feature requests (AR-1/AR-2/AR-3) in project_state.json.",
-      "reason": "BuildRequest only asks for frontend interaction changes; it does not request adding/updating project tracking metadata.",
+      "description": "Added/retained a \"Custom Domain\" navigation entry under the \"About Us\" dropdown (\"/custom-domain\"), which is not part of the requested reorder and could violate the \"only reorder items; labels/paths/children unchanged\" constraint.",
+      "reason": "BuildRequest REQ-3 and constraints specify only reordering existing navigation items with no changes to labels/paths/children. The diff shows a specific additional child link under About Us that is unrelated to reordering.",
       "evidence": [
-        "project_state.json"
+        "frontend/src/site/navigation.ts"
       ]
     },
     {
-      "description": "Updated frontend-file-summaries.txt to claim a wide set of unrelated frontend changes (navigation reorder, new content types/pages/routes, styling tokens, etc.).",
-      "reason": "These changes are outside the BuildRequest scope/non-goals (no IA/content changes, no new navigation items). While this file is only a summary document, its newly added claims are not requested and could be misleading.",
+      "description": "Added/retained a helper function `getAllRoutes` that recursively extracts routes from the navigation config, which is not requested by REQ-3.",
+      "reason": "REQ-3 only asks to reorder navigation items; introducing utility functions is outside scope unless it already existed. The diff summary provides no evidence this function existed previously.",
       "evidence": [
-        "frontend-file-summaries.txt (truncated)"
+        "frontend/src/site/navigation.ts"
       ]
     }
   ],
   "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/hooks/useDropdownHoverRegion.ts",
+    "frontend/src/site/navigation.ts",
     "project_state.json"
   ]
 }

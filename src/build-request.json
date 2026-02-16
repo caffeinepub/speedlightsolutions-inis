@@ -1,58 +1,34 @@
 {
   "kind": "build_request",
-  "title": "Refine desktop header dropdown hover behavior (no flicker, auto-switch)",
+  "title": "Reorder header navigation: move 'About Us' after 'Industries We Serve'",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
+      "id": "REQ-3",
+      "text": "Update the top-level header navigation order so the menu item labeled \"About Us\" appears immediately after the menu item labeled \"Industries We Serve\" (and before \"Contact Us\") in both the desktop header navigation and the mobile menu.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-5"
         ],
         "quotes": [
-          "In the header navigation, when I hover over a menu item, its dropdown menu should appear.",
-          "The dropdown menu should remain visible as long as the mouse pointer is either on the main header menu item or anywhere inside its dropdown menu.",
-          "The dropdown should disappear only when the mouse pointer moves completely outside both the respective header item and its dropdown area.",
-          "The behavior should be smooth and should not flicker. It should work on hover (not click)."
+          "the header menu item  'about us ' should appear after 'industries we serve '"
         ]
       },
       "acceptanceCriteria": [
-        "On desktop, hovering a header menu item that has children opens its dropdown without requiring a click.",
-        "Moving the pointer from the header item into its dropdown panel does not close the dropdown (no flicker).",
-        "The dropdown remains open while the pointer is anywhere inside the dropdown panel, including scrollable areas.",
-        "The dropdown closes when (and only when) the pointer is outside both the header item area and the dropdown panel area."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ],
-        "quotes": [
-          "If I move the mouse to another header menu item, the previous dropdown should automatically close, and the new dropdown should appear."
-        ]
-      },
-      "acceptanceCriteria": [
-        "When a dropdown is open and the user hovers another header item, the old dropdown closes and the new dropdown opens immediately.",
-        "Rapid pointer movement across multiple header items does not leave multiple dropdowns open and does not cause flicker or “stuck open” states.",
-        "Dropdown open/close behavior is hover-driven only (no click required to open)."
+        "In the desktop header, the top-level menu order is: Home, Our Solutions, Industries We Serve, About Us, Contact Us.",
+        "In the mobile menu, the top-level menu order matches the desktop header order.",
+        "Only the ordering changes; labels, paths, dropdown children, and hover/dropdown behavior remain unchanged."
       ]
     }
   ],
   "constraints": [
-    "Do not require click interactions for desktop dropdown open/close; behavior must be hover-driven.",
-    "Do not edit files under frontend/src/components/ui (shadcn components are read-only and must be composed, not modified).",
-    "Keep the backend unchanged; this request is purely a frontend interaction change."
+    "Do not edit files under frontend/src/components/ui (shadcn components are read-only).",
+    "Respect existing navigation IDs/paths; only reorder items."
   ],
   "nonGoals": [
-    "Changing mobile navigation behavior (Sheet-based mobile menu) beyond any necessary regression fixes.",
-    "Adding new navigation items or changing navigation IA/content.",
-    "Adding backend state or persistence for menu behavior."
+    "No changes to page content or routing.",
+    "No changes to footer navigation layout/content unless required as a direct consequence of reordering the shared navigation config."
   ],
   "imageRequirements": {
     "required": [],

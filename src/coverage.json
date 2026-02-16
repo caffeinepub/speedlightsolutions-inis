@@ -1,39 +1,24 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T19:59:45.554Z",
+  "generatedAt": "2026-02-15T20:35:38.828Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Update the desktop header navigation so each top-level menu item with children opens its dropdown on hover and keeps the dropdown visible while the pointer is either over the corresponding header item (trigger area) or anywhere inside that dropdown panel (including when the panel is rendered via a portal). The dropdown must close only when the pointer is fully outside both the trigger area and the dropdown panel area, with smooth behavior and no flicker.",
+        "id": "REQ-3",
+        "summary": "Update the top-level header navigation order so the menu item labeled \"About Us\" appears immediately after the menu item labeled \"Industries We Serve\" (and before \"Contact Us\") in both the desktop header navigation and the mobile menu.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useDropdownHoverRegion.ts",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/site/navigation.ts"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useDropdownHoverRegion.ts",
-          "frontend/src/components/layout/SiteHeader.tsx"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Ensure only one desktop header dropdown can be open at a time: when the pointer enters a different top-level header item, the previously open dropdown closes and the newly hovered item’s dropdown opens immediately and reliably (no timeouts or delayed close behavior that causes unstable transitions).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/SiteHeader.tsx",
-          "frontend/src/hooks/useDropdownHoverRegion.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/SiteHeader.tsx",
-          "frontend/src/hooks/useDropdownHoverRegion.ts"
+          "frontend/src/site/navigation.ts"
         ]
       }
     ]
@@ -43,8 +28,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/hooks/useDropdownHoverRegion.ts",
+    "frontend/src/site/navigation.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
