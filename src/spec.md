@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update the “Industries We Serve” navigation dropdown and replace the content of all 10 industry pages with the user-provided copy.
+**Goal:** Restructure the Home page to display only the user-provided Speedlight Infosolutions Pvt Ltd Home page content, organized into clear sections without rewriting or altering any text.
 
 **Planned changes:**
-- Update the header navigation “Industries We Serve” dropdown (desktop and mobile) to show exactly 10 items, in the exact order and wording provided, each linking to its existing `/industries/...` route.
-- Replace the content registry entries for the 10 industry pageIds in `frontend/src/content/pages.ts` so each page title matches its dropdown label exactly and renders the provided sections in the required order (Headline, Subhead, CTA links to `/contact`, Overview, Core Services with Benefit lines, Our Delivery Approach, Typical Deployment Locations, industry-specific “Why Choose …” section title, and Next Steps with CTA links).
+- Update `frontend/src/components/sections/HeroSection.tsx` to render the provided hero title, subtitle, two intro paragraphs, and the “🔹 Design. Integrate. Optimize. Support.” line verbatim while keeping the existing hero background image behavior.
+- Refactor `frontend/src/pages/HomePage.tsx` to implement the remaining Home page sections using the provided content verbatim: Our Core Expertise (6 items), Why Speedlight Infosolutions? (✔ list + closing line), Our Technology Ecosystem (vendor lines), Industries We Serve (10 items), Our Approach (01–05), and the final CTA section with the two provided 🔹 CTAs.
+- Remove/avoid any existing Home page copy, headings, solution cards, or CTA labels that are not part of the provided Home page text.
 
-**User-visible outcome:** Visitors see an updated “Industries We Serve” dropdown (desktop/mobile) with the exact 10 labels, and each industry page displays the complete provided content with working “Request a consultation” and “Get a project proposal” links to the contact page.
+**User-visible outcome:** The Home page shows the exact provided Speedlight Infosolutions Home content (character-for-character) laid out in readable, clearly separated sections, with hero and final CTAs using only the provided CTA texts.

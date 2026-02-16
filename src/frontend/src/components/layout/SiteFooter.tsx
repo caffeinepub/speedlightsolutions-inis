@@ -82,20 +82,10 @@ export default function SiteFooter() {
             </div>
           )}
 
-          {/* About & Contact */}
+          {/* Company - About pages only (no parent link) + Contact */}
           <div>
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
-              {aboutSection && (
-                <li>
-                  <Link
-                    to={aboutSection.path as any}
-                    className="text-sm text-muted-foreground hover:text-link-hover transition-colors"
-                  >
-                    {aboutSection.label}
-                  </Link>
-                </li>
-              )}
               {aboutSection?.children?.map((child) => (
                 <li key={child.id}>
                   <Link
@@ -128,7 +118,7 @@ export default function SiteFooter() {
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-link hover:text-link-hover transition-colors"
+              className="hover:text-link-hover transition-colors"
             >
               caffeine.ai
             </a>

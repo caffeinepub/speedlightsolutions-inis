@@ -1,26 +1,35 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website updates: add an \"Industries We Serve\" header dropdown with 10 items, each anchoring to a corresponding industry page containing provided structured content (headline, subhead, CTAs, overview, core services, delivery approach, typical locations, why choose us, next steps) for Speedlight Infosolutions Pvt Ltd.",
+  "summary": "Website content organization project: structure and arrange each page into clear sections using only existing text (no rewriting), starting with the Home page for Speedlight Infosolutions Pvt Ltd.",
   "architectural_notes": [
-    "Header navigation includes an \"Industries We Serve\" dropdown; each dropdown item links to an industry page whose name/slug matches the item label."
+    "Do not rewrite or change any provided text; only structure and arrange into sections.",
+    "Page section structure may vary based on each page’s content."
   ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-header-navigation-dropdown-labeled-industries-we-serve-to-include-exactly-these-10-items-and-keep-each-item-linking-to-its-corresponding-industry-page-route-1-corporate-enterprise-offices-industries-corporate-enterprise-2-education-digital-classrooms-industries-education-3-healthcare-facilities-industries-healthcare-4-manufacturing-industrial-facilities-industries-manufacturing-5-government-public-sector-industries-government-6-hospitality-convention-centers-industries-hospitality-7-banking-financial-institution-industries-banking-8-training-centers-skill-development-institutes-industries-training-centers-9-retail-commercial-spaces-industries-retail-10-live-events-corporate-events-industries-live-events-ensure-the-dropdown-label-text-matches-the-list-above-exactly-including-singular-plural-wording-and-that-both-desktop-dropdown-and-mobile-navigation-render-the-same-labels",
-      "title": "Update the header navigation dropdown labeled “Industries We Serve” to include exactly these 10 items (and keep each item linking to its corresponding industry page route):\n1) Corporate & Enterprise Offices → /industries/corporate-enterprise\n2) Education & Digital Classrooms → /industries/education\n3) Healthcare Facilities → /industries/healthcare\n4) Manufacturing & Industrial Facilities → /industries/manufacturing\n5) Government & Public Sector → /industries/government\n6) Hospitality & Convention Centers → /industries/hospitality\n7) Banking & Financial Institution → /industries/banking\n8) Training Centers & Skill Development Institutes → /industries/training-centers\n9) Retail & Commercial Spaces → /industries/retail\n10) Live Events & Corporate Events → /industries/live-events\n\nEnsure the dropdown label text matches the list above exactly (including singular/plural wording), and that both desktop dropdown and mobile navigation render the same labels.",
+      "id": "feature-update-the-home-page-ui-to-use-only-the-user-provided-home-page-text-for-speedlight-infosolutions-pvt-ltd-structured-into-clear-sections-hero-intro-core-expertise-why-choose-technology-ecosystem-industries-approach-final-ctas-without-rewriting-paraphrasing-or-altering-any-of-the-provided-text",
+      "title": "Update the Home page UI to use ONLY the user-provided Home page text for Speedlight Infosolutions Pvt Ltd, structured into clear sections (hero, intro, core expertise, why choose, technology ecosystem, industries, approach, final CTAs) without rewriting, paraphrasing, or altering any of the provided text.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-replace-the-content-for-each-of-the-10-industry-pages-in-the-content-registry-frontend-src-content-pages-ts-so-each-page-renders-the-user-provided-copy-for-that-industry-using-the-existing-contentpage-contentrenderer-block-types-for-each-industry-pageid-below-set-content-title-to-exactly-the-industry-item-name-matching-the-dropdown-label-and-render-these-content-parts-in-this-order-headline-as-prominent-text-near-the-top-of-the-page-content-subhead-call-to-action-text-request-a-consultation-get-a-project-proposal-render-as-two-links-to-the-existing-contact-route-preserving-the-visible-text-overview-paragraphs-core-services-each-service-as-a-distinct-sub-heading-plus-supporting-bullet-points-include-the-benefit-line-for-each-service-as-an-emphasis-bold-style-block-our-delivery-approach-bulleted-list-typical-deployment-locations-bulleted-list-why-clients-choose-speedlight-why-institutions-choose-speedlight-etc-bulleted-list-use-the-exact-section-title-from-the-user-s-copy-for-that-industry-next-steps-include-the-closing-sentence-the-two-cta-links-to-contact-preserving-visible-text-industry-pages-to-update-pageid-title-corporate-enterprise-corporate-enterprise-offices-education-education-digital-classrooms-healthcare-healthcare-facilities-manufacturing-manufacturing-industrial-facilities-government-government-public-sector-hospitality-hospitality-convention-centers-banking-banking-financial-institution-training-centers-training-centers-skill-development-institutes-retail-retail-commercial-spaces-live-events-live-events-corporate-events-use-the-exact-english-text-provided-by-the-user-for-each-industry-s-headline-subhead-overview-core-services-delivery-approach-typical-deployment-locations-why-choose-section-and-next-steps",
-      "title": "Replace the content for each of the 10 industry pages in the content registry (frontend/src/content/pages.ts) so each page renders the user-provided copy for that industry, using the existing ContentPage + ContentRenderer block types.\n\nFor each industry pageId below, set content.title to exactly the industry item name (matching the dropdown label), and render these content parts in this order:\n- Headline (as prominent text near the top of the page content)\n- Subhead\n- Call to action text: “Request a consultation · Get a project proposal” (render as two links to the existing /contact route, preserving the visible text)\n- Overview (paragraphs)\n- Core Services (each service as a distinct sub-heading plus supporting bullet points; include the “Benefit:” line for each service as an emphasis/bold-style block)\n- Our Delivery Approach (bulleted list)\n- Typical Deployment Locations (bulleted list)\n- Why Clients Choose Speedlight / Why Institutions Choose Speedlight / etc. (bulleted list; use the exact section title from the user’s copy for that industry)\n- Next Steps (include the closing sentence + the two CTA links to /contact, preserving visible text)\n\nIndustry pages to update (pageId → title):\n- corporate-enterprise → “Corporate & Enterprise Offices”\n- education → “Education & Digital Classrooms”\n- healthcare → “Healthcare Facilities”\n- manufacturing → “Manufacturing & Industrial Facilities”\n- government → “Government & Public Sector”\n- hospitality → “Hospitality & Convention Centers”\n- banking → “Banking & Financial Institution”\n- training-centers → “Training Centers & Skill Development Institutes”\n- retail → “Retail & Commercial Spaces”\n- live-events → “Live Events & Corporate Events”\n\nUse the exact English text provided by the user for each industry’s Headline, Subhead, Overview, Core Services, Delivery Approach, Typical Deployment Locations, Why Choose section, and Next Steps.",
+      "id": "feature-refactor-the-existing-homepage-components-so-the-hero-area-currently-implemented-in-frontend-src-components-sections-herosection-tsx-displays-the-provided-home-page-hero-content-speedlight-infosolutions-pvt-ltd-engineering-intelligent-av-it-ecosystems-for-modern-enterprises-the-two-intro-paragraphs-and-the-design-integrate-optimize-support-line-without-rewriting",
+      "title": "Refactor the existing homepage components so the hero area (currently implemented in `frontend/src/components/sections/HeroSection.tsx`) displays the provided Home page hero content: \"SPEEDLIGHT INFOSOLUTIONS PVT LTD\", \"Engineering Intelligent AV & IT Ecosystems for Modern Enterprises\", the two intro paragraphs, and the \"🔹 Design. Integrate. Optimize. Support.\" line, without rewriting.",
       "reqIds": [
         "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-remaining-home-page-sections-in-frontend-src-pages-homepage-tsx-using-the-provided-content-formatted-into-appropriate-ui-patterns-without-changing-text-1-our-core-expertise-with-the-6-numbered-items-and-their-descriptions-2-why-speedlight-infosolutions-with-the-list-and-the-closing-line-we-don-t-just-install-systems-we-engineer-intelligent-environments-3-our-technology-ecosystem-with-the-vendor-lines-as-provided-4-industries-we-serve-with-items-1-10-5-our-approach-with-steps-01-05-and-their-descriptions-6-final-section-let-s-build-the-future-of-intelligent-spaces-with-the-paragraph-and-the-two-ctas",
+      "title": "Implement the remaining Home page sections in `frontend/src/pages/HomePage.tsx` using the provided content, formatted into appropriate UI patterns without changing text: (1) \"Our Core Expertise\" with the 6 numbered items and their descriptions; (2) \"Why Speedlight Infosolutions?\" with the ✔ list and the closing line \"We don’t just install systems — we engineer intelligent environments.\"; (3) \"Our Technology Ecosystem\" with the vendor lines as provided; (4) \"Industries We Serve\" with items 1–10; (5) \"Our Approach\" with steps 01–05 and their descriptions; (6) final section \"Let’s Build the Future of Intelligent Spaces\" with the paragraph and the two 🔹 CTAs.",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
@@ -28,13 +37,19 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create \"Industries We Serve\" header dropdown with 10 items linking (anchors) to pages named the same as each item, and populate each industry page with the provided content.",
+      "summary": "Structure the Home page into clear website sections (hero, expertise grid, industries list, approach steps, CTAs) using only the provided text (no rewriting)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Structure and arrange all remaining website pages into clear sections based only on existing content, varying structure per page, with no rewriting",
       "reqIds": [],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "Update “Industries We Serve” dropdown items and populate each industry page with provided content",
+  "projectName": "Speedlight Infosolutions Pvt Ltd",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

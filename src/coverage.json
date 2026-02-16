@@ -1,35 +1,46 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T11:02:37.869Z",
+  "generatedAt": "2026-02-16T12:03:29.316Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the header navigation dropdown labeled “Industries We Serve” to include exactly these 10 items (and keep each item linking to its corresponding industry page route):\n1) Corporate & Enterprise Offices → /industries/corporate-enterprise\n2) Education & Digital Classrooms → /industries/education\n3) Healthcare Facilities → /industries/healthcare\n4) Manufacturing & Industrial Facilities → /industries/manufacturing\n5) Government & Public Sector → /industries/government\n6) Hospitality & Convention Centers → /industries/hospitality\n7) Banking & Financial Institution → /industries/banking\n8) Training Centers & Skill Development Institutes → /industries/training-centers\n9) Retail & Commercial Spaces → /industries/retail\n10) Live Events & Corporate Events → /industries/live-events\n\nEnsure the dropdown label text matches the list above exactly (including singular/plural wording), and that both desktop dropdown and mobile navigation render the same labels.",
+        "summary": "Update the Home page UI to use ONLY the user-provided Home page text for Speedlight Infosolutions Pvt Ltd, structured into clear sections (hero, intro, core expertise, why choose, technology ecosystem, industries, approach, final CTAs) without rewriting, paraphrasing, or altering any of the provided text.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/site/navigation.ts"
+          "frontend/src/pages/HomePage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/site/navigation.ts"
+          "frontend/src/pages/HomePage.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Replace the content for each of the 10 industry pages in the content registry (frontend/src/content/pages.ts) so each page renders the user-provided copy for that industry, using the existing ContentPage + ContentRenderer block types.\n\nFor each industry pageId below, set content.title to exactly the industry item name (matching the dropdown label), and render these content parts in this order:\n- Headline (as prominent text near the top of the page content)\n- Subhead\n- Call to action text: “Request a consultation · Get a project proposal” (render as two links to the existing /contact route, preserving the visible text)\n- Overview (paragraphs)\n- Core Services (each service as a distinct sub-heading plus supporting bullet points; include the “Benefit:” line for each service as an emphasis/bold-style block)\n- Our Delivery Approach (bulleted list)\n- Typical Deployment Locations (bulleted list)\n- Why Clients Choose Speedlight / Why Institutions Choose Speedlight / etc. (bulleted list; use the exact section title from the user’s copy for that industry)\n- Next Steps (include the closing sentence + the two CTA links to /contact, preserving visible text)\n\nIndustry pages to update (pageId → title):\n- corporate-enterprise → “Corporate & Enterprise Offices”\n- education → “Education & Digital Classrooms”\n- healthcare → “Healthcare Facilities”\n- manufacturing → “Manufacturing & Industrial Facilities”\n- government → “Government & Public Sector”\n- hospitality → “Hospitality & Convention Centers”\n- banking → “Banking & Financial Institution”\n- training-centers → “Training Centers & Skill Development Institutes”\n- retail → “Retail & Commercial Spaces”\n- live-events → “Live Events & Corporate Events”\n\nUse the exact English text provided by the user for each industry’s Headline, Subhead, Overview, Core Services, Delivery Approach, Typical Deployment Locations, Why Choose section, and Next Steps.",
+        "summary": "Refactor the existing homepage components so the hero area (currently implemented in `frontend/src/components/sections/HeroSection.tsx`) displays the provided Home page hero content: \"SPEEDLIGHT INFOSOLUTIONS PVT LTD\", \"Engineering Intelligent AV & IT Ecosystems for Modern Enterprises\", the two intro paragraphs, and the \"🔹 Design. Integrate. Optimize. Support.\" line, without rewriting.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/content/pages.ts"
+          "frontend/src/components/sections/HeroSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/content/pages.ts"
+          "frontend/src/components/sections/HeroSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Implement the remaining Home page sections in `frontend/src/pages/HomePage.tsx` using the provided content, formatted into appropriate UI patterns without changing text: (1) \"Our Core Expertise\" with the 6 numbered items and their descriptions; (2) \"Why Speedlight Infosolutions?\" with the ✔ list and the closing line \"We don’t just install systems — we engineer intelligent environments.\"; (3) \"Our Technology Ecosystem\" with the vendor lines as provided; (4) \"Industries We Serve\" with items 1–10; (5) \"Our Approach\" with steps 01–05 and their descriptions; (6) final section \"Let’s Build the Future of Intelligent Spaces\" with the paragraph and the two 🔹 CTAs.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx"
         ]
       }
     ]
@@ -39,8 +50,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/content/pages.ts",
-    "frontend/src/site/navigation.ts",
+    "frontend/src/components/sections/HeroSection.tsx",
+    "frontend/src/pages/HomePage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

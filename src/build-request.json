@@ -1,79 +1,78 @@
 {
   "kind": "build_request",
-  "title": "Update “Industries We Serve” dropdown items and populate each industry page with provided content",
+  "title": "Restructure Home page using provided Speedlight Infosolutions content (no rewriting)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the header navigation dropdown labeled “Industries We Serve” to include exactly these 10 items (and keep each item linking to its corresponding industry page route):\n1) Corporate & Enterprise Offices → /industries/corporate-enterprise\n2) Education & Digital Classrooms → /industries/education\n3) Healthcare Facilities → /industries/healthcare\n4) Manufacturing & Industrial Facilities → /industries/manufacturing\n5) Government & Public Sector → /industries/government\n6) Hospitality & Convention Centers → /industries/hospitality\n7) Banking & Financial Institution → /industries/banking\n8) Training Centers & Skill Development Institutes → /industries/training-centers\n9) Retail & Commercial Spaces → /industries/retail\n10) Live Events & Corporate Events → /industries/live-events\n\nEnsure the dropdown label text matches the list above exactly (including singular/plural wording), and that both desktop dropdown and mobile navigation render the same labels.",
+      "text": "Update the Home page UI to use ONLY the user-provided Home page text for Speedlight Infosolutions Pvt Ltd, structured into clear sections (hero, intro, core expertise, why choose, technology ecosystem, industries, approach, final CTAs) without rewriting, paraphrasing, or altering any of the provided text.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "now for the drop down list of header item \"industries we serve\" have following items: ... these items are anchor  to the pages of same name as item name"
+          "Organize all the pages of this website properly based only on the existing content. Do not rewrite or change any text. Just structure and arrange the pages and sections clearly.",
+          "now for 'Home' page I have following  data:\n\n SPEEDLIGHT INFOSOLUTIONS PVT LTD\nEngineering Intelligent AV & IT Ecosystems for Modern Enterprises\nWe design, integrate, and support advanced Audio-Visual and Enterprise IT infrastructures that enable seamless collaboration, secure connectivity, and intelligent control across corporate, institutional, and premium environments.\nFrom boardrooms to control rooms, from enterprise campuses to smart residences — we deliver performance-driven, future-ready technology ecosystems.\n🔹 Design. Integrate. Optimize. Support.\n\nOur Core Expertise\n...",
+          "also fomat this data intelligently"
         ]
       },
       "acceptanceCriteria": [
-        "In the site header, the “Industries We Serve” dropdown shows exactly 10 entries in the exact order and wording provided by the user.",
-        "Each dropdown item navigates to the correct existing industry route under /industries/...",
-        "On mobile navigation, the same 10 labels appear and navigate correctly.",
-        "No other navigation labels are unintentionally changed."
+        "The rendered Home page content matches the provided text exactly (character-for-character), including punctuation, numbering (e.g., 1️⃣ … 6️⃣), checkmarks (✔), separators (·), and the 🔹 lines.",
+        "All provided content is present on the Home page and organized into clearly separated sections with appropriate spacing and readable typography.",
+        "No new marketing copy is introduced on the Home page (e.g., remove/avoid existing Home page sentences like \"Comprehensive AV Solutions\" and the current solution card descriptions that are not part of the provided text)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Replace the content for each of the 10 industry pages in the content registry (frontend/src/content/pages.ts) so each page renders the user-provided copy for that industry, using the existing ContentPage + ContentRenderer block types.\n\nFor each industry pageId below, set content.title to exactly the industry item name (matching the dropdown label), and render these content parts in this order:\n- Headline (as prominent text near the top of the page content)\n- Subhead\n- Call to action text: “Request a consultation · Get a project proposal” (render as two links to the existing /contact route, preserving the visible text)\n- Overview (paragraphs)\n- Core Services (each service as a distinct sub-heading plus supporting bullet points; include the “Benefit:” line for each service as an emphasis/bold-style block)\n- Our Delivery Approach (bulleted list)\n- Typical Deployment Locations (bulleted list)\n- Why Clients Choose Speedlight / Why Institutions Choose Speedlight / etc. (bulleted list; use the exact section title from the user’s copy for that industry)\n- Next Steps (include the closing sentence + the two CTA links to /contact, preserving visible text)\n\nIndustry pages to update (pageId → title):\n- corporate-enterprise → “Corporate & Enterprise Offices”\n- education → “Education & Digital Classrooms”\n- healthcare → “Healthcare Facilities”\n- manufacturing → “Manufacturing & Industrial Facilities”\n- government → “Government & Public Sector”\n- hospitality → “Hospitality & Convention Centers”\n- banking → “Banking & Financial Institution”\n- training-centers → “Training Centers & Skill Development Institutes”\n- retail → “Retail & Commercial Spaces”\n- live-events → “Live Events & Corporate Events”\n\nUse the exact English text provided by the user for each industry’s Headline, Subhead, Overview, Core Services, Delivery Approach, Typical Deployment Locations, Why Choose section, and Next Steps.",
+      "text": "Refactor the existing homepage components so the hero area (currently implemented in `frontend/src/components/sections/HeroSection.tsx`) displays the provided Home page hero content: \"SPEEDLIGHT INFOSOLUTIONS PVT LTD\", \"Engineering Intelligent AV & IT Ecosystems for Modern Enterprises\", the two intro paragraphs, and the \"🔹 Design. Integrate. Optimize. Support.\" line, without rewriting.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "for each page i have data as following:",
-          "for 'Corporate & Enterprise Offices' i have following data:",
-          "for 'Education & Digital Classrooms' i have following data:",
-          "for 'Healthcare Facilities' i have following data:",
-          "for 'Manufacturing & Industrial Facilities' i have following data:",
-          "for 'Government & Public Sector' i have following data:",
-          "for 'Hospitality & Convention Centers' i have following data:",
-          "for 'Banking & Financial Institution' i have following data:",
-          "for 'Training Centers & Skill Development Institutes' i have following data:",
-          "for 'Retail & Commercial Spaces' i have following data:",
-          "for 'Live Events & Corporate Events' i have following data:"
+          "SPEEDLIGHT INFOSOLUTIONS PVT LTD\nEngineering Intelligent AV & IT Ecosystems for Modern Enterprises\nWe design, integrate, and support advanced Audio-Visual and Enterprise IT infrastructures that enable seamless collaboration, secure connectivity, and intelligent control across corporate, institutional, and premium environments.\nFrom boardrooms to control rooms, from enterprise campuses to smart residences — we deliver performance-driven, future-ready technology ecosystems.\n🔹 Design. Integrate. Optimize. Support."
         ]
       },
       "acceptanceCriteria": [
-        "Navigating to each industry route renders a page with title matching the corresponding dropdown label exactly.",
-        "Each industry page includes sections for Headline, Subhead, CTA text, Overview, Core Services (with per-service Benefit lines), Our Delivery Approach, Typical Deployment Locations, Why Choose…, and Next Steps.",
-        "CTA links “Request a consultation” and “Get a project proposal” are clickable and route to /contact (hash-router compatible).",
-        "No industry page shows the old placeholder/summary content currently present in frontend/src/content/pages.ts for those pageIds."
+        "`HeroSection` no longer displays the existing hardcoded hero text (e.g., \"Innovative AV Solutions\", \"Transform Communication & Collaboration\", \"Get Started\").",
+        "The hero background image behavior remains intact (keeps using `/assets/generated/hero-bg.dim_1600x900.png` as currently implemented).",
+        "Hero CTAs (if shown) use only the provided CTA texts (\"🔹 Request a Consultation\" and \"🔹 Speak to an Expert\") and do not introduce new CTA labels."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement the remaining Home page sections in `frontend/src/pages/HomePage.tsx` using the provided content, formatted into appropriate UI patterns without changing text: (1) \"Our Core Expertise\" with the 6 numbered items and their descriptions; (2) \"Why Speedlight Infosolutions?\" with the ✔ list and the closing line \"We don’t just install systems — we engineer intelligent environments.\"; (3) \"Our Technology Ecosystem\" with the vendor lines as provided; (4) \"Industries We Serve\" with items 1–10; (5) \"Our Approach\" with steps 01–05 and their descriptions; (6) final section \"Let’s Build the Future of Intelligent Spaces\" with the paragraph and the two 🔹 CTAs.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Our Core Expertise\nWe provide end-to-end technology integration across six specialized domains:\n1️⃣ Workplace Collaboration & Video Conferencing\n...\n6️⃣ System Lifecycle & Support Solutions\n\nWhy Speedlight Infosolutions?\n✔ Enterprise-focused design approach\n...\nWe don’t just install systems — we engineer intelligent environments.\n\nOur Technology Ecosystem\nPoly · Yealink · Logitech · Cisco · Microsoft Teams Rooms\n...\nNetgear · Juniper Networks · Aruba · CommScope\n\nIndustries We Serve\n1. Corporate & Enterprise Offices\n...\n10. Live Events & Corporate Events\n\nOur Approach\n01. Consult\nRequirement analysis and environment assessment.\n...\n05. Support\nLifecycle management and technical assistance.\n\nLet’s Build the Future of Intelligent Spaces\n...\n🔹 Request a Consultation\n🔹 Speak to an Expert"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All section headings and list item texts displayed on the Home page are taken verbatim from the provided content (no edits like shortening \"Workplace Collaboration & Video Conferencing\" to \"Workplace Collaboration\").",
+        "The six \"Our Core Expertise\" items are visually distinguishable (e.g., cards, stacked blocks, or a grid) while keeping titles/descriptions unchanged.",
+        "The \"Industries We Serve\" list contains exactly 10 items and preserves each item’s wording and numbering as provided.",
+        "The two CTAs at the bottom use the exact provided texts and are visually presented as primary/secondary actions (buttons or links) without changing the wording."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
-    "Respect the existing TanStack Router hash-history routing (do not introduce non-hash routing assumptions).",
-    "Keep backend as single-actor; no backend changes are required for this request."
+    "Do not rewrite, paraphrase, proofread, or alter any of the user-provided Home page text; only structure and format it.",
+    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, `frontend/src/components/ui`.",
+    "No backend changes are required for this request; keep the backend as-is."
   ],
   "nonGoals": [
-    "Do not add new backend storage or APIs for industry content (keep content static in the frontend registry).",
-    "Do not change existing industry route paths unless required to satisfy the exact dropdown list (current /industries/... paths should remain).",
-    "Do not create new image assets or change banner mappings unless required for rendering; existing page banners may remain as-is."
+    "Do not structure or rewrite other website pages yet (only the Home page in this build request).",
+    "Do not change global brand constants/site-wide naming (e.g., `frontend/src/site/brand.ts`) unless explicitly required for the Home page rendering.",
+    "Do not add new integrations (auth, databases, external CMS) to manage content."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

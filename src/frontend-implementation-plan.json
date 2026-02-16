@@ -1,39 +1,54 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Align Industries dropdown labels/routes and replace industry page content in static content registry",
+  "title": "Restructure Home page with provided Speedlight Infosolutions content (no rewriting)",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update “Industries We Serve” dropdown items to exactly match the provided 10 labels and keep links pointing to the corresponding /industries/... routes on both desktop and mobile navigation.",
+      "summary": "Restructure the Home page to render only the user-provided Speedlight Infosolutions Home page text, organized into clear sections without altering any characters.",
       "acceptanceCriteria": [
-        "In the site header, the “Industries We Serve” dropdown shows exactly 10 entries in the exact order and wording provided by the user.",
-        "Each dropdown item navigates to the correct existing industry route under /industries/...",
-        "On mobile navigation, the same 10 labels appear and navigate correctly.",
-        "No other navigation labels are unintentionally changed."
+        "The rendered Home page content matches the provided text exactly (character-for-character), including punctuation, numbering (e.g., 1️⃣ … 6️⃣), checkmarks (✔), separators (·), and the 🔹 lines.",
+        "All provided content is present on the Home page and organized into clearly separated sections with appropriate spacing and readable typography.",
+        "No new marketing copy is introduced on the Home page (e.g., remove/avoid existing Home page sentences like \"Comprehensive AV Solutions\" and the current solution card descriptions that are not part of the provided text)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/site/navigation.ts",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Update the navigationConfig entry for the 'industries' section so its 10 children labels match the user-provided wording exactly (including singular/plural) while preserving the existing /industries/... paths (notably: change 'Banking & Financial Institutions' → 'Banking & Financial Institution' and 'Training Centers & Skill Development' → 'Training Centers & Skill Development Institutes')."
+          "description": "Replace the current Home page body sections (solutions overview, industries teaser grid, existing CTA block) with a single Home page layout that renders ONLY the user-provided Speedlight Infosolutions text, split into the required sections (hero handled by HeroSection, then intro/core expertise/why choose/technology ecosystem/industries/approach/final CTAs). Ensure every heading, paragraph, list item, emoji numeral (1️⃣–6️⃣), checkmark (✔), middle-dot separators (·), and 🔹 lines are included verbatim with no edits. Use existing UI building blocks (e.g., shadcn/ui Card, Typography patterns already used in the project) to create readable section spacing and visual separation; verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Replace the content registry entries for the 10 industry pages so each industry route renders the user-provided sections and CTAs using existing ContentPage + ContentRenderer block types.",
+      "summary": "Refactor HeroSection to display the provided Home hero title, subtitle, intro paragraphs, and the 🔹 tagline line verbatim while preserving the existing hero background behavior.",
       "acceptanceCriteria": [
-        "Navigating to each industry route renders a page with title matching the corresponding dropdown label exactly.",
-        "Each industry page includes sections for Headline, Subhead, CTA text, Overview, Core Services (with per-service Benefit lines), Our Delivery Approach, Typical Deployment Locations, Why Choose…, and Next Steps.",
-        "CTA links “Request a consultation” and “Get a project proposal” are clickable and route to /contact (hash-router compatible).",
-        "No industry page shows the old placeholder/summary content currently present in frontend/src/content/pages.ts for those pageIds."
+        "`HeroSection` no longer displays the existing hardcoded hero text (e.g., \"Innovative AV Solutions\", \"Transform Communication & Collaboration\", \"Get Started\").",
+        "The hero background image behavior remains intact (keeps using `/assets/generated/hero-bg.dim_1600x900.png` as currently implemented).",
+        "Hero CTAs (if shown) use only the provided CTA texts (\"🔹 Request a Consultation\" and \"🔹 Speak to an Expert\") and do not introduce new CTA labels."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/content/pages.ts",
+          "path": "frontend/src/components/sections/HeroSection.tsx",
           "operation": "modify",
-          "description": "For pageIds corporate-enterprise, education, healthcare, manufacturing, government, hospitality, banking, training-centers, retail, and live-events: replace existing placeholder content with the exact user-provided English copy. Set each content.title to exactly the matching dropdown label. Structure sections/blocks in the required order using existing ContentRenderer block types: use a top section containing a prominent 'heading' block for Headline followed by Subhead; represent the CTA as a 'link-list' block with exactly two links labeled “Request a consultation” and “Get a project proposal”, both linking to '/contact'; render Overview as paragraph blocks; render Core Services with per-service sub-headings (use 'heading' blocks) + bullet lists (use 'list' blocks) and render each “Benefit:” line as an 'emphasis' block with style 'bold'; render Our Delivery Approach, Typical Deployment Locations, and the industry-specific “Why … Choose Speedlight” section as 'list' blocks (ensuring the section title matches the user copy exactly); render Next Steps with the closing sentence as a paragraph plus the same two '/contact' CTA links as a 'link-list' block."
+          "description": "Update the HeroSection content to render exactly: \"SPEEDLIGHT INFOSOLUTIONS PVT LTD\", \"Engineering Intelligent AV & IT Ecosystems for Modern Enterprises\", the two provided intro paragraphs, and the line \"🔹 Design. Integrate. Optimize. Support.\" verbatim. Remove the existing Sparkles badge text and current headline/description/CTA labels. Keep the background image style using /assets/generated/hero-bg.dim_1600x900.png unchanged. If CTA buttons are rendered, use only the provided CTA texts \"🔹 Request a Consultation\" and \"🔹 Speak to an Expert\" (no other labels). Use the existing BrandButton wrapper (built on shadcn/ui Button) for CTA styling; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement all remaining Home page sections in HomePage.tsx using the provided content verbatim, formatted into clear UI patterns with correct headings, lists, and final CTAs.",
+      "acceptanceCriteria": [
+        "All section headings and list item texts displayed on the Home page are taken verbatim from the provided content (no edits like shortening \"Workplace Collaboration & Video Conferencing\" to \"Workplace Collaboration\").",
+        "The six \"Our Core Expertise\" items are visually distinguishable (e.g., cards, stacked blocks, or a grid) while keeping titles/descriptions unchanged.",
+        "The \"Industries We Serve\" list contains exactly 10 items and preserves each item’s wording and numbering as provided.",
+        "The two CTAs at the bottom use the exact provided texts and are visually presented as primary/secondary actions (buttons or links) without changing the wording."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Implement the remaining sections beneath <HeroSection /> using the provided text verbatim: (1) \"Our Core Expertise\" with the exact line \"We provide end-to-end technology integration across six specialized domains:\" followed by items 1️⃣–6️⃣ with their exact titles and descriptions; render them as visually distinct blocks (e.g., grid of Cards) without changing any characters. (2) \"Why Speedlight Infosolutions?\" with the ✔ list items and the exact closing line \"We don’t just install systems — we engineer intelligent environments.\" (3) \"Our Technology Ecosystem\" with vendor lines exactly as provided, preserving middle-dot separators (·). (4) \"Industries We Serve\" as a 10-item numbered list exactly matching the provided wording and numbering. (5) \"Our Approach\" with steps 01–05 and their exact descriptions. (6) Final CTA section titled \"Let’s Build the Future of Intelligent Spaces\" with the provided paragraph and the two 🔹 CTAs rendered as primary/secondary actions using BrandButton (shadcn/ui Button wrapper). Remove any non-provided Home page copy currently present. Verify the component's usage instructions before implementing."
         }
       ]
     }

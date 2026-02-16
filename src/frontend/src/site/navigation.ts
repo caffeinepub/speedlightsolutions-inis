@@ -112,7 +112,7 @@ export const navigationConfig: NavigationItem[] = [
     children: [
       {
         id: 'our-organization',
-        label: 'Our Organization',
+        label: 'Our Organisation',
         path: '/about/our-organization',
       },
       {
@@ -129,11 +129,6 @@ export const navigationConfig: NavigationItem[] = [
         id: 'careers',
         label: 'Careers',
         path: '/about/careers',
-      },
-      {
-        id: 'custom-domain',
-        label: 'Custom Domain',
-        path: '/custom-domain',
       },
     ],
   },
